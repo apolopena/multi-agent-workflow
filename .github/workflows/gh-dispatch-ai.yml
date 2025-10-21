@@ -1,0 +1,38 @@
+name: AI-Attributed GitHub Actions
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:           { description: "open-issue|pr-comment|issue-comment|pr-code|open-pr", required: true }
+      provenance_label: { description: "e.g., AI_CODING_ASSISTANT", required: true }
+      target_repo:      { required: false }
+      number:           { required: false }
+      title:            { required: false }
+      body:             { required: false }
+      base:             { required: false }
+      head:             { required: false }
+      draft:            { required: false }
+      plan_only:        { required: false, type: boolean, default: false }
+
+jobs:
+  call:
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
+    uses: apolopena/github-workflows/.github/workflows/provenance.yml@main
+    with:
+      action:           ${{ inputs.action }}
+      provenance_label: ${{ inputs.provenance_label }}
+      target_repo:      ${{ inputs.target_repo }}
+      number:           ${{ inputs.number }}
+      title:            ${{ inputs.title }}
+      body:             ${{ inputs.body }}
+      base:             ${{ inputs.base }}
+      head:             ${{ inputs.head }}
+      draft:            ${{ inputs.draft }}
+      plan_only:        ${{ inputs.plan_only }}
+    secrets:
+      PROVENANCE_APP_ID:           ${{ secrets.PROVENANCE_APP_ID }}
+      PROVENANCE_APP_PRIVATE_KEY:  ${{ secrets.PROVENANCE_APP_PRIVATE_KEY }}
+      PROVENANCE_INSTALLATION_ID:  ${{ secrets.PROVENANCE_INSTALLATION_ID }}
