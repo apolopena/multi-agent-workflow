@@ -79,7 +79,7 @@
       "Bash(source:*)",
       "Bash(sleep:*)",
       "Bash(./scripts/*)",
-      "Bash(/home/quadro/repos/forks/multi-agent-workflow/scripts/*)",
+      "Bash(./scripts/git-ai.sh:*)",
       "Read(//tmp/**)",
       "Edit",
       "Write",
