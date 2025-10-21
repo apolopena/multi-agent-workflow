@@ -384,4 +384,100 @@ export function updateEventHITLResponse(id: number, response: any): HookEvent | 
   };
 }
 
+// Summary management functions
+export function getEventById(id: number): HookEvent | null {
+  const stmt = db.prepare(`
+    SELECT id, source_app, session_id, hook_event_type, payload, chat, summary, timestamp, humanInTheLoop, humanInTheLoopStatus, model_name
+    FROM events
+    WHERE id = ?
+  `);
+  const row = stmt.get(id) as any;
+
+  if (!row) return null;
+
+  return {
+    id: row.id,
+    source_app: row.source_app,
+    session_id: row.session_id,
+    hook_event_type: row.hook_event_type,
+    payload: JSON.parse(row.payload),
+    chat: row.chat ? JSON.parse(row.chat) : undefined,
+    summary: row.summary || undefined,
+    timestamp: row.timestamp,
+    humanInTheLoop: row.humanInTheLoop ? JSON.parse(row.humanInTheLoop) : undefined,
+    humanInTheLoopStatus: row.humanInTheLoopStatus ? JSON.parse(row.humanInTheLoopStatus) : undefined,
+    model_name: row.model_name || undefined
+  };
+}
+
+export function updateEventSummary(id: number, summary: string): boolean {
+  const stmt = db.prepare('UPDATE events SET summary = ? WHERE id = ?');
+  const result = stmt.run(summary, id);
+  return result.changes > 0;
+}
+
+// Helper function to identify meta-events and generate skip reason
+function getMetaEventSkipReason(event: HookEvent): string | null {
+  const payload = event.payload;
+
+  // Filter out summary-generation commands
+  if (payload.tool_name === 'Bash' && payload.tool_input?.command) {
+    const cmd = payload.tool_input.command;
+
+    // Check for batch-summaries endpoint
+    if (cmd.includes('POST http://localhost:4000/events/batch-summaries') ||
+        cmd.includes('events/batch-summaries')) {
+      return '[Meta-event: Summary generation batch update]';
+    }
+
+    // Check for single summary update endpoints
+    if (cmd.match(/POST.*\/events\/\d+\/summary/)) {
+      return '[Meta-event: Summary generation single update]';
+    }
+  }
+
+  return null;
+}
+
+export function getEventsWithoutSummaries(limit: number = 100): HookEvent[] {
+  const stmt = db.prepare(`
+    SELECT id, source_app, session_id, hook_event_type, payload, chat, summary, timestamp, humanInTheLoop, humanInTheLoopStatus, model_name
+    FROM events
+    WHERE summary IS NULL OR summary = ''
+    ORDER BY timestamp DESC
+    LIMIT ?
+  `);
+
+  const rows = stmt.all(limit) as any[];
+
+  return rows.map(row => {
+    const event: HookEvent = {
+      id: row.id,
+      source_app: row.source_app,
+      session_id: row.session_id,
+      hook_event_type: row.hook_event_type,
+      payload: JSON.parse(row.payload),
+      chat: row.chat ? JSON.parse(row.chat) : undefined,
+      summary: row.summary || undefined,
+      timestamp: row.timestamp,
+      humanInTheLoop: row.humanInTheLoop ? JSON.parse(row.humanInTheLoop) : undefined,
+      humanInTheLoopStatus: row.humanInTheLoopStatus ? JSON.parse(row.humanInTheLoopStatus) : undefined,
+      model_name: row.model_name || undefined
+    };
+
+    // Check if this is a meta-event and auto-assign skip reason
+    // ONLY if it doesn't already have a summary
+    if (!event.summary) {
+      const skipReason = getMetaEventSkipReason(event);
+      if (skipReason) {
+        // Auto-update the summary in the database with skip reason
+        updateEventSummary(event.id, skipReason);
+        event.summary = skipReason;
+      }
+    }
+
+    return event;
+  }).filter(event => !event.summary || !event.summary.startsWith('[Meta-event:')); // Exclude from "needs summary" list if it has a meta-event summary
+}
+
 export { db };

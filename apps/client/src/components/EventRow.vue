@@ -202,15 +202,22 @@
       
       <!-- Tool info and Summary - Desktop Layout -->
       <div class="flex items-center justify-between mb-2 mobile:hidden">
-        <div v-if="toolInfo" class="text-base text-[var(--theme-text-secondary)] font-semibold">
+        <div v-if="toolInfo" class="text-base text-[var(--theme-text-secondary)] font-semibold flex-1">
           <span class="font-medium italic px-2 py-0.5 rounded border-2 border-[var(--theme-primary)] bg-[var(--theme-primary-light)] shadow-sm">{{ toolInfo.tool }}</span>
           <span v-if="toolInfo.detail" class="ml-2 text-[var(--theme-text-tertiary)]" :class="{ 'italic': event.hook_event_type === 'UserPromptSubmit' }">{{ toolInfo.detail }}</span>
         </div>
-        
+        <div v-else class="flex-1"></div>
+
         <!-- Summary aligned to the right -->
-        <div v-if="event.summary" class="max-w-[50%] px-3 py-1.5 bg-[var(--theme-primary)]/10 border border-[var(--theme-primary)]/30 rounded-lg shadow-md">
-          <span class="text-sm text-[var(--theme-text-primary)] font-semibold">
-            <span class="mr-1">📝</span>
+        <div v-if="event.summary" class="max-w-[50%] px-3 py-1.5 rounded-lg shadow-md"
+             :class="event.summary.startsWith('[Meta-event:')
+               ? 'bg-orange-100 dark:bg-orange-900/20 border border-orange-500/50'
+               : 'bg-[var(--theme-primary)]/10 border border-[var(--theme-primary)]/30'">
+          <span class="text-sm font-semibold"
+                :class="event.summary.startsWith('[Meta-event:')
+                  ? 'text-orange-700 dark:text-orange-300'
+                  : 'text-[var(--theme-text-primary)]'">
+            <span class="mr-1">{{ event.summary.startsWith('[Meta-event:') ? '⚠️' : '📝' }}</span>
             {{ event.summary }}
           </span>
         </div>
@@ -223,9 +230,15 @@
           <span v-if="toolInfo.detail" class="ml-2 text-[var(--theme-text-tertiary)]" :class="{ 'italic': event.hook_event_type === 'UserPromptSubmit' }">{{ toolInfo.detail }}</span>
         </div>
         
-        <div v-if="event.summary" class="w-full px-2 py-1 bg-[var(--theme-primary)]/10 border border-[var(--theme-primary)]/30 rounded-lg shadow-md">
-          <span class="text-xs text-[var(--theme-text-primary)] font-semibold">
-            <span class="mr-1">📝</span>
+        <div v-if="event.summary" class="w-full px-2 py-1 rounded-lg shadow-md"
+             :class="event.summary.startsWith('[Meta-event:')
+               ? 'bg-orange-100 dark:bg-orange-900/20 border border-orange-500/50'
+               : 'bg-[var(--theme-primary)]/10 border border-[var(--theme-primary)]/30'">
+          <span class="text-xs font-semibold"
+                :class="event.summary.startsWith('[Meta-event:')
+                  ? 'text-orange-700 dark:text-orange-300'
+                  : 'text-[var(--theme-text-primary)]'">
+            <span class="mr-1">{{ event.summary.startsWith('[Meta-event:') ? '⚠️' : '📝' }}</span>
             {{ event.summary }}
           </span>
         </div>

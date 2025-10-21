@@ -1,15 +1,16 @@
-import { initDatabase, insertEvent, getFilterOptions, getRecentEvents, updateEventHITLResponse } from './db';
+import { initDatabase, insertEvent, getFilterOptions, getRecentEvents, updateEventHITLResponse, getEventById, updateEventSummary, getEventsWithoutSummaries } from './db';
 import type { HookEvent, HumanInTheLoopResponse } from './types';
-import { 
-  createTheme, 
-  updateThemeById, 
-  getThemeById, 
-  searchThemes, 
-  deleteThemeById, 
-  exportThemeById, 
+import {
+  createTheme,
+  updateThemeById,
+  getThemeById,
+  searchThemes,
+  deleteThemeById,
+  exportThemeById,
   importTheme,
-  getThemeStats 
+  getThemeStats
 } from './theme';
+import { getSettings, updateSettings, hasAnthropicApiKey, getEngineerName, type SummaryMode } from './settings';
 
 // Initialize database
 initDatabase();
@@ -174,6 +175,138 @@ const server = Bun.serve({
       return new Response(JSON.stringify(events), {
         headers: { ...headers, 'Content-Type': 'application/json' }
       });
+    }
+
+    // GET /events/without-summaries - Get events without summaries
+    if (url.pathname === '/events/without-summaries' && req.method === 'GET') {
+      const limit = parseInt(url.searchParams.get('limit') || '100');
+      const events = getEventsWithoutSummaries(limit);
+      return new Response(JSON.stringify(events), {
+        headers: { ...headers, 'Content-Type': 'application/json' }
+      });
+    }
+
+    // GET /events/:id - Get a single event by ID
+    if (url.pathname.match(/^\/events\/\d+$/) && req.method === 'GET') {
+      const id = parseInt(url.pathname.split('/')[2]);
+      const event = getEventById(id);
+
+      if (!event) {
+        return new Response(JSON.stringify({ error: 'Event not found' }), {
+          status: 404,
+          headers: { ...headers, 'Content-Type': 'application/json' }
+        });
+      }
+
+      return new Response(JSON.stringify(event), {
+        headers: { ...headers, 'Content-Type': 'application/json' }
+      });
+    }
+
+    // POST /events/:id/summary - Update event summary
+    if (url.pathname.match(/^\/events\/\d+\/summary$/) && req.method === 'POST') {
+      const id = parseInt(url.pathname.split('/')[2]);
+
+      try {
+        const { summary } = await req.json();
+
+        if (!summary || typeof summary !== 'string') {
+          return new Response(JSON.stringify({ error: 'Summary is required and must be a string' }), {
+            status: 400,
+            headers: { ...headers, 'Content-Type': 'application/json' }
+          });
+        }
+
+        const success = updateEventSummary(id, summary);
+
+        if (!success) {
+          return new Response(JSON.stringify({ error: 'Event not found' }), {
+            status: 404,
+            headers: { ...headers, 'Content-Type': 'application/json' }
+          });
+        }
+
+        // Get the updated event
+        const updatedEvent = getEventById(id);
+
+        // Broadcast updated event to all connected clients
+        const message = JSON.stringify({ type: 'summary-update', data: updatedEvent });
+        wsClients.forEach(client => {
+          try {
+            client.send(message);
+          } catch (err) {
+            wsClients.delete(client);
+          }
+        });
+
+        return new Response(JSON.stringify({ success: true, event: updatedEvent }), {
+          headers: { ...headers, 'Content-Type': 'application/json' }
+        });
+      } catch (error) {
+        console.error('Error updating summary:', error);
+        return new Response(JSON.stringify({ error: 'Invalid request' }), {
+          status: 400,
+          headers: { ...headers, 'Content-Type': 'application/json' }
+        });
+      }
+    }
+
+    // POST /events/batch-summaries - Update multiple event summaries
+    if (url.pathname === '/events/batch-summaries' && req.method === 'POST') {
+      try {
+        const { summaries } = await req.json();
+
+        if (!Array.isArray(summaries)) {
+          return new Response(JSON.stringify({ error: 'summaries must be an array' }), {
+            status: 400,
+            headers: { ...headers, 'Content-Type': 'application/json' }
+          });
+        }
+
+        const results = [];
+        const updatedEvents = [];
+
+        for (const item of summaries) {
+          if (!item.id || !item.summary) {
+            results.push({ id: item.id, success: false, error: 'Missing id or summary' });
+            continue;
+          }
+
+          const success = updateEventSummary(item.id, item.summary);
+          results.push({ id: item.id, success });
+
+          if (success) {
+            const event = getEventById(item.id);
+            if (event) updatedEvents.push(event);
+          }
+        }
+
+        // Broadcast all updated events to connected clients
+        updatedEvents.forEach(event => {
+          const message = JSON.stringify({ type: 'summary-update', data: event });
+          wsClients.forEach(client => {
+            try {
+              client.send(message);
+            } catch (err) {
+              wsClients.delete(client);
+            }
+          });
+        });
+
+        return new Response(JSON.stringify({
+          success: true,
+          results,
+          count: updatedEvents.length
+        }), {
+          headers: { ...headers, 'Content-Type': 'application/json' }
+        });
+      } catch (error) {
+        console.error('Error batch updating summaries:', error);
+        return new Response(JSON.stringify({ error: 'Invalid request' }), {
+          status: 400,
+          headers: { ...headers, 'Content-Type': 'application/json' }
+        });
+      }
     }
 
     // POST /events/:id/respond - Respond to HITL request
@@ -404,7 +537,56 @@ const server = Bun.serve({
         headers: { ...headers, 'Content-Type': 'application/json' }
       });
     }
-    
+
+    // GET /settings - Get current settings
+    if (url.pathname === '/settings' && req.method === 'GET') {
+      const settings = getSettings();
+      const engineerName = getEngineerName();
+
+      return new Response(JSON.stringify({
+        ...settings,
+        hasAnthropicApiKey: hasAnthropicApiKey(),
+        engineerName: engineerName
+      }), {
+        headers: { ...headers, 'Content-Type': 'application/json' }
+      });
+    }
+
+    // POST /settings - Update settings
+    if (url.pathname === '/settings' && req.method === 'POST') {
+      try {
+        const body = await req.json();
+
+        // Validate summaryMode
+        if (body.summaryMode && !['realtime', 'on-demand', 'disabled'].includes(body.summaryMode)) {
+          return new Response(JSON.stringify({
+            error: 'Invalid summaryMode. Must be: realtime, on-demand, or disabled'
+          }), {
+            status: 400,
+            headers: { ...headers, 'Content-Type': 'application/json' }
+          });
+        }
+
+        const updatedSettings = updateSettings(body);
+        const engineerName = getEngineerName();
+
+        return new Response(JSON.stringify({
+          success: true,
+          settings: updatedSettings,
+          hasAnthropicApiKey: hasAnthropicApiKey(),
+          engineerName: engineerName
+        }), {
+          headers: { ...headers, 'Content-Type': 'application/json' }
+        });
+      } catch (error) {
+        console.error('Error updating settings:', error);
+        return new Response(JSON.stringify({ error: 'Invalid request' }), {
+          status: 400,
+          headers: { ...headers, 'Content-Type': 'application/json' }
+        });
+      }
+    }
+
     // WebSocket upgrade
     if (url.pathname === '/stream') {
       const success = server.upgrade(req);

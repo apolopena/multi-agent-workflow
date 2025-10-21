@@ -23,9 +23,9 @@ Before getting started, ensure you have the following installed:
 - **[Claude Code](https://docs.anthropic.com/en/docs/claude-code)** - Anthropic's official CLI for Claude
 - **[Astral uv](https://docs.astral.sh/uv/)** - Fast Python package manager (required for hook scripts)
 - **[Bun](https://bun.sh/)**, **npm**, or **yarn** - For running the server and client
-- **Anthropic API Key** - Set as `ANTHROPIC_API_KEY` environment variable
-- **OpenAI API Key** (optional) - For multi-model support with just-prompt MCP tool
-- **ElevenLabs API Key** (optional) - For audio features
+- **Anthropic API Key** - Add to `env/.env.secrets` as `ANTHROPIC_API_KEY`
+- **OpenAI API Key** (optional) - Add to `env/.env.secrets` for multi-model support
+- **ElevenLabs API Key** (optional) - Add to `env/.env.secrets` for audio features
 
 ### Configure .claude Directory
 
@@ -149,7 +149,10 @@ claude-code-hooks-multi-agent-observability/
 │       │   ├── utils/
 │       │   │   └── chartRenderer.ts       # Canvas chart rendering
 │       │   └── types.ts    # TypeScript interfaces
-│       ├── .env.sample     # Environment configuration template
+│       ├── env/            # Environment configuration
+│       │   ├── .env       # Non-sensitive config
+│       │   ├── .env.secrets # API keys (gitignored)
+│       │   └── examples/  # Example templates
 │       └── package.json
 │
 ├── .claude/                # Claude Code integration
@@ -166,7 +169,7 @@ claude-code-hooks-multi-agent-observability/
 │
 ├── scripts/               # Utility scripts
 │   ├── start-system.sh   # Launch server & client
-│   ├── reset-system.sh   # Stop all processes
+│   ├── stop-system.sh    # Stop all processes
 │   └── test-system.sh    # System validation
 │
 └── logs/                 # Application logs (gitignored)
@@ -331,14 +334,30 @@ curl -X POST http://localhost:4000/events \
 
 ### Environment Variables
 
-Copy `.env.sample` to `.env` in the project root and fill in your API keys:
+The project uses a two-file environment configuration for better security:
 
-**Application Root** (`.env` file):
-- `ANTHROPIC_API_KEY` – Anthropic Claude API key (required)
-- `ENGINEER_NAME` – Your name (for logging/identification)
-- `GEMINI_API_KEY` – Google Gemini API key (optional)
-- `OPENAI_API_KEY` – OpenAI API key (optional)
-- `ELEVEN_API_KEY` – ElevenLabs API key (optional)
+**Configuration Files** (in `env/` directory):
+
+1. **`env/.env`** - Non-sensitive configuration
+   - `ENGINEER_NAME` – Your name (for logging/identification)
+   - `AI_AGENT_NAME` – Agent name for git attributions
+   - Other non-sensitive settings
+
+2. **`env/.env.secrets`** - Sensitive credentials (NEVER commit)
+   - `ANTHROPIC_API_KEY` – Anthropic Claude API key
+   - `OPENAI_API_KEY` – OpenAI API key (optional)
+   - `ELEVENLABS_API_KEY` – ElevenLabs API key (optional)
+   - `GEMINI_API_KEY` – Google Gemini API key (optional)
+
+**Setup**:
+```bash
+# Copy example files
+cp env/examples/.env.example env/.env
+cp env/examples/.env.secrets.example env/.env.secrets
+
+# Edit and add your API keys
+nano env/.env.secrets
+```
 
 **Client** (`.env` file in `apps/client/.env`):
 - `VITE_MAX_EVENTS_TO_DISPLAY=100` – Maximum events to show (removes oldest when exceeded)

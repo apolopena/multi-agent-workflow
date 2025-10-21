@@ -31,13 +31,14 @@ def main():
     """
     
     # Load environment variables
-    load_dotenv()
-    
+    load_dotenv('env/.env')
+    load_dotenv('env/.env.secrets')
+
     # Get API key from environment
     api_key = os.getenv('ELEVENLABS_API_KEY')
     if not api_key:
         print("❌ Error: ELEVENLABS_API_KEY not found in environment variables")
-        print("Please add your ElevenLabs API key to .env file:")
+        print("Please add your ElevenLabs API key to env/.env.secrets file:")
         print("ELEVENLABS_API_KEY=your_api_key_here")
         sys.exit(1)
     

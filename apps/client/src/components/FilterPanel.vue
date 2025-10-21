@@ -56,13 +56,39 @@
       >
         Clear Filters
       </button>
+
+      <!-- Settings Button -->
+      <button
+        @click="showSettings = true"
+        class="px-4 py-2 mobile:px-2 mobile:py-1.5 mobile:w-full text-base mobile:text-sm font-bold text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800"
+        title="Summary Settings"
+      >
+        ⚙️ Settings
+      </button>
+
+      <!-- Generate Summaries Button - Only show in on-demand mode -->
+      <button
+        v-if="summaryMode === 'on-demand'"
+        @click="generateSummaries"
+        :disabled="generatingSummaries || eventsWithoutSummariesCount === 0"
+        class="px-4 py-2 mobile:px-2 mobile:py-1.5 mobile:w-full text-base mobile:text-sm font-bold text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+        :class="generatingSummaries ? 'bg-gray-500' : 'bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-primary-dark)] hover:from-[var(--theme-primary-dark)] hover:to-[var(--theme-primary)]'"
+        :title="`Generate summaries for ${eventsWithoutSummariesCount} events`"
+      >
+        {{ generatingSummaries ? 'Preparing...' : `Generate Summaries (${eventsWithoutSummariesCount})` }}
+      </button>
     </div>
+
+    <!-- Settings Panel Modal -->
+    <SettingsPanel v-if="showSettings" @close="showSettings = false" />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue';
-import type { FilterOptions } from '../types';
+import type { FilterOptions, HookEvent } from '../types';
+import SettingsPanel from './SettingsPanel.vue';
+import { useSettings } from '../composables/useSettings';
 
 const props = defineProps<{
   filters: {
@@ -70,6 +96,7 @@ const props = defineProps<{
     sessionId: string;
     eventType: string;
   };
+  events: HookEvent[];
 }>();
 
 const emit = defineEmits<{
@@ -83,6 +110,12 @@ const filterOptions = ref<FilterOptions>({
 });
 
 const localFilters = ref({ ...props.filters });
+const generatingSummaries = ref(false);
+const eventsWithoutSummariesCount = ref(0);
+const showSettings = ref(false);
+
+// Get summary mode from settings
+const { summaryMode } = useSettings();
 
 const hasActiveFilters = computed(() => {
   return localFilters.value.sourceApp || localFilters.value.sessionId || localFilters.value.eventType;
@@ -112,9 +145,98 @@ const fetchFilterOptions = async () => {
   }
 };
 
+const fetchEventsWithoutSummaries = async () => {
+  try {
+    const response = await fetch('http://localhost:4000/events/without-summaries?limit=100');
+    if (response.ok) {
+      const events = await response.json();
+      eventsWithoutSummariesCount.value = events.length;
+    }
+  } catch (error) {
+    console.error('Failed to fetch events without summaries:', error);
+  }
+};
+
+const buildSummaryPrompt = (events: HookEvent[]): string => {
+  const eventsList = events.map(e => {
+    const payloadStr = JSON.stringify(e.payload, null, 2);
+    const truncatedPayload = payloadStr.length > 500 ? payloadStr.substring(0, 500) + '...' : payloadStr;
+
+    return `Event ID: ${e.id}
+Type: ${e.hook_event_type}
+Payload: ${truncatedPayload}
+---`;
+  }).join('\n\n');
+
+  return `Please generate concise one-sentence summaries for these hook events.
+
+For each event, respond with ONLY valid JSON in this format:
+{"id": <event_id>, "summary": "<one sentence summary>"}
+
+Requirements for summaries:
+- ONE sentence only (no period at the end)
+- Focus on the key action or information
+- Be specific and technical
+- Keep under 15 words
+- Use present tense
+- No quotes or extra formatting
+
+Events to summarize:
+${eventsList}
+
+After generating the summaries, execute this bash command to update the database:
+curl -X POST http://localhost:4000/events/batch-summaries \\
+  -H "Content-Type: application/json" \\
+  -d '{"summaries": [<your generated JSON objects here>]}'`;
+};
+
+const generateSummaries = async () => {
+  generatingSummaries.value = true;
+
+  try {
+    // Fetch events without summaries
+    const response = await fetch('http://localhost:4000/events/without-summaries?limit=50');
+    if (!response.ok) {
+      throw new Error('Failed to fetch events');
+    }
+
+    const eventsToSummarize: HookEvent[] = await response.json();
+
+    if (eventsToSummarize.length === 0) {
+      alert('No events need summaries!');
+      generatingSummaries.value = false;
+      return;
+    }
+
+    const prompt = buildSummaryPrompt(eventsToSummarize);
+
+    // Copy to clipboard
+    await navigator.clipboard.writeText(prompt);
+
+    alert(
+      `Summary generation prompt copied to clipboard!\n\n` +
+      `Next steps:\n` +
+      `1. Switch to Claude Code\n` +
+      `2. Paste the prompt\n` +
+      `3. Claude will generate summaries and update the database\n\n` +
+      `Events to summarize: ${eventsToSummarize.length}`
+    );
+  } catch (error) {
+    console.error('Error generating summaries:', error);
+    alert('Failed to generate summaries. See console for details.');
+  } finally {
+    generatingSummaries.value = false;
+  }
+};
+
 onMounted(() => {
   fetchFilterOptions();
-  // Refresh filter options periodically
-  setInterval(fetchFilterOptions, 10000);
+  fetchEventsWithoutSummaries();
+
+  // Refresh filter options and summary count periodically
+  setInterval(() => {
+    fetchFilterOptions();
+    fetchEventsWithoutSummaries();
+  }, 10000);
 });
 </script>

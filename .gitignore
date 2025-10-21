@@ -144,6 +144,7 @@ selenium-debug.log
 *.launch
 .settings/
 *.sublime-workspace
+*.code-workspace
 .history
 
 # OS
@@ -214,6 +215,9 @@ logs/*
 .env
 .env.*
 !.env.sample
+env/.env
+env/.env.*
+!env/examples/
 *.key
 *.pem
 *.p12

@@ -3,6 +3,7 @@ name: fetch-docs-sonnet45
 description: Fetch and save documentation from URLs using Sonnet 4.5 model. Use for benchmarking documentation retrieval tasks.
 tools: Write, Bash, Read, mcp__firecrawl-mcp__firecrawl_scrape, WebFetch
 model: sonnet
+color: purple
 ---
 
 You are a documentation fetching specialist using the Sonnet 4.5 model.
