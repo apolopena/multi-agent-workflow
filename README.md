@@ -1,6 +1,8 @@
 # Multi-Agent Workflow System
 
-A complete AI-powered development workflow featuring real-time agent observability, automated GitHub operations with provenance tracking, AI-generated summaries, and intelligent git helper tooling. You can watch the [full breakdown here](https://youtu.be/9ijnN985O_c) and watch the latest enhancement where we compare Haiku 4.5 and Sonnet 4.5 [here](https://youtu.be/aA9KP7QIQvM).
+A complete AI-powered development workflow featuring real-time agent observability, automated GitHub operations with provenance tracking, AI-generated summaries, and intelligent git helper tooling.
+
+> **Note**: This is a fork and extension of [claude-code-hooks-multi-agent-observability](https://github.com/disler/claude-code-hooks-multi-agent-observability) by [@disler](https://github.com/disler). The original project provided the foundational observability system. This fork extends it into a complete workflow system with automated GitHub operations, AI agents (Jerry & Mark), git helper tooling, and enhanced summary capabilities. Full credit to the original author for the excellent foundation. You can watch the [original breakdown here](https://youtu.be/9ijnN985O_c) and the latest enhancement comparing Haiku 4.5 and Sonnet 4.5 [here](https://youtu.be/aA9KP7QIQvM).
 
 ## 🎯 Overview
 
