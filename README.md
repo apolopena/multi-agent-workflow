@@ -23,9 +23,10 @@ Before getting started, ensure you have the following installed:
 - **[Claude Code](https://docs.anthropic.com/en/docs/claude-code)** - Anthropic's official CLI for Claude
 - **[Astral uv](https://docs.astral.sh/uv/)** - Fast Python package manager (required for hook scripts)
 - **[Bun](https://bun.sh/)**, **npm**, or **yarn** - For running the server and client
-- **Anthropic API Key** - Add to `env/.env.secrets` as `ANTHROPIC_API_KEY`
-- **OpenAI API Key** (optional) - Add to `env/.env.secrets` for multi-model support
-- **ElevenLabs API Key** (optional) - Add to `env/.env.secrets` for audio features
+- **[mpv](https://mpv.io/)** - Media player for ElevenLabs TTS audio playback (`sudo apt install mpv` on Linux)
+- **Anthropic API Key** - Add to `.env` as `ANTHROPIC_API_KEY` (for real-time summaries)
+- **OpenAI API Key** (optional) - Add to `.env` for TTS and completion messages
+- **ElevenLabs API Key** (optional) - Add to `.env` for TTS notifications
 
 ### Configure .claude Directory
 
