@@ -70,12 +70,12 @@
       <button
         v-if="summaryMode === 'on-demand'"
         @click="generateSummaries"
-        :disabled="generatingSummaries || eventsWithoutSummariesCount === 0"
+        :disabled="generatingSummaries || visibleEventsWithoutSummaries === 0"
         class="px-4 py-2 mobile:px-2 mobile:py-1.5 mobile:w-full text-base mobile:text-sm font-bold text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
         :class="generatingSummaries ? 'bg-gray-500' : 'bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-primary-dark)] hover:from-[var(--theme-primary-dark)] hover:to-[var(--theme-primary)]'"
-        :title="`Generate summaries for ${eventsWithoutSummariesCount} events`"
+        :title="`Generate summaries for ${visibleEventsWithoutSummaries} visible events`"
       >
-        {{ generatingSummaries ? 'Preparing...' : `Generate Summaries (${eventsWithoutSummariesCount})` }}
+        {{ generatingSummaries ? 'Preparing...' : `Generate Summaries (${visibleEventsWithoutSummaries})` }}
       </button>
     </div>
 
@@ -99,6 +99,40 @@ const props = defineProps<{
   events: HookEvent[];
 }>();
 
+// Helper: Check if event is a meta-event (Jerry's summary processing)
+const isMetaEvent = (event: HookEvent): boolean => {
+  const payload = event.payload;
+
+  // Check if it's a subagent event
+  if (event.hook_event_type === 'SubagentStart' || event.hook_event_type === 'SubagentStop') {
+    return true;
+  }
+
+  // Check if it involves summary-related files/endpoints
+  if (payload.tool_input?.file_path === '.summary-prompt.txt') {
+    return true;
+  }
+
+  if (payload.tool_input?.command &&
+      (payload.tool_input.command.includes('/events/batch-summaries') ||
+       payload.tool_input.command.includes('/events/save-summary-prompt') ||
+       payload.tool_input.command.includes('.summary-prompt.txt'))) {
+    return true;
+  }
+
+  // Check if summary already has meta-event tag
+  if (event.summary?.startsWith('[Meta-event:')) {
+    return true;
+  }
+
+  return false;
+};
+
+// Computed: count events without summaries from visible events (excluding meta-events)
+const visibleEventsWithoutSummaries = computed(() => {
+  return props.events.filter(e => !e.summary && !isMetaEvent(e)).length;
+});
+
 const emit = defineEmits<{
   'update:filters': [filters: typeof props.filters];
 }>();
@@ -111,7 +145,6 @@ const filterOptions = ref<FilterOptions>({
 
 const localFilters = ref({ ...props.filters });
 const generatingSummaries = ref(false);
-const eventsWithoutSummariesCount = ref(0);
 const showSettings = ref(false);
 
 // Get summary mode from settings
@@ -145,17 +178,6 @@ const fetchFilterOptions = async () => {
   }
 };
 
-const fetchEventsWithoutSummaries = async () => {
-  try {
-    const response = await fetch('http://localhost:4000/events/without-summaries?limit=100');
-    if (response.ok) {
-      const events = await response.json();
-      eventsWithoutSummariesCount.value = events.length;
-    }
-  } catch (error) {
-    console.error('Failed to fetch events without summaries:', error);
-  }
-};
 
 const buildSummaryPrompt = (events: HookEvent[]): string => {
   const eventsList = events.map(e => {
@@ -194,13 +216,9 @@ const generateSummaries = async () => {
   generatingSummaries.value = true;
 
   try {
-    // Fetch events without summaries
-    const response = await fetch('http://localhost:4000/events/without-summaries?limit=50');
-    if (!response.ok) {
-      throw new Error('Failed to fetch events');
-    }
-
-    const eventsToSummarize: HookEvent[] = await response.json();
+    // Get ALL visible events without summaries (including meta-events)
+    // Jerry will tag meta-events with [Meta-event: prefix
+    const eventsToSummarize = props.events.filter(e => !e.summary);
 
     if (eventsToSummarize.length === 0) {
       alert('No events need summaries!');
@@ -210,16 +228,21 @@ const generateSummaries = async () => {
 
     const prompt = buildSummaryPrompt(eventsToSummarize);
 
-    // Copy to clipboard
-    await navigator.clipboard.writeText(prompt);
+    // Save prompt to file on server
+    const saveResponse = await fetch('http://localhost:4000/events/save-summary-prompt', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt })
+    });
+
+    if (!saveResponse.ok) {
+      throw new Error('Failed to save prompt to file');
+    }
 
     alert(
-      `Summary generation prompt copied to clipboard!\n\n` +
-      `Next steps:\n` +
-      `1. Switch to Claude Code\n` +
-      `2. Paste the prompt\n` +
-      `3. Claude will generate summaries and update the database\n\n` +
-      `Events to summarize: ${eventsToSummarize.length}`
+      `✅ Summary prompt saved!\n\n` +
+      `Go to Claude Code and run:\n` +
+      `/process-summaries`
     );
   } catch (error) {
     console.error('Error generating summaries:', error);
@@ -231,12 +254,10 @@ const generateSummaries = async () => {
 
 onMounted(() => {
   fetchFilterOptions();
-  fetchEventsWithoutSummaries();
 
-  // Refresh filter options and summary count periodically
+  // Refresh filter options periodically
   setInterval(() => {
     fetchFilterOptions();
-    fetchEventsWithoutSummaries();
   }, 10000);
 });
 </script>

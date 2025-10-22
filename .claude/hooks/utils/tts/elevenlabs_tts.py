@@ -31,20 +31,22 @@ def main():
     """
     
     # Load environment variables
-    load_dotenv('env/.env')
-    load_dotenv('env/.env.secrets')
+    load_dotenv('.env')
 
     # Get API key from environment
     api_key = os.getenv('ELEVENLABS_API_KEY')
     if not api_key:
         print("❌ Error: ELEVENLABS_API_KEY not found in environment variables")
-        print("Please add your ElevenLabs API key to env/.env.secrets file:")
+        print("Please add your ElevenLabs API key to .env file:")
         print("ELEVENLABS_API_KEY=your_api_key_here")
         sys.exit(1)
+
+    # Get voice ID from environment, default to Adam
+    voice_id = os.getenv('ELEVENLABS_VOICE_ID', 'pNInz6obpgDQGcFmaJgB')
     
     try:
         from elevenlabs.client import ElevenLabs
-        from elevenlabs import play
+        from elevenlabs import stream
         
         # Initialize client
         elevenlabs = ElevenLabs(api_key=api_key)
@@ -62,15 +64,16 @@ def main():
         print("🔊 Generating and playing...")
         
         try:
-            # Generate and play audio directly
-            audio = elevenlabs.text_to_speech.convert(
+            # Generate audio stream
+            audio_stream = elevenlabs.text_to_speech.convert(
                 text=text,
-                voice_id="WejK3H1m7MI9CHnIjW9K",  # Specified voice
+                voice_id=voice_id,
                 model_id="eleven_turbo_v2_5",
                 output_format="mp3_44100_128",
             )
-            
-            play(audio)
+
+            # Stream and play the audio
+            stream(audio_stream)
             print("✅ Playback complete!")
             
         except Exception as e:

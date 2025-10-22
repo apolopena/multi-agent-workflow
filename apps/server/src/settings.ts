@@ -5,7 +5,6 @@ export type SummaryMode = 'realtime' | 'on-demand' | 'disabled';
 
 export interface Settings {
   summaryMode: SummaryMode;
-  engineerName: string;
 }
 
 const dbPath = resolve(import.meta.dir, '../data/settings.db');
@@ -22,8 +21,7 @@ db.run(`
 // Initialize default settings if not exists
 // Default to 'realtime' if API key exists, otherwise 'on-demand'
 const defaultSettings: Settings = {
-  summaryMode: process.env.ANTHROPIC_API_KEY ? 'realtime' : 'on-demand',
-  engineerName: ''
+  summaryMode: process.env.ANTHROPIC_API_KEY ? 'realtime' : 'on-demand'
 };
 
 for (const [key, value] of Object.entries(defaultSettings)) {
@@ -37,12 +35,8 @@ export function getSettings(): Settings {
   const summaryMode = db.query('SELECT value FROM settings WHERE key = ?')
     .get('summaryMode') as { value: string } | null;
 
-  const engineerName = db.query('SELECT value FROM settings WHERE key = ?')
-    .get('engineerName') as { value: string } | null;
-
   return {
-    summaryMode: (summaryMode?.value || 'on-demand') as SummaryMode,
-    engineerName: engineerName?.value || ''
+    summaryMode: (summaryMode?.value || 'on-demand') as SummaryMode
   };
 }
 
@@ -56,9 +50,4 @@ export function updateSettings(settings: Partial<Settings>): Settings {
 
 export function hasAnthropicApiKey(): boolean {
   return !!process.env.ANTHROPIC_API_KEY;
-}
-
-export function getEngineerName(): string {
-  // Prefer environment variable, fallback to database setting
-  return process.env.ENGINEER_NAME || getSettings().engineerName;
 }

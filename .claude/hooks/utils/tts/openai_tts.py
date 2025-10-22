@@ -34,14 +34,13 @@ async def main():
     """
 
     # Load environment variables
-    load_dotenv('env/.env')
-    load_dotenv('env/.env.secrets')
+    load_dotenv('.env')
 
     # Get API key from environment
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
         print("❌ Error: OPENAI_API_KEY not found in environment variables")
-        print("Please add your OpenAI API key to env/.env.secrets file:")
+        print("Please add your OpenAI API key to .env file:")
         print("OPENAI_API_KEY=your_api_key_here")
         sys.exit(1)
 

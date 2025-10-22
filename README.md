@@ -241,6 +241,39 @@ Vue 3 application with real-time visualization:
   - Smooth animations and glow effects
   - Responsive to filter changes
 
+### 4. AI Summary System
+
+The system offers two modes for generating AI summaries of hook events:
+
+#### **Real-time Summaries** (Recommended)
+- Automatically generates concise summaries as events occur
+- Uses Anthropic API via Python hooks
+- Requires `ANTHROPIC_API_KEY` in `.env` file
+- Enable in Settings tab by switching to "Real-time" mode
+- Summaries appear immediately when events are captured
+- Best for continuous monitoring and instant insights
+
+#### **On-Demand Summaries**
+- Manual summary generation via GUI button
+- Uses Jerry subagent (Haiku 4.5) for batch processing
+- No API key required (uses your Claude Code session)
+- Workflow:
+  1. Click "Generate Summaries" button in FilterPanel
+  2. Run `/process-summaries` command in Claude Code
+  3. Jerry reads events from `.summary-prompt.txt`
+  4. Summaries are batch-generated and updated in database
+- Best for occasional reviews or when API keys aren't available
+
+**Summary Format**:
+- One sentence only (no period at end)
+- Focus on key action or information
+- Specific and technical
+- Under 15 words
+- Present tense
+
+**Meta-Events**:
+Events related to summary processing itself (Jerry's operations) are automatically tagged with `[Meta-event:` prefix and styled with orange background for easy identification.
+
 ## 🔄 Data Flow
 
 1. **Event Generation**: Claude Code executes an action (tool use, notification, etc.)
@@ -334,29 +367,27 @@ curl -X POST http://localhost:4000/events \
 
 ### Environment Variables
 
-The project uses a two-file environment configuration for better security:
+The project uses a single `.env` file for configuration:
 
-**Configuration Files** (in `env/` directory):
+**`.env`** - Place in **two locations**:
+1. **Project root** (`.env`) - For Python hooks
+2. **Server directory** (`apps/server/.env`) - For Bun server
 
-1. **`env/.env`** - Non-sensitive configuration
-   - `ENGINEER_NAME` – Your name (for logging/identification)
-   - `AI_AGENT_NAME` – Agent name for git attributions
-   - Other non-sensitive settings
-
-2. **`env/.env.secrets`** - Sensitive credentials (NEVER commit)
-   - `ANTHROPIC_API_KEY` – Anthropic Claude API key
-   - `OPENAI_API_KEY` – OpenAI API key (optional)
-   - `ELEVENLABS_API_KEY` – ElevenLabs API key (optional)
-   - `GEMINI_API_KEY` – Google Gemini API key (optional)
+**Environment Variables**:
+- `ANTHROPIC_API_KEY` – Anthropic Claude API key (required for real-time summaries)
+- `ENGINEER_NAME` – Your name (optional, used in TTS notifications)
+- `OPENAI_API_KEY` – OpenAI API key (optional, for TTS and completion messages)
+- `ELEVENLABS_API_KEY` – ElevenLabs API key (optional, for TTS notifications)
+- `GEMINI_API_KEY` – Google Gemini API key (optional)
 
 **Setup**:
 ```bash
-# Copy example files
-cp env/examples/.env.example env/.env
-cp env/examples/.env.secrets.example env/.env.secrets
+# Copy example file to both locations
+cp .env.sample .env
+cp .env apps/server/.env
 
 # Edit and add your API keys
-nano env/.env.secrets
+nano .env
 ```
 
 **Client** (`.env` file in `apps/client/.env`):

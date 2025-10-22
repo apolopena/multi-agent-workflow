@@ -27,7 +27,6 @@ MANIFEST
 .tox/
 .nox/
 .venv
-env/
 venv/
 ENV/
 env.bak/
@@ -215,9 +214,6 @@ logs/*
 .env
 .env.*
 !.env.sample
-env/.env
-env/.env.*
-!env/examples/
 *.key
 *.pem
 *.p12
@@ -270,3 +266,6 @@ ai_docs/haiku45/*
 
 # Claude Code session data
 .claude/data/
+
+# AI summary generation prompt
+.summary-prompt.txt

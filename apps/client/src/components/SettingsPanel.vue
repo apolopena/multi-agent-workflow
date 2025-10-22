@@ -15,22 +15,6 @@
       </div>
 
       <div class="space-y-6">
-        <!-- Engineer Name Field -->
-        <div class="space-y-2">
-          <label class="block text-sm font-bold text-gray-700 dark:text-gray-300">
-            Engineer Name
-          </label>
-          <input
-            v-model="localEngineerName"
-            type="text"
-            placeholder="Enter your name"
-            class="w-full px-4 py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-          />
-          <p class="text-xs text-gray-500 dark:text-gray-400">
-            Used to identify you in the system. Environment variable ENGINEER_NAME takes precedence if set.
-          </p>
-        </div>
-
         <!-- Current Mode Display -->
         <div class="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4">
           <div class="flex items-center gap-2">
@@ -169,18 +153,14 @@ import { useSettings, type SummaryMode } from '../composables/useSettings';
 const {
   summaryMode,
   hasAnthropicApiKey,
-  engineerName,
-  updateSummaryMode,
-  updateEngineerName
+  updateSummaryMode
 } = useSettings();
 
 const selectedMode = ref<SummaryMode>(summaryMode.value);
-const localEngineerName = ref(engineerName.value);
 const saving = ref(false);
 
 const hasChanges = computed(() => {
-  return selectedMode.value !== summaryMode.value ||
-         localEngineerName.value.trim() !== engineerName.value;
+  return selectedMode.value !== summaryMode.value;
 });
 
 const emit = defineEmits<{
@@ -196,17 +176,6 @@ const save = async () => {
 
   let success = true;
   let messages: string[] = [];
-
-  // Update engineer name if changed
-  if (localEngineerName.value.trim() !== engineerName.value) {
-    const nameSuccess = await updateEngineerName(localEngineerName.value.trim());
-    if (nameSuccess) {
-      messages.push(`Engineer name updated to: ${localEngineerName.value.trim()}`);
-    } else {
-      success = false;
-      messages.push('Failed to update engineer name');
-    }
-  }
 
   // Update summary mode if changed
   if (selectedMode.value !== summaryMode.value) {

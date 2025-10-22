@@ -10,8 +10,9 @@ import {
   importTheme,
   getThemeStats
 } from './theme';
-import { getSettings, updateSettings, hasAnthropicApiKey, getEngineerName, type SummaryMode } from './settings';
+import { getSettings, updateSettings, hasAnthropicApiKey, type SummaryMode } from './settings';
 
+// Bun automatically loads .env from project root
 // Initialize database
 initDatabase();
 
@@ -246,6 +247,38 @@ const server = Bun.serve({
         console.error('Error updating summary:', error);
         return new Response(JSON.stringify({ error: 'Invalid request' }), {
           status: 400,
+          headers: { ...headers, 'Content-Type': 'application/json' }
+        });
+      }
+    }
+
+    // POST /events/save-summary-prompt - Save summary generation prompt to file
+    if (url.pathname === '/events/save-summary-prompt' && req.method === 'POST') {
+      try {
+        const { prompt } = await req.json();
+
+        if (!prompt || typeof prompt !== 'string') {
+          return new Response(JSON.stringify({ error: 'Prompt is required and must be a string' }), {
+            status: 400,
+            headers: { ...headers, 'Content-Type': 'application/json' }
+          });
+        }
+
+        // Save to file in project root
+        const filePath = '/home/quadro/repos/forks/multi-agent-workflow/.summary-prompt.txt';
+        await Bun.write(filePath, prompt);
+
+        return new Response(JSON.stringify({
+          success: true,
+          filePath,
+          message: 'Prompt saved successfully'
+        }), {
+          headers: { ...headers, 'Content-Type': 'application/json' }
+        });
+      } catch (error) {
+        console.error('Error saving summary prompt:', error);
+        return new Response(JSON.stringify({ error: 'Failed to save prompt' }), {
+          status: 500,
           headers: { ...headers, 'Content-Type': 'application/json' }
         });
       }
@@ -541,12 +574,10 @@ const server = Bun.serve({
     // GET /settings - Get current settings
     if (url.pathname === '/settings' && req.method === 'GET') {
       const settings = getSettings();
-      const engineerName = getEngineerName();
 
       return new Response(JSON.stringify({
         ...settings,
-        hasAnthropicApiKey: hasAnthropicApiKey(),
-        engineerName: engineerName
+        hasAnthropicApiKey: hasAnthropicApiKey()
       }), {
         headers: { ...headers, 'Content-Type': 'application/json' }
       });
@@ -568,13 +599,11 @@ const server = Bun.serve({
         }
 
         const updatedSettings = updateSettings(body);
-        const engineerName = getEngineerName();
 
         return new Response(JSON.stringify({
           success: true,
           settings: updatedSettings,
-          hasAnthropicApiKey: hasAnthropicApiKey(),
-          engineerName: engineerName
+          hasAnthropicApiKey: hasAnthropicApiKey()
         }), {
           headers: { ...headers, 'Content-Type': 'application/json' }
         });
@@ -605,9 +634,9 @@ const server = Bun.serve({
     open(ws) {
       console.log('WebSocket client connected');
       wsClients.add(ws);
-      
+
       // Send recent events on connection
-      const events = getRecentEvents(50);
+      const events = getRecentEvents(100);
       ws.send(JSON.stringify({ type: 'initial', data: events }));
     },
     

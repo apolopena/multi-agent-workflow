@@ -15,8 +15,7 @@ from datetime import datetime
 
 try:
     from dotenv import load_dotenv
-    load_dotenv('env/.env')
-    load_dotenv('env/.env.secrets')
+    load_dotenv('.env')
 except ImportError:
     pass  # dotenv is optional
 
