@@ -1,10 +1,17 @@
-# Multi-Agent Observability System
+# Multi-Agent Workflow System
 
-Real-time monitoring and visualization for Claude Code agents through comprehensive hook event tracking. You can watch the [full breakdown here](https://youtu.be/9ijnN985O_c) and watch the latest enhancement where we compare Haiku 4.5 and Sonnet 4.5 [here](https://youtu.be/aA9KP7QIQvM).
+A complete AI-powered development workflow featuring real-time agent observability, automated GitHub operations with provenance tracking, AI-generated summaries, and intelligent git helper tooling. You can watch the [full breakdown here](https://youtu.be/9ijnN985O_c) and watch the latest enhancement where we compare Haiku 4.5 and Sonnet 4.5 [here](https://youtu.be/aA9KP7QIQvM).
 
 ## 🎯 Overview
 
-This system provides complete observability into Claude Code agent behavior by capturing, storing, and visualizing Claude Code [Hook events](https://docs.anthropic.com/en/docs/claude-code/hooks) in real-time. It enables monitoring of multiple concurrent agents with session tracking, event filtering, and live updates. 
+This is a **complete workflow system** for AI-assisted development, not just an observability tool. It provides:
+
+- **Multi-Agent Observability**: Real-time monitoring and visualization of Claude Code agent behavior through comprehensive hook event tracking
+- **Automated GitHub Operations**: AI-powered PR creation, issue management, and comments with full provenance tracking
+- **AI-Generated Summaries**: Real-time or on-demand event summaries with meta-event detection
+- **Git Helper with Attribution**: Automated git operations with AI attribution and provenance metadata
+- **TTS Notifications**: Voice announcements for agent completion and important events
+- **Session Management**: Track multiple concurrent agents with session tracking, event filtering, and live updates 
 
 <img src="images/app.png" alt="Multi-Agent Observability Dashboard" style="max-width: 800px; width: 100%;">
 
@@ -274,6 +281,121 @@ The system offers two modes for generating AI summaries of hook events:
 
 **Meta-Events**:
 Events related to summary processing itself (Jerry's operations) are automatically tagged with `[Meta-event:` prefix and styled with orange background for easy identification.
+
+### 5. Git Helper with AI Attribution
+
+The `scripts/git-ai.sh` helper provides automated git operations with full AI attribution and provenance tracking:
+
+**Features**:
+- Automatic AI attribution in commit messages
+- Provenance metadata tracking
+- SSH key management via keychain
+- Prevents SSH askpass errors
+- Required for all git operations that use SSH
+
+**Usage**:
+```bash
+# Instead of: git commit -m "message"
+./scripts/git-ai.sh commit -m "message"
+
+# Instead of: git push
+./scripts/git-ai.sh push
+
+# Other supported commands
+./scripts/git-ai.sh pull
+./scripts/git-ai.sh fetch
+./scripts/git-ai.sh clone <url>
+```
+
+**CRITICAL**: Always use `./scripts/git-ai.sh` for git commands requiring SSH (commit, push, pull, fetch, clone, remote, ls-remote, submodule). This ensures proper SSH authentication and adds AI attribution metadata.
+
+### 6. Automated GitHub Operations (Mark Agent)
+
+The Mark agent (`subagent_type=mark`) handles ALL GitHub CLI operations with full provenance tracking:
+
+**Capabilities**:
+- Create pull requests with AI attribution
+- Add comments to PRs and issues
+- Manage issue labels and assignments
+- Full provenance tracking via `.github/workflows/gh-dispatch-ai.yml`
+
+**Provenance Tracking**:
+All GitHub operations are tracked with:
+- `Provenance`: Always `Claude_AI`
+- `Session ID`: Unique identifier for the agent session
+- `Timestamp`: When the operation was requested
+- `Context`: Full context about what was being worked on
+
+**Example Workflow**:
+```yaml
+# Dispatched by Mark agent
+name: gh-dispatch-ai
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Action to perform (pr-create, pr-comment, issue-comment)'
+        required: true
+      provenance:
+        description: 'Who/what initiated this (always Claude_AI)'
+        required: true
+```
+
+**IMPORTANT**: Never call `gh` CLI commands directly - always use the Mark agent via the Task tool to ensure proper provenance tracking.
+
+## 🤖 Specialized Agents
+
+The system includes purpose-built AI agents for specific workflow tasks:
+
+### Jerry (Summary Processor)
+**Purpose**: Generates concise AI summaries for hook events on-demand
+**Model**: Claude Haiku 4.5 (fast, cost-effective)
+**Tools**: Bash (for database updates)
+**Color**: Orange
+
+**Workflow**:
+1. User clicks "Generate Summaries" button in GUI
+2. System saves prompt to `.summary-prompt.txt` with all events needing summaries
+3. User runs `/process-summaries` command
+4. Jerry reads the file and generates summaries following strict format rules
+5. Jerry updates database via batch API call
+6. GUI reflects updated summaries in real-time
+
+**Summary Rules**:
+- ONE sentence only (no period at end)
+- Focus on key action or information
+- Specific and technical
+- Under 15 words
+- Present tense
+- No quotes or extra formatting
+
+**Auto-Dispatch**: When user says "Process summaries from .summary-prompt.txt", Jerry is automatically dispatched.
+
+### Mark (GitHub Operations Manager)
+**Purpose**: Handles ALL GitHub CLI operations with full provenance tracking
+**Model**: Configurable (uses your main Claude Code session)
+**Tools**: Bash (git commands only), Read (context gathering)
+**Restrictions**: No file writes, no SSH, no direct `gh pr/issue` commands
+
+**Workflow**:
+1. Mark gathers context from current working directory
+2. Mark dispatches `.github/workflows/gh-dispatch-ai.yml` workflow
+3. Workflow runs with provenance metadata (always `Claude_AI`)
+4. GitHub operation executes (create PR, add comment, etc.)
+5. Results are logged with full attribution
+
+**Operations Supported**:
+- `pr-create`: Create pull requests
+- `pr-comment`: Add comments to PRs
+- `issue-comment`: Add comments to issues
+
+**Why Use Mark?**:
+- Ensures proper provenance tracking (who/what initiated the action)
+- Prevents SSH authentication errors
+- Centralizes GitHub operations in auditable workflow
+- Adds AI attribution to all GitHub interactions
+
+**CRITICAL**: Mark is SOLELY responsible for ALL `gh` CLI calls. NO EXCEPTIONS.
 
 ## 🔄 Data Flow
 
