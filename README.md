@@ -379,6 +379,7 @@ The project uses a single `.env` file for configuration:
 - `ENGINEER_NAME` – Your name (optional, used in TTS notifications)
 - `OPENAI_API_KEY` – OpenAI API key (optional, for TTS and completion messages)
 - `ELEVENLABS_API_KEY` – ElevenLabs API key (optional, for TTS notifications)
+- `ELEVENLABS_VOICE_ID` – ElevenLabs voice ID (optional, defaults to Adam voice)
 - `GEMINI_API_KEY` – Google Gemini API key (optional)
 
 **Setup**:
