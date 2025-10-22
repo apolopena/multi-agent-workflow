@@ -1,0 +1,9 @@
+{
+  "session_id": "7487c627-e86a-46ab-af0c-2a3b46606120",
+  "prompts": [
+    "original structure, do not destory any of our work, tread lightly",
+    "I thought we were using the same database to store settings, did you create a settings.db?",
+    "so you created a settigns.db that was not even implmented and created a data directory that isint used?",
+    "no just fix it to original state before I asked to help me test it and you started chanigng code. when I ask you to help test I am not asking you to chnage code, you should be asking me"
+  ]
+}

@@ -17,7 +17,7 @@ from utils.constants import ensure_session_log_dir
 
 try:
     from dotenv import load_dotenv
-    load_dotenv()
+    load_dotenv('.env')
 except ImportError:
     pass  # dotenv is optional
 

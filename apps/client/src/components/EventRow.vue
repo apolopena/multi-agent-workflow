@@ -202,16 +202,23 @@
       
       <!-- Tool info and Summary - Desktop Layout -->
       <div class="flex items-center justify-between mb-2 mobile:hidden">
-        <div v-if="toolInfo" class="text-base text-[var(--theme-text-secondary)] font-semibold">
+        <div v-if="toolInfo" class="text-base text-[var(--theme-text-secondary)] font-semibold flex-1">
           <span class="font-medium italic px-2 py-0.5 rounded border-2 border-[var(--theme-primary)] bg-[var(--theme-primary-light)] shadow-sm">{{ toolInfo.tool }}</span>
           <span v-if="toolInfo.detail" class="ml-2 text-[var(--theme-text-tertiary)]" :class="{ 'italic': event.hook_event_type === 'UserPromptSubmit' }">{{ toolInfo.detail }}</span>
         </div>
-        
+        <div v-else class="flex-1"></div>
+
         <!-- Summary aligned to the right -->
-        <div v-if="event.summary" class="max-w-[50%] px-3 py-1.5 bg-[var(--theme-primary)]/10 border border-[var(--theme-primary)]/30 rounded-lg shadow-md">
-          <span class="text-sm text-[var(--theme-text-primary)] font-semibold">
-            <span class="mr-1">📝</span>
-            {{ event.summary }}
+        <div v-if="displaySummary" class="max-w-[50%] px-3 py-1.5 rounded-lg shadow-md"
+             :class="displaySummary.startsWith('[Meta-event:')
+               ? 'bg-orange-100 dark:bg-orange-900/20 border border-orange-500/50'
+               : 'bg-[var(--theme-primary)]/10 border border-[var(--theme-primary)]/30'">
+          <span class="text-sm font-semibold"
+                :class="displaySummary.startsWith('[Meta-event:')
+                  ? 'text-orange-700 dark:text-orange-300'
+                  : 'text-[var(--theme-text-primary)]'">
+            <span class="mr-1">{{ displaySummary.startsWith('[Meta-event:') ? '⚠️' : '📝' }}</span>
+            {{ displaySummary }}
           </span>
         </div>
       </div>
@@ -223,10 +230,16 @@
           <span v-if="toolInfo.detail" class="ml-2 text-[var(--theme-text-tertiary)]" :class="{ 'italic': event.hook_event_type === 'UserPromptSubmit' }">{{ toolInfo.detail }}</span>
         </div>
         
-        <div v-if="event.summary" class="w-full px-2 py-1 bg-[var(--theme-primary)]/10 border border-[var(--theme-primary)]/30 rounded-lg shadow-md">
-          <span class="text-xs text-[var(--theme-text-primary)] font-semibold">
-            <span class="mr-1">📝</span>
-            {{ event.summary }}
+        <div v-if="displaySummary" class="w-full px-2 py-1 rounded-lg shadow-md"
+             :class="displaySummary.startsWith('[Meta-event:')
+               ? 'bg-orange-100 dark:bg-orange-900/20 border border-orange-500/50'
+               : 'bg-[var(--theme-primary)]/10 border border-[var(--theme-primary)]/30'">
+          <span class="text-xs font-semibold"
+                :class="displaySummary.startsWith('[Meta-event:')
+                  ? 'text-orange-700 dark:text-orange-300'
+                  : 'text-[var(--theme-text-primary)]'">
+            <span class="mr-1">{{ displaySummary.startsWith('[Meta-event:') ? '⚠️' : '📝' }}</span>
+            {{ displaySummary }}
           </span>
         </div>
       </div>
@@ -320,6 +333,47 @@ const toggleExpanded = () => {
 
 const sessionIdShort = computed(() => {
   return props.event.session_id.slice(0, 8);
+});
+
+// Helper: Check if event is a meta-event (summary processing)
+const isMetaEvent = computed(() => {
+  const payload = props.event.payload;
+
+  // Check if it's a subagent event
+  if (props.event.hook_event_type === 'SubagentStart' || props.event.hook_event_type === 'SubagentStop') {
+    return true;
+  }
+
+  // Check if it involves summary-related files/endpoints
+  if (payload.tool_input?.file_path === '.summary-prompt.txt') {
+    return true;
+  }
+
+  if (payload.tool_input?.command &&
+      (payload.tool_input.command.includes('/events/batch-summaries') ||
+       payload.tool_input.command.includes('/events/save-summary-prompt') ||
+       payload.tool_input.command.includes('.summary-prompt.txt'))) {
+    return true;
+  }
+
+  return false;
+});
+
+// Computed: Display summary with auto-tagging for meta-events
+const displaySummary = computed(() => {
+  if (!props.event.summary) return null;
+
+  // If already tagged, return as-is
+  if (props.event.summary.startsWith('[Meta-event:')) {
+    return props.event.summary;
+  }
+
+  // Auto-tag if it's a meta-event
+  if (isMetaEvent.value) {
+    return `[Meta-event: ${props.event.summary}`;
+  }
+
+  return props.event.summary;
 });
 
 const hookEmoji = computed(() => {

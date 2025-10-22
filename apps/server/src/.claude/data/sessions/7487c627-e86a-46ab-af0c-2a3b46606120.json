@@ -1,0 +1,18 @@
+{
+  "session_id": "7487c627-e86a-46ab-af0c-2a3b46606120",
+  "prompts": [
+    "give me and e3e test plan you test other things as I go through the steeps",
+    "what three bg processes are running, I see the gear icon",
+    "the default should be realtime, if apikey is prent, on-demand if not, disabled should not be the default. also hide filters is a bad name for revealing options",
+    "its show filters",
+    "go ahead, when done restart the server, also please explain to me the running procesees:   \u23bf \u00a0quadro     52172  0.0  0.1 106592 20604 ?        SN   01:31   0:01 python3 -m http.server 8888 --directory /tmp\n     quadro    122908  0.0  0.2 74040308 47312 ?      Sl   08:51   0:00 bun --watch src/index.ts\n     quadro    133180  0.0  0.2 74109344 43372 ?      Sl   09:03   0:00 bun --watch src/index.ts",
+    "yes but during the process we keep getting stale processes than need to be killed, how can we address this? is the server not being started? when outputstyle is html does that prompt you to start a python server on 8888, if so how can we ensure it gets closed gracefully",
+    "kill stale processes ",
+    "analayze the codebase to see what is iniatiing html output",
+    "I know it was you, I also thought that you need your output style set to html is order to show me html like that, consult anthropic docs regarding output styles",
+    "you are not impressing me at all: https://docs.claude.com/en/docs/claude-code/output-styles",
+    "I need you create a distleed context of our work todate, I have to clear your context soon",
+    "save it where is makes sense, put it on .gitignore",
+    "its a priming context file, use a better name"
+  ]
+}

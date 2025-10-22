@@ -27,7 +27,6 @@ MANIFEST
 .tox/
 .nox/
 .venv
-env/
 venv/
 ENV/
 env.bak/
@@ -144,6 +143,7 @@ selenium-debug.log
 *.launch
 .settings/
 *.sublime-workspace
+*.code-workspace
 .history
 
 # OS
@@ -266,3 +266,6 @@ ai_docs/haiku45/*
 
 # Claude Code session data
 .claude/data/
+
+# AI summary generation prompt
+.summary-prompt.txt

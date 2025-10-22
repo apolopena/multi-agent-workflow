@@ -34,7 +34,7 @@ async def main():
     """
 
     # Load environment variables
-    load_dotenv()
+    load_dotenv('.env')
 
     # Get API key from environment
     api_key = os.getenv("OPENAI_API_KEY")

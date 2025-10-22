@@ -68,6 +68,7 @@
       v-if="showFilters"
       class="short:hidden"
       :filters="filters"
+      :events="events"
       @update:filters="filters = $event"
     />
     

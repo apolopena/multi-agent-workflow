@@ -22,6 +22,22 @@ from datetime import datetime
 from utils.summarizer import generate_event_summary
 from utils.model_extractor import get_model_from_transcript
 
+def get_server_settings(base_url='http://localhost:4000'):
+    """Get current settings from the server."""
+    try:
+        req = urllib.request.Request(
+            f'{base_url}/settings',
+            headers={'User-Agent': 'Claude-Code-Hook/1.0'}
+        )
+
+        with urllib.request.urlopen(req, timeout=2) as response:
+            if response.status == 200:
+                return json.loads(response.read().decode('utf-8'))
+            return None
+    except Exception:
+        # If we can't get settings, assume default behavior
+        return None
+
 def send_event_to_server(event_data, server_url='http://localhost:4000/events'):
     """Send event data to the observability server."""
     try:
@@ -34,7 +50,7 @@ def send_event_to_server(event_data, server_url='http://localhost:4000/events'):
                 'User-Agent': 'Claude-Code-Hook/1.0'
             }
         )
-        
+
         # Send the request
         with urllib.request.urlopen(req, timeout=5) as response:
             if response.status == 200:
@@ -42,7 +58,7 @@ def send_event_to_server(event_data, server_url='http://localhost:4000/events'):
             else:
                 print(f"Server returned status: {response.status}", file=sys.stderr)
                 return False
-                
+
     except urllib.error.URLError as e:
         print(f"Failed to send event: {e}", file=sys.stderr)
         return False
@@ -106,8 +122,21 @@ def main():
             except Exception as e:
                 print(f"Failed to read transcript: {e}", file=sys.stderr)
     
-    # Generate summary if requested
+    # Check server settings to determine if we should generate summary
+    should_generate_summary = False
     if args.summarize:
+        # Get settings from server
+        base_url = args.server_url.rsplit('/', 1)[0]  # Remove /events endpoint
+        settings = get_server_settings(base_url)
+
+        if settings and settings.get('summaryMode') == 'realtime':
+            should_generate_summary = True
+        # If settings unavailable, respect the --summarize flag for backward compatibility
+        elif settings is None:
+            should_generate_summary = True
+
+    # Generate summary if enabled in settings
+    if should_generate_summary:
         summary = generate_event_summary(event_data)
         if summary:
             event_data['summary'] = summary

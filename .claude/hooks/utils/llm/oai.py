@@ -22,7 +22,7 @@ def prompt_llm(prompt_text):
     Returns:
         str: The model's response text, or None if error
     """
-    load_dotenv()
+    load_dotenv('.env')
 
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
