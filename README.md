@@ -25,164 +25,295 @@ Claude Agents → Hook Scripts → HTTP POST → Bun Server → SQLite → WebSo
 
 ![Agent Data Flow Animation](images/AgentDataFlowV2.gif)
 
-## 📋 Setup Requirements
-
-Before getting started, ensure you have the following installed:
+## 📋 Prerequisites
 
 - **[Claude Code](https://docs.anthropic.com/en/docs/claude-code)** - Anthropic's official CLI for Claude
 - **[Astral uv](https://docs.astral.sh/uv/)** - Fast Python package manager (required for hook scripts)
 - **[Bun](https://bun.sh/)**, **npm**, or **yarn** - For running the server and client
-- **[mpv](https://mpv.io/)** - Media player for ElevenLabs TTS audio playback (`sudo apt install mpv` on Linux)
+- **[jq](https://jqlang.github.io/jq/)** - JSON processor (`sudo apt install jq`)
+- **[mpv](https://mpv.io/)** - Media player for TTS audio (`sudo apt install mpv` on Linux)
 - **Anthropic API Key** - Add to `.env` as `ANTHROPIC_API_KEY` (for real-time summaries)
 - **OpenAI API Key** (optional) - Add to `.env` for TTS and completion messages
 - **ElevenLabs API Key** (optional) - Add to `.env` for TTS notifications
 
-### Configure .claude Directory
+## 🚨 Important: Shared System Architecture
 
-To setup observability in your repo,we need to copy the .claude directory to your project root.
+**This repository provides a centralized observability server and client that ALL integrated projects depend on.**
 
-To integrate the observability hooks into your projects:
+### How It Works
 
-1. **Copy the entire `.claude` directory to your project root:**
-   ```bash
-   cp -R .claude /path/to/your/project/
-   ```
+When you integrate observability into your projects:
+- Your project copies hook scripts that send events to this repo's server (`http://localhost:4000`)
+- Wrapper scripts in your project call back to management scripts in this repo
+- All projects share a single server instance and SQLite database
+- The client dashboard (`http://localhost:5173`) displays events from all integrated projects
 
-2. **Update the `settings.json` configuration:**
-   
-   Open `.claude/settings.json` in your project and modify the `source-app` parameter to identify your project:
-   
-   ```json
-   {
-     "hooks": {
-       "PreToolUse": [{
-         "matcher": "",
-         "hooks": [
-           {
-             "type": "command",
-             "command": "uv run .claude/hooks/pre_tool_use.py"
-           },
-           {
-             "type": "command",
-             "command": "uv run .claude/hooks/send_event.py --source-app YOUR_PROJECT_NAME --event-type PreToolUse --summarize"
-           }
-         ]
-       }],
-       "PostToolUse": [{
-         "matcher": "",
-         "hooks": [
-           {
-             "type": "command",
-             "command": "uv run .claude/hooks/post_tool_use.py"
-           },
-           {
-             "type": "command",
-             "command": "uv run .claude/hooks/send_event.py --source-app YOUR_PROJECT_NAME --event-type PostToolUse --summarize"
-           }
-         ]
-       }],
-       "UserPromptSubmit": [{
-         "hooks": [
-           {
-             "type": "command",
-             "command": "uv run .claude/hooks/user_prompt_submit.py --log-only"
-           },
-           {
-             "type": "command",
-             "command": "uv run .claude/hooks/send_event.py --source-app YOUR_PROJECT_NAME --event-type UserPromptSubmit --summarize"
-           }
-         ]
-       }]
-       // ... (similar patterns for Notification, Stop, SubagentStop, PreCompact, SessionStart, SessionEnd)
-     }
-   }
-   ```
-   
-   Replace `YOUR_PROJECT_NAME` with a unique identifier for your project (e.g., `my-api-server`, `react-app`, etc.).
+### Critical Dependencies
 
-3. **Ensure the observability server is running:**
-   ```bash
-   # From the observability project directory (this codebase)
-   ./scripts/start-system.sh
-   ```
+⚠️ **Your integrated projects will break if:**
+- This repository is moved or deleted
+- The server is not running (`./scripts/start-system.sh`)
+- The repository path changes without updating configs
 
-Now your project will send events to the observability system whenever Claude Code performs actions.
+### Recovery Options
 
-## 🚀 Quick Start
+If this repo is moved/deleted, your integrated projects will show errors. To recover:
 
-You can quickly view how this works by running this repositories .claude setup.
+1. **If repo moved**: Update `.claude/.observability-config` in each project with new path
+2. **If repo deleted**: Clone this repo again and re-run setup scripts
+3. **To disconnect**: Remove observability hooks from `.claude/settings.json` in your projects
+
+### Alternative: Custom Server Instance
+
+To run an independent server for a specific project:
+1. Clone this repo to a project-specific location
+2. Modify `SERVER_URL` in `.claude/.observability-config`
+3. Run your own server instance with custom port
+
+## ⚙️ Setup: Integrate Observability Into Your Projects
+
+### Option 1: New Project (No Existing .claude Configuration)
+
+**Quick setup for projects without Claude Code configuration:**
 
 ```bash
-# 1. Start both server and client
+# 1. Clone this repo (if not already done)
+git clone <this-repo-url> ~/multi-agent-workflow
+cd ~/multi-agent-workflow
+
+# 2. Navigate to your project
+cd /path/to/your/project
+
+# 3. Run automated setup
+~/multi-agent-workflow/scripts/observability-setup.sh . [PROJECT_NAME]
+
+# 4. Restart Claude Code to load new configuration
+
+# 5. Start the observability server (from multi-agent-workflow directory)
+cd ~/multi-agent-workflow
 ./scripts/start-system.sh
 
-# 2. Open http://localhost:5173 in your browser
+# 6. Open dashboard and start coding
+# Dashboard: http://localhost:5173
+```
 
-# 3. Open Claude Code and run the following command:
-Run git ls-files to understand the codebase.
+**What this does:**
+- Creates `.claude/` directory with hooks, agents, commands, and status lines
+- Generates wrapper scripts in `./scripts/` that call back to multi-agent-workflow
+- Creates `.claude/.observability-config` with path to multi-agent-workflow repo
+- Updates `.gitignore` with observability entries
+- Auto-detects project name from git (or uses provided name)
 
-# 4. Watch events stream in the client
+### Option 2: Existing Project (With .claude Configuration)
 
-# 5. Copy the .claude folder to other projects you want to emit events from.
-cp -R .claude <directory of your codebase you want to emit events from>
+**Setup for projects with existing Claude Code configuration:**
+
+```bash
+# 1. From your project directory
+cd /path/to/your/project
+
+# 2. Run automated setup (will merge with existing settings)
+/path/to/multi-agent-workflow/scripts/observability-setup.sh . [PROJECT_NAME]
+```
+
+**What happens:**
+- ⚠️ **Backup created**: `settings.json.TIMESTAMP` before any changes
+- ⚠️ **Overwrites**: `hooks`, `statusLine`, and `includeCoAuthoredBy` sections
+- ✅ **Preserves**: Your custom agents, commands, permissions, and other settings
+- Script shows warnings and asks for confirmation before proceeding
+
+### Managing Observability
+
+**Via Kim Agent** (if installed):
+```
+"Kim, start the observability server"
+"Kim, check observability status"
+"Kim, disable event streaming"
+"Kim, enable event streaming"
+```
+
+**Via Scripts** (from any integrated project):
+```bash
+# Check status (server + event streaming)
+./scripts/observability-status.sh
+
+# Enable/disable event streaming (no restart needed)
+./scripts/observability-enable.sh
+./scripts/observability-disable.sh
+
+# Start/stop server (run from multi-agent-workflow directory)
+cd ~/multi-agent-workflow
+./scripts/start-system.sh
+./scripts/stop-system.sh
+```
+
+### Configuration Files
+
+After setup, your project will have:
+
+**`.claude/.observability-config`** (gitignored, environment-specific):
+```json
+{
+  "MULTI_AGENT_WORKFLOW_PATH": "/absolute/path/to/multi-agent-workflow",
+  "SERVER_URL": "http://localhost:4000",
+  "CLIENT_URL": "http://localhost:5173"
+}
+```
+
+**`.claude/.observability-state`** (gitignored):
+```
+enabled  # or 'disabled'
+```
+
+### Verifying Installation
+
+```bash
+# 1. Check server is running
+curl http://localhost:4000/events/recent
+
+# 2. Run any Claude Code command in your project
+# Example: "list all files"
+
+# 3. Open dashboard
+open http://localhost:5173
+
+# 4. You should see events with your project name
+```
+
+## 🚀 Quick Start (Try It in This Repo)
+
+Test the observability system using this repo's built-in configuration:
+
+```bash
+# 1. Start the server and client
+./scripts/start-system.sh
+
+# 2. Open the dashboard
+open http://localhost:5173
+
+# 3. In Claude Code, run any command
+# Example: "Run git ls-files to understand the codebase"
+
+# 4. Watch events stream in real-time on the dashboard
 ```
 
 ## 📁 Project Structure
 
 ```
-claude-code-hooks-multi-agent-observability/
+multi-agent-workflow/
 │
-├── apps/                    # Application components
-│   ├── server/             # Bun TypeScript server
+├── apps/                           # Application components
+│   ├── server/                     # Bun TypeScript server
 │   │   ├── src/
-│   │   │   ├── index.ts    # Main server with HTTP/WebSocket endpoints
-│   │   │   ├── db.ts       # SQLite database management & migrations
-│   │   │   └── types.ts    # TypeScript interfaces
-│   │   ├── package.json
-│   │   └── events.db       # SQLite database (gitignored)
+│   │   │   ├── index.ts           # Main server with HTTP/WebSocket endpoints
+│   │   │   ├── db.ts              # SQLite database management & migrations
+│   │   │   └── types.ts           # TypeScript interfaces
+│   │   ├── data/                  # SQLite database files (gitignored)
+│   │   ├── logs/                  # Server logs (gitignored)
+│   │   └── package.json
 │   │
-│   └── client/             # Vue 3 TypeScript client
-│       ├── src/
-│       │   ├── App.vue     # Main app with theme & WebSocket management
-│       │   ├── components/
-│       │   │   ├── EventTimeline.vue      # Event list with auto-scroll
-│       │   │   ├── EventRow.vue           # Individual event display
-│       │   │   ├── FilterPanel.vue        # Multi-select filters
-│       │   │   ├── ChatTranscriptModal.vue # Chat history viewer
-│       │   │   ├── StickScrollButton.vue  # Scroll control
-│       │   │   └── LivePulseChart.vue     # Real-time activity chart
-│       │   ├── composables/
-│       │   │   ├── useWebSocket.ts        # WebSocket connection logic
-│       │   │   ├── useEventColors.ts      # Color assignment system
-│       │   │   ├── useChartData.ts        # Chart data aggregation
-│       │   │   └── useEventEmojis.ts      # Event type emoji mapping
-│       │   ├── utils/
-│       │   │   └── chartRenderer.ts       # Canvas chart rendering
-│       │   └── types.ts    # TypeScript interfaces
-│       ├── env/            # Environment configuration
-│       │   ├── .env       # Non-sensitive config
-│       │   ├── .env.secrets # API keys (gitignored)
-│       │   └── examples/  # Example templates
-│       └── package.json
-│
-├── .claude/                # Claude Code integration
-│   ├── hooks/             # Hook scripts (Python with uv)
-│   │   ├── send_event.py  # Universal event sender
-│   │   ├── pre_tool_use.py    # Tool validation & blocking
-│   │   ├── post_tool_use.py   # Result logging
-│   │   ├── notification.py    # User interaction events
-│   │   ├── user_prompt_submit.py # User prompt logging & validation
-│   │   ├── stop.py           # Session completion
-│   │   └── subagent_stop.py  # Subagent completion
+│   ├── client/                     # Vue 3 TypeScript client
+│   │   ├── src/
+│   │   │   ├── App.vue            # Main app with theme & WebSocket management
+│   │   │   ├── components/
+│   │   │   │   ├── EventTimeline.vue      # Event list with auto-scroll
+│   │   │   │   ├── EventRow.vue           # Individual event display
+│   │   │   │   ├── FilterPanel.vue        # Multi-select filters
+│   │   │   │   ├── ChatTranscriptModal.vue # Chat history viewer
+│   │   │   │   ├── StickScrollButton.vue  # Scroll control
+│   │   │   │   └── LivePulseChart.vue     # Real-time activity chart
+│   │   │   ├── composables/
+│   │   │   │   ├── useWebSocket.ts        # WebSocket connection logic
+│   │   │   │   ├── useEventColors.ts      # Color assignment system
+│   │   │   │   ├── useChartData.ts        # Chart data aggregation
+│   │   │   │   └── useEventEmojis.ts      # Event type emoji mapping
+│   │   │   ├── utils/
+│   │   │   │   └── chartRenderer.ts       # Canvas chart rendering
+│   │   │   └── types.ts           # TypeScript interfaces
+│   │   ├── logs/                  # Client logs (gitignored)
+│   │   └── package.json
 │   │
-│   └── settings.json      # Hook configuration
+│   └── demo-cc-agent/              # Demo project with observability
 │
-├── scripts/               # Utility scripts
-│   ├── start-system.sh   # Launch server & client
-│   ├── stop-system.sh    # Stop all processes
-│   └── test-system.sh    # System validation
+├── .claude/                        # Claude Code configuration (source templates)
+│   ├── hooks/
+│   │   └── observability/         # Hook scripts (Python with uv)
+│   │       ├── send_event.py      # Universal event sender
+│   │       ├── pre_tool_use.py    # Tool validation & blocking
+│   │       ├── post_tool_use.py   # Result logging
+│   │       ├── notification.py    # User interaction events
+│   │       ├── user_prompt_submit.py # User prompt logging & validation
+│   │       ├── stop.py            # Session completion
+│   │       ├── subagent_stop.py   # Subagent completion
+│   │       ├── pre_compact.py     # Context compaction tracking
+│   │       ├── session_start.py   # Session initialization
+│   │       ├── session_end.py     # Session cleanup
+│   │       ├── utils/             # Shared utilities
+│   │       │   ├── constants.py   # Configuration constants
+│   │       │   ├── hitl.py        # Human-in-the-loop utilities
+│   │       │   ├── summarizer.py  # AI summary generation
+│   │       │   ├── model_extractor.py # Model info extraction
+│   │       │   ├── load-config.sh # Bash config loader
+│   │       │   ├── llm/           # LLM integrations
+│   │       │   │   ├── anth.py    # Anthropic API
+│   │       │   │   └── ollama.py  # Ollama API
+│   │       │   └── tts/           # Text-to-speech
+│   │       │       ├── elevenlabs_tts.py
+│   │       │       ├── openai_tts.py
+│   │       │       └── pyttsx3_tts.py
+│   │       └── examples/          # Hook usage examples
+│   │
+│   ├── agents/                    # Specialized AI agents
+│   │   ├── summary-processor.md  # Jerry - On-demand summaries
+│   │   ├── observability-manager.md # Kim - System management
+│   │   ├── ghcli.md              # Mark - GitHub operations (legacy)
+│   │   ├── fetch-docs-haiku45.md # Haiku doc fetcher
+│   │   └── fetch-docs-sonnet45.md # Sonnet doc fetcher
+│   │
+│   ├── commands/                  # Custom slash commands
+│   │   ├── process-summaries.md  # On-demand summary generation
+│   │   ├── bun-start.md          # Start system convenience command
+│   │   ├── bun-stop.md           # Stop system convenience command
+│   │   ├── convert_paths_absolute.md # Path conversion utility
+│   │   └── bench/                # Benchmarking commands
+│   │
+│   ├── status_lines/             # Status line scripts
+│   │   └── git-status.sh        # Git branch/status display
+│   │
+│   ├── data/                     # Session data storage
+│   │   └── sessions/            # Session transcripts (gitignored)
+│   │
+│   ├── settings.json            # Hook configuration template
+│   ├── .observability-state     # Runtime state (enabled/disabled)
+│   └── .observability-config    # Environment-specific config (gitignored)
 │
-└── logs/                 # Application logs (gitignored)
+├── scripts/                      # Management scripts
+│   ├── start-system.sh          # Launch server & client
+│   ├── stop-system.sh           # Stop all processes
+│   ├── test-system.sh           # System validation
+│   ├── observability-setup.sh   # Install to other projects
+│   ├── observability-enable.sh  # Enable event streaming
+│   ├── observability-disable.sh # Disable event streaming
+│   ├── observability-status.sh  # Check system status
+│   ├── observability-load-config.sh # Load config helper
+│   └── git-ai.sh                # Git with AI attribution
+│
+├── ai_docs/                     # AI-fetched documentation
+│   ├── haiku45/                 # Haiku 4.5 benchmarks
+│   └── sonnet45/                # Sonnet 4.5 benchmarks
+│
+├── app_docs/                    # Project documentation
+│   └── *.md                     # Design docs, specs, guides
+│
+├── specs/                       # Technical specifications
+│   └── *.md                     # Feature specs, architecture docs
+│
+├── logs/                        # Application logs (gitignored)
+│   └── [session-id]/           # Per-session log directories
+│
+└── images/                      # README assets
+    ├── app.png
+    └── AgentDataFlowV2.gif
 ```
 
 ## 🔧 Component Details
@@ -255,7 +386,7 @@ Vue 3 application with real-time visualization:
 
 The system offers two modes for generating AI summaries of hook events:
 
-#### **Real-time Summaries** (Recommended)
+#### **Real-time Summaries**
 - Automatically generates concise summaries as events occur
 - Uses Anthropic API via Python hooks
 - Requires `ANTHROPIC_API_KEY` in `.env` file
@@ -263,7 +394,9 @@ The system offers two modes for generating AI summaries of hook events:
 - Summaries appear immediately when events are captured
 - Best for continuous monitoring and instant insights
 
-#### **On-Demand Summaries**
+**💰 Cost Warning:** Real-time summaries cost ~few cents per 10 summaries and add up quickly during active development. Only enable when actively monitoring the dashboard.
+
+#### **On-Demand Summaries** (Recommended for Cost Savings)
 - Manual summary generation via GUI button
 - Uses Jerry subagent (Haiku 4.5) for batch processing
 - No API key required (uses your Claude Code session)
@@ -272,7 +405,7 @@ The system offers two modes for generating AI summaries of hook events:
   2. Run `/process-summaries` command in Claude Code
   3. Jerry reads events from `.summary-prompt.txt`
   4. Summaries are batch-generated and updated in database
-- Best for occasional reviews or when API keys aren't available
+- Best for occasional reviews or when you don't need real-time summaries
 
 **Summary Format**:
 - One sentence only (no period at end)
@@ -433,43 +566,6 @@ The `UserPromptSubmit` hook captures every user prompt before Claude processes i
 - Summary appears on the right side when AI summarization is enabled
 - Useful for tracking user intentions and conversation flow
 
-## 🔌 Integration
-
-### For New Projects
-
-1. Copy the event sender:
-   ```bash
-   cp .claude/hooks/send_event.py YOUR_PROJECT/.claude/hooks/
-   ```
-
-2. Add to your `.claude/settings.json`:
-   ```json
-   {
-     "hooks": {
-       "PreToolUse": [{
-         "matcher": ".*",
-         "hooks": [{
-           "type": "command",
-           "command": "uv run .claude/hooks/send_event.py --source-app YOUR_APP --event-type PreToolUse"
-         }]
-       }]
-     }
-   }
-   ```
-
-### For This Project
-
-Already integrated! Hooks run both validation and observability:
-```json
-{
-  "type": "command",
-  "command": "uv run .claude/hooks/pre_tool_use.py"
-},
-{
-  "type": "command", 
-  "command": "uv run .claude/hooks/send_event.py --source-app cc-hooks-observability --event-type PreToolUse"
-}
-```
 
 ## 🧪 Testing
 
