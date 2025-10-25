@@ -357,7 +357,7 @@ Send this JSON structure to your observability server:
 ```bash
 # Run a hook manually
 echo '{"session_id":"test-123","transcript_path":"/path/to/transcript.jsonl"}' | \
-  python .claude/hooks/send_event.py
+  python .claude/hooks/observability/send_event.py
 
 # Check cache was created (in project directory)
 cat .claude/data/claude-model-cache/test-123.json
@@ -376,21 +376,21 @@ Expected output:
 
 ```bash
 # Run the same hook twice quickly
-time python .claude/hooks/send_event.py < input.json  # ~50ms (cache miss)
-time python .claude/hooks/send_event.py < input.json  # ~1ms (cache hit)
+time python .claude/hooks/observability/send_event.py < input.json  # ~50ms (cache miss)
+time python .claude/hooks/observability/send_event.py < input.json  # ~1ms (cache hit)
 ```
 
 ### Test 3: Verify Cache Expiration
 
 ```bash
 # Run hook
-python .claude/hooks/send_event.py < input.json
+python .claude/hooks/observability/send_event.py < input.json
 
 # Wait 61 seconds
 sleep 61
 
 # Run again - should re-parse transcript
-python .claude/hooks/send_event.py < input.json
+python .claude/hooks/observability/send_event.py < input.json
 ```
 
 ---

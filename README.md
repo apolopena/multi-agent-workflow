@@ -60,11 +60,11 @@ To integrate the observability hooks into your projects:
          "hooks": [
            {
              "type": "command",
-             "command": "uv run .claude/hooks/pre_tool_use.py"
+             "command": "uv run .claude/hooks/observability/pre_tool_use.py"
            },
            {
              "type": "command",
-             "command": "uv run .claude/hooks/send_event.py --source-app YOUR_PROJECT_NAME --event-type PreToolUse --summarize"
+             "command": "uv run .claude/hooks/observability/send_event.py --source-app YOUR_PROJECT_NAME --event-type PreToolUse --summarize"
            }
          ]
        }],
@@ -73,11 +73,11 @@ To integrate the observability hooks into your projects:
          "hooks": [
            {
              "type": "command",
-             "command": "uv run .claude/hooks/post_tool_use.py"
+             "command": "uv run .claude/hooks/observability/post_tool_use.py"
            },
            {
              "type": "command",
-             "command": "uv run .claude/hooks/send_event.py --source-app YOUR_PROJECT_NAME --event-type PostToolUse --summarize"
+             "command": "uv run .claude/hooks/observability/send_event.py --source-app YOUR_PROJECT_NAME --event-type PostToolUse --summarize"
            }
          ]
        }],
@@ -85,11 +85,11 @@ To integrate the observability hooks into your projects:
          "hooks": [
            {
              "type": "command",
-             "command": "uv run .claude/hooks/user_prompt_submit.py --log-only"
+             "command": "uv run .claude/hooks/observability/user_prompt_submit.py --log-only"
            },
            {
              "type": "command",
-             "command": "uv run .claude/hooks/send_event.py --source-app YOUR_PROJECT_NAME --event-type UserPromptSubmit --summarize"
+             "command": "uv run .claude/hooks/observability/send_event.py --source-app YOUR_PROJECT_NAME --event-type UserPromptSubmit --summarize"
            }
          ]
        }]
@@ -115,7 +115,7 @@ If your project already has a `.claude` directory with custom agents, slash comm
 1. **Copy hooks directory:**
    ```bash
    # From the multi-agent-workflow directory
-   cp -R .claude/hooks /PATH/TO/YOUR/PROJECT/.claude/
+   cp -R .claude/hooks/observability /PATH/TO/YOUR/PROJECT/.claude/
    ```
 
    **Optional slash commands** (copy only what's relevant to your project):
@@ -482,7 +482,7 @@ The `UserPromptSubmit` hook captures every user prompt before Claude processes i
 
 1. Copy the event sender:
    ```bash
-   cp .claude/hooks/send_event.py YOUR_PROJECT/.claude/hooks/
+   cp .claude/hooks/observability/send_event.py YOUR_PROJECT/.claude/hooks/
    ```
 
 2. Add to your `.claude/settings.json`:
@@ -493,7 +493,7 @@ The `UserPromptSubmit` hook captures every user prompt before Claude processes i
          "matcher": ".*",
          "hooks": [{
            "type": "command",
-           "command": "uv run .claude/hooks/send_event.py --source-app YOUR_APP --event-type PreToolUse"
+           "command": "uv run .claude/hooks/observability/send_event.py --source-app YOUR_APP --event-type PreToolUse"
          }]
        }]
      }
@@ -506,11 +506,11 @@ Already integrated! Hooks run both validation and observability:
 ```json
 {
   "type": "command",
-  "command": "uv run .claude/hooks/pre_tool_use.py"
+  "command": "uv run .claude/hooks/observability/pre_tool_use.py"
 },
 {
   "type": "command", 
-  "command": "uv run .claude/hooks/send_event.py --source-app cc-hooks-observability --event-type PreToolUse"
+  "command": "uv run .claude/hooks/observability/send_event.py --source-app cc-hooks-observability --event-type PreToolUse"
 }
 ```
 
