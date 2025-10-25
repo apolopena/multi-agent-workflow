@@ -200,59 +200,120 @@ open http://localhost:5173
 ## 📁 Project Structure
 
 ```
-claude-code-hooks-multi-agent-observability/
+multi-agent-workflow/
 │
-├── apps/                    # Application components
-│   ├── server/             # Bun TypeScript server
+├── apps/                           # Application components
+│   ├── server/                     # Bun TypeScript server
 │   │   ├── src/
-│   │   │   ├── index.ts    # Main server with HTTP/WebSocket endpoints
-│   │   │   ├── db.ts       # SQLite database management & migrations
-│   │   │   └── types.ts    # TypeScript interfaces
-│   │   ├── package.json
-│   │   └── events.db       # SQLite database (gitignored)
+│   │   │   ├── index.ts           # Main server with HTTP/WebSocket endpoints
+│   │   │   ├── db.ts              # SQLite database management & migrations
+│   │   │   └── types.ts           # TypeScript interfaces
+│   │   ├── data/                  # SQLite database files (gitignored)
+│   │   ├── logs/                  # Server logs (gitignored)
+│   │   └── package.json
 │   │
-│   └── client/             # Vue 3 TypeScript client
-│       ├── src/
-│       │   ├── App.vue     # Main app with theme & WebSocket management
-│       │   ├── components/
-│       │   │   ├── EventTimeline.vue      # Event list with auto-scroll
-│       │   │   ├── EventRow.vue           # Individual event display
-│       │   │   ├── FilterPanel.vue        # Multi-select filters
-│       │   │   ├── ChatTranscriptModal.vue # Chat history viewer
-│       │   │   ├── StickScrollButton.vue  # Scroll control
-│       │   │   └── LivePulseChart.vue     # Real-time activity chart
-│       │   ├── composables/
-│       │   │   ├── useWebSocket.ts        # WebSocket connection logic
-│       │   │   ├── useEventColors.ts      # Color assignment system
-│       │   │   ├── useChartData.ts        # Chart data aggregation
-│       │   │   └── useEventEmojis.ts      # Event type emoji mapping
-│       │   ├── utils/
-│       │   │   └── chartRenderer.ts       # Canvas chart rendering
-│       │   └── types.ts    # TypeScript interfaces
-│       ├── env/            # Environment configuration
-│       │   ├── .env       # Non-sensitive config
-│       │   ├── .env.secrets # API keys (gitignored)
-│       │   └── examples/  # Example templates
-│       └── package.json
-│
-├── .claude/                # Claude Code integration
-│   ├── hooks/             # Hook scripts (Python with uv)
-│   │   ├── send_event.py  # Universal event sender
-│   │   ├── pre_tool_use.py    # Tool validation & blocking
-│   │   ├── post_tool_use.py   # Result logging
-│   │   ├── notification.py    # User interaction events
-│   │   ├── user_prompt_submit.py # User prompt logging & validation
-│   │   ├── stop.py           # Session completion
-│   │   └── subagent_stop.py  # Subagent completion
+│   ├── client/                     # Vue 3 TypeScript client
+│   │   ├── src/
+│   │   │   ├── App.vue            # Main app with theme & WebSocket management
+│   │   │   ├── components/
+│   │   │   │   ├── EventTimeline.vue      # Event list with auto-scroll
+│   │   │   │   ├── EventRow.vue           # Individual event display
+│   │   │   │   ├── FilterPanel.vue        # Multi-select filters
+│   │   │   │   ├── ChatTranscriptModal.vue # Chat history viewer
+│   │   │   │   ├── StickScrollButton.vue  # Scroll control
+│   │   │   │   └── LivePulseChart.vue     # Real-time activity chart
+│   │   │   ├── composables/
+│   │   │   │   ├── useWebSocket.ts        # WebSocket connection logic
+│   │   │   │   ├── useEventColors.ts      # Color assignment system
+│   │   │   │   ├── useChartData.ts        # Chart data aggregation
+│   │   │   │   └── useEventEmojis.ts      # Event type emoji mapping
+│   │   │   ├── utils/
+│   │   │   │   └── chartRenderer.ts       # Canvas chart rendering
+│   │   │   └── types.ts           # TypeScript interfaces
+│   │   ├── logs/                  # Client logs (gitignored)
+│   │   └── package.json
 │   │
-│   └── settings.json      # Hook configuration
+│   └── demo-cc-agent/              # Demo project with observability
 │
-├── scripts/               # Utility scripts
-│   ├── start-system.sh   # Launch server & client
-│   ├── stop-system.sh    # Stop all processes
-│   └── test-system.sh    # System validation
+├── .claude/                        # Claude Code configuration (source templates)
+│   ├── hooks/
+│   │   └── observability/         # Hook scripts (Python with uv)
+│   │       ├── send_event.py      # Universal event sender
+│   │       ├── pre_tool_use.py    # Tool validation & blocking
+│   │       ├── post_tool_use.py   # Result logging
+│   │       ├── notification.py    # User interaction events
+│   │       ├── user_prompt_submit.py # User prompt logging & validation
+│   │       ├── stop.py            # Session completion
+│   │       ├── subagent_stop.py   # Subagent completion
+│   │       ├── pre_compact.py     # Context compaction tracking
+│   │       ├── session_start.py   # Session initialization
+│   │       ├── session_end.py     # Session cleanup
+│   │       ├── utils/             # Shared utilities
+│   │       │   ├── constants.py   # Configuration constants
+│   │       │   ├── hitl.py        # Human-in-the-loop utilities
+│   │       │   ├── summarizer.py  # AI summary generation
+│   │       │   ├── model_extractor.py # Model info extraction
+│   │       │   ├── load-config.sh # Bash config loader
+│   │       │   ├── llm/           # LLM integrations
+│   │       │   │   ├── anth.py    # Anthropic API
+│   │       │   │   └── ollama.py  # Ollama API
+│   │       │   └── tts/           # Text-to-speech
+│   │       │       ├── elevenlabs_tts.py
+│   │       │       ├── openai_tts.py
+│   │       │       └── pyttsx3_tts.py
+│   │       └── examples/          # Hook usage examples
+│   │
+│   ├── agents/                    # Specialized AI agents
+│   │   ├── summary-processor.md  # Jerry - On-demand summaries
+│   │   ├── observability-manager.md # Kim - System management
+│   │   ├── ghcli.md              # Mark - GitHub operations (legacy)
+│   │   ├── fetch-docs-haiku45.md # Haiku doc fetcher
+│   │   └── fetch-docs-sonnet45.md # Sonnet doc fetcher
+│   │
+│   ├── commands/                  # Custom slash commands
+│   │   ├── process-summaries.md  # On-demand summary generation
+│   │   ├── bun-start.md          # Start system convenience command
+│   │   ├── bun-stop.md           # Stop system convenience command
+│   │   ├── convert_paths_absolute.md # Path conversion utility
+│   │   └── bench/                # Benchmarking commands
+│   │
+│   ├── status_lines/             # Status line scripts
+│   │   └── git-status.sh        # Git branch/status display
+│   │
+│   ├── data/                     # Session data storage
+│   │   └── sessions/            # Session transcripts (gitignored)
+│   │
+│   ├── settings.json            # Hook configuration template
+│   ├── .observability-state     # Runtime state (enabled/disabled)
+│   └── .observability-config    # Environment-specific config (gitignored)
 │
-└── logs/                 # Application logs (gitignored)
+├── scripts/                      # Management scripts
+│   ├── start-system.sh          # Launch server & client
+│   ├── stop-system.sh           # Stop all processes
+│   ├── test-system.sh           # System validation
+│   ├── observability-setup.sh   # Install to other projects
+│   ├── observability-enable.sh  # Enable event streaming
+│   ├── observability-disable.sh # Disable event streaming
+│   ├── observability-status.sh  # Check system status
+│   ├── observability-load-config.sh # Load config helper
+│   └── git-ai.sh                # Git with AI attribution
+│
+├── ai_docs/                     # AI-fetched documentation
+│   ├── haiku45/                 # Haiku 4.5 benchmarks
+│   └── sonnet45/                # Sonnet 4.5 benchmarks
+│
+├── app_docs/                    # Project documentation
+│   └── *.md                     # Design docs, specs, guides
+│
+├── specs/                       # Technical specifications
+│   └── *.md                     # Feature specs, architecture docs
+│
+├── logs/                        # Application logs (gitignored)
+│   └── [session-id]/           # Per-session log directories
+│
+└── images/                      # README assets
+    ├── app.png
+    └── AgentDataFlowV2.gif
 ```
 
 ## 🔧 Component Details
