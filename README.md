@@ -25,147 +25,176 @@ Claude Agents → Hook Scripts → HTTP POST → Bun Server → SQLite → WebSo
 
 ![Agent Data Flow Animation](images/AgentDataFlowV2.gif)
 
-## 📋 Setup Requirements
-
-Before getting started, ensure you have the following installed:
+## 📋 Prerequisites
 
 - **[Claude Code](https://docs.anthropic.com/en/docs/claude-code)** - Anthropic's official CLI for Claude
 - **[Astral uv](https://docs.astral.sh/uv/)** - Fast Python package manager (required for hook scripts)
 - **[Bun](https://bun.sh/)**, **npm**, or **yarn** - For running the server and client
-- **[mpv](https://mpv.io/)** - Media player for ElevenLabs TTS audio playback (`sudo apt install mpv` on Linux)
+- **[jq](https://jqlang.github.io/jq/)** - JSON processor (`sudo apt install jq`)
+- **[mpv](https://mpv.io/)** - Media player for TTS audio (`sudo apt install mpv` on Linux)
 - **Anthropic API Key** - Add to `.env` as `ANTHROPIC_API_KEY` (for real-time summaries)
 - **OpenAI API Key** (optional) - Add to `.env` for TTS and completion messages
 - **ElevenLabs API Key** (optional) - Add to `.env` for TTS notifications
 
-### Configure .claude Directory
+## 🚨 Important: Shared System Architecture
 
-To setup observability in your repo,we need to copy the .claude directory to your project root.
+**This repository provides a centralized observability server and client that ALL integrated projects depend on.**
 
-To integrate the observability hooks into your projects:
+### How It Works
 
-1. **Copy the entire `.claude` directory to your project root:**
-   ```bash
-   cp -R .claude /path/to/your/project/
-   ```
+When you integrate observability into your projects:
+- Your project copies hook scripts that send events to this repo's server (`http://localhost:4000`)
+- Wrapper scripts in your project call back to management scripts in this repo
+- All projects share a single server instance and SQLite database
+- The client dashboard (`http://localhost:5173`) displays events from all integrated projects
 
-2. **Update the `settings.json` configuration:**
-   
-   Open `.claude/settings.json` in your project and modify the `source-app` parameter to identify your project:
-   
-   ```json
-   {
-     "hooks": {
-       "PreToolUse": [{
-         "matcher": "",
-         "hooks": [
-           {
-             "type": "command",
-             "command": "uv run .claude/hooks/observability/pre_tool_use.py"
-           },
-           {
-             "type": "command",
-             "command": "uv run .claude/hooks/observability/send_event.py --source-app YOUR_PROJECT_NAME --event-type PreToolUse --summarize"
-           }
-         ]
-       }],
-       "PostToolUse": [{
-         "matcher": "",
-         "hooks": [
-           {
-             "type": "command",
-             "command": "uv run .claude/hooks/observability/post_tool_use.py"
-           },
-           {
-             "type": "command",
-             "command": "uv run .claude/hooks/observability/send_event.py --source-app YOUR_PROJECT_NAME --event-type PostToolUse --summarize"
-           }
-         ]
-       }],
-       "UserPromptSubmit": [{
-         "hooks": [
-           {
-             "type": "command",
-             "command": "uv run .claude/hooks/observability/user_prompt_submit.py --log-only"
-           },
-           {
-             "type": "command",
-             "command": "uv run .claude/hooks/observability/send_event.py --source-app YOUR_PROJECT_NAME --event-type UserPromptSubmit --summarize"
-           }
-         ]
-       }]
-       // ... (similar patterns for Notification, Stop, SubagentStop, PreCompact, SessionStart, SessionEnd)
-     }
-   }
-   ```
-   
-   Replace `YOUR_PROJECT_NAME` with a unique identifier for your project (e.g., `my-api-server`, `react-app`, etc.).
+### Critical Dependencies
 
-3. **Ensure the observability server is running:**
-   ```bash
-   # From the observability project directory (this codebase)
-   ./scripts/start-system.sh
-   ```
+⚠️ **Your integrated projects will break if:**
+- This repository is moved or deleted
+- The server is not running (`./scripts/start-system.sh`)
+- The repository path changes without updating configs
 
-Now your project will send events to the observability system whenever Claude Code performs actions.
+### Recovery Options
 
-#### For Existing Projects (With Existing `.claude` Configuration)
+If this repo is moved/deleted, your integrated projects will show errors. To recover:
 
-If your project already has a `.claude` directory with custom agents, slash commands, or settings:
+1. **If repo moved**: Update `.claude/.observability-config` in each project with new path
+2. **If repo deleted**: Clone this repo again and re-run setup scripts
+3. **To disconnect**: Remove observability hooks from `.claude/settings.json` in your projects
 
-1. **Copy hooks directory:**
-   ```bash
-   # From the multi-agent-workflow directory
-   cp -R .claude/hooks/observability /PATH/TO/YOUR/PROJECT/.claude/
-   ```
+### Alternative: Custom Server Instance
 
-   **Optional slash commands** (copy only what's relevant to your project):
-   ```bash
-   # Required for on-demand summaries
-   cp .claude/commands/process-summaries.md /PATH/TO/YOUR/PROJECT/.claude/commands/
+To run an independent server for a specific project:
+1. Clone this repo to a project-specific location
+2. Modify `SERVER_URL` in `.claude/.observability-config`
+3. Run your own server instance with custom port
 
-   # Useful utility: converts relative paths to absolute in settings.json
-   cp .claude/commands/convert_paths_absolute.md /PATH/TO/YOUR/PROJECT/.claude/commands/
+## ⚙️ Setup: Integrate Observability Into Your Projects
 
-   # Convenience commands for multi-agent-workflow (skip if not relevant)
-   cp .claude/commands/bun-start.md /PATH/TO/YOUR/PROJECT/.claude/commands/
-   cp .claude/commands/bun-stop.md /PATH/TO/YOUR/PROJECT/.claude/commands/
-   ```
+### Option 1: New Project (No Existing .claude Configuration)
 
-2. **Run setup script:**
-   ```bash
-   cd /PATH/TO/YOUR/PROJECT
-   /PATH/TO/MULTI-AGENT-WORKFLOW/scripts/setup-observability.sh [PROJECT_NAME]
-   ```
-
-   Uses git repo name automatically if `PROJECT_NAME` not provided. **Warning:** Overwrites existing hooks in `settings.json` (backup created automatically).
-
-3. **Start observability server:**
-   ```bash
-   cd /PATH/TO/MULTI-AGENT-WORKFLOW
-   ./scripts/start-system.sh
-   ```
-
-4. **Verify:** Run any Claude Code command, watch events at `http://localhost:5173`
-
-**Dependencies:** Requires `jq` for JSON parsing (`sudo apt install jq`)
-
-## 🚀 Quick Start
-
-You can quickly view how this works by running this repositories .claude setup.
+**Quick setup for projects without Claude Code configuration:**
 
 ```bash
-# 1. Start both server and client
+# 1. Clone this repo (if not already done)
+git clone <this-repo-url> ~/multi-agent-workflow
+cd ~/multi-agent-workflow
+
+# 2. Navigate to your project
+cd /path/to/your/project
+
+# 3. Run automated setup
+~/multi-agent-workflow/scripts/observability-setup.sh . [PROJECT_NAME]
+
+# 4. Restart Claude Code to load new configuration
+
+# 5. Start the observability server (from multi-agent-workflow directory)
+cd ~/multi-agent-workflow
 ./scripts/start-system.sh
 
-# 2. Open http://localhost:5173 in your browser
+# 6. Open dashboard and start coding
+# Dashboard: http://localhost:5173
+```
 
-# 3. Open Claude Code and run the following command:
-Run git ls-files to understand the codebase.
+**What this does:**
+- Creates `.claude/` directory with hooks, agents, commands, and status lines
+- Generates wrapper scripts in `./scripts/` that call back to multi-agent-workflow
+- Creates `.claude/.observability-config` with path to multi-agent-workflow repo
+- Updates `.gitignore` with observability entries
+- Auto-detects project name from git (or uses provided name)
 
-# 4. Watch events stream in the client
+### Option 2: Existing Project (With .claude Configuration)
 
-# 5. Copy the .claude folder to other projects you want to emit events from.
-cp -R .claude <directory of your codebase you want to emit events from>
+**Setup for projects with existing Claude Code configuration:**
+
+```bash
+# 1. From your project directory
+cd /path/to/your/project
+
+# 2. Run automated setup (will merge with existing settings)
+/path/to/multi-agent-workflow/scripts/observability-setup.sh . [PROJECT_NAME]
+```
+
+**What happens:**
+- ⚠️ **Backup created**: `settings.json.TIMESTAMP` before any changes
+- ⚠️ **Overwrites**: `hooks`, `statusLine`, and `includeCoAuthoredBy` sections
+- ✅ **Preserves**: Your custom agents, commands, permissions, and other settings
+- Script shows warnings and asks for confirmation before proceeding
+
+### Managing Observability
+
+**Via Kim Agent** (if installed):
+```
+"Kim, start the observability server"
+"Kim, check observability status"
+"Kim, disable event streaming"
+"Kim, enable event streaming"
+```
+
+**Via Scripts** (from any integrated project):
+```bash
+# Check status (server + event streaming)
+./scripts/observability-status.sh
+
+# Enable/disable event streaming (no restart needed)
+./scripts/observability-enable.sh
+./scripts/observability-disable.sh
+
+# Start/stop server (run from multi-agent-workflow directory)
+cd ~/multi-agent-workflow
+./scripts/start-system.sh
+./scripts/stop-system.sh
+```
+
+### Configuration Files
+
+After setup, your project will have:
+
+**`.claude/.observability-config`** (gitignored, environment-specific):
+```json
+{
+  "MULTI_AGENT_WORKFLOW_PATH": "/absolute/path/to/multi-agent-workflow",
+  "SERVER_URL": "http://localhost:4000",
+  "CLIENT_URL": "http://localhost:5173"
+}
+```
+
+**`.claude/.observability-state`** (gitignored):
+```
+enabled  # or 'disabled'
+```
+
+### Verifying Installation
+
+```bash
+# 1. Check server is running
+curl http://localhost:4000/events/recent
+
+# 2. Run any Claude Code command in your project
+# Example: "list all files"
+
+# 3. Open dashboard
+open http://localhost:5173
+
+# 4. You should see events with your project name
+```
+
+## 🚀 Quick Start (Try It in This Repo)
+
+Test the observability system using this repo's built-in configuration:
+
+```bash
+# 1. Start the server and client
+./scripts/start-system.sh
+
+# 2. Open the dashboard
+open http://localhost:5173
+
+# 3. In Claude Code, run any command
+# Example: "Run git ls-files to understand the codebase"
+
+# 4. Watch events stream in real-time on the dashboard
 ```
 
 ## 📁 Project Structure
@@ -476,43 +505,6 @@ The `UserPromptSubmit` hook captures every user prompt before Claude processes i
 - Summary appears on the right side when AI summarization is enabled
 - Useful for tracking user intentions and conversation flow
 
-## 🔌 Integration
-
-### For New Projects
-
-1. Copy the event sender:
-   ```bash
-   cp .claude/hooks/observability/send_event.py YOUR_PROJECT/.claude/hooks/
-   ```
-
-2. Add to your `.claude/settings.json`:
-   ```json
-   {
-     "hooks": {
-       "PreToolUse": [{
-         "matcher": ".*",
-         "hooks": [{
-           "type": "command",
-           "command": "uv run .claude/hooks/observability/send_event.py --source-app YOUR_APP --event-type PreToolUse"
-         }]
-       }]
-     }
-   }
-   ```
-
-### For This Project
-
-Already integrated! Hooks run both validation and observability:
-```json
-{
-  "type": "command",
-  "command": "uv run .claude/hooks/observability/pre_tool_use.py"
-},
-{
-  "type": "command", 
-  "command": "uv run .claude/hooks/observability/send_event.py --source-app cc-hooks-observability --event-type PreToolUse"
-}
-```
 
 ## 🧪 Testing
 
