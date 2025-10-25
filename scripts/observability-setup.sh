@@ -1,6 +1,6 @@
 #!/bin/bash
 # Enhanced setup script for observability system
-# Usage: ./scripts/setup-observability-enhanced.sh /path/to/target-project [PROJECT_NAME]
+# Usage: ./scripts/observability-setup.sh /path/to/target-project [PROJECT_NAME]
 
 set -e  # Exit on error
 
@@ -50,6 +50,60 @@ if [ -z "$PROJECT_NAME" ]; then
         echo "Using directory name as project name: $PROJECT_NAME"
     fi
 fi
+
+# ===== WRAPPER GENERATION FUNCTION =====
+
+generate_wrapper() {
+    local script_name="$1"
+    local wrapper_path="$TARGET_DIR/scripts/$script_name"
+
+    cat > "$wrapper_path" << 'WRAPPER_EOF'
+#!/bin/bash
+# Auto-generated wrapper by observability-setup.sh
+# Calls SCRIPT_NAME from multi-agent-workflow
+
+# Load config
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CONFIG_FILE="$SCRIPT_DIR/../.claude/.observability-config"
+
+if [ ! -f "$CONFIG_FILE" ]; then
+    echo "Error: Observability config not found: $CONFIG_FILE" >&2
+    echo "Run observability-setup.sh to reconfigure." >&2
+    exit 1
+fi
+
+# Parse config (requires jq)
+if ! command -v jq &> /dev/null; then
+    echo "Error: jq is required but not installed." >&2
+    exit 1
+fi
+
+MULTI_AGENT_WORKFLOW_PATH=$(jq -r '.MULTI_AGENT_WORKFLOW_PATH' "$CONFIG_FILE")
+
+# Validate path exists
+if [ ! -d "$MULTI_AGENT_WORKFLOW_PATH" ]; then
+    echo "Error: Multi-agent-workflow not found: $MULTI_AGENT_WORKFLOW_PATH" >&2
+    echo "The observability repo may have been moved." >&2
+    echo "Update $CONFIG_FILE or re-run observability-setup.sh" >&2
+    exit 1
+fi
+
+# Check target script exists
+TARGET_SCRIPT="$MULTI_AGENT_WORKFLOW_PATH/scripts/SCRIPT_NAME"
+if [ ! -f "$TARGET_SCRIPT" ]; then
+    echo "Error: Script not found: $TARGET_SCRIPT" >&2
+    echo "The multi-agent-workflow installation may be incomplete." >&2
+    exit 1
+fi
+
+# Execute the real script
+exec "$TARGET_SCRIPT" "$@"
+WRAPPER_EOF
+
+    # Replace SCRIPT_NAME placeholder with actual script name
+    sed -i "s/SCRIPT_NAME/$script_name/g" "$wrapper_path"
+    chmod +x "$wrapper_path"
+}
 
 # ===== PRE-FLIGHT CHECKS (no writes yet) =====
 
@@ -115,7 +169,8 @@ fi
 echo "The following will be installed:"
 echo "  - .claude/hooks/observability/"
 echo "  - .claude/status_lines/"
-echo "  - .claude/agents/ (Jerry, Kim, Mark)"
+echo "  - ./scripts/ (management script wrappers)"
+echo "  - .claude/agents/ (Jerry, observability-manager, Mark)"
 echo "  - .claude/commands/ (process-summaries, etc.)"
 echo ""
 
@@ -145,6 +200,7 @@ mkdir -p "$CLAUDE_DIR/hooks"
 mkdir -p "$CLAUDE_DIR/agents"
 mkdir -p "$CLAUDE_DIR/commands"
 mkdir -p "$CLAUDE_DIR/status_lines"
+mkdir -p "$TARGET_DIR/scripts"
 
 # Copy files
 echo "Copying observability hooks..."
@@ -153,9 +209,16 @@ cp -R "$SOURCE_DIR/.claude/hooks/observability" "$CLAUDE_DIR/hooks/"
 echo "Copying status lines..."
 cp -R "$SOURCE_DIR/.claude/status_lines/"* "$CLAUDE_DIR/status_lines/"
 
+echo "Generating management script wrappers..."
+generate_wrapper "start-system.sh"
+generate_wrapper "stop-system.sh"
+generate_wrapper "observability-enable.sh"
+generate_wrapper "observability-disable.sh"
+generate_wrapper "observability-status.sh"
+
 echo "Copying agents..."
 cp "$SOURCE_DIR/.claude/agents/summary-processor.md" "$CLAUDE_DIR/agents/" 2>/dev/null || true
-cp "$SOURCE_DIR/.claude/agents/observation-manager.md" "$CLAUDE_DIR/agents/" 2>/dev/null || true
+cp "$SOURCE_DIR/.claude/agents/observability-manager.md" "$CLAUDE_DIR/agents/" 2>/dev/null || true
 cp "$SOURCE_DIR/.claude/agents/mark.md" "$CLAUDE_DIR/agents/" 2>/dev/null || true
 
 echo "Copying commands..."
@@ -202,6 +265,54 @@ STATE_FILE="$CLAUDE_DIR/.observability-state"
 if [ ! -f "$STATE_FILE" ]; then
     echo "enabled" > "$STATE_FILE"
     echo "Created observability state file (enabled)"
+fi
+
+# Create observability config file
+CONFIG_FILE="$CLAUDE_DIR/.observability-config"
+cat > "$CONFIG_FILE" << EOF
+{
+  "MULTI_AGENT_WORKFLOW_PATH": "$SOURCE_DIR",
+  "SERVER_URL": "http://localhost:4000",
+  "CLIENT_URL": "http://localhost:5173"
+}
+EOF
+echo "Created observability config file"
+
+# Update .gitignore
+GITIGNORE_FILE="$TARGET_DIR/.gitignore"
+if [ -f "$GITIGNORE_FILE" ]; then
+    # Check if observability entries already exist
+    if ! grep -q ".observability-config" "$GITIGNORE_FILE" 2>/dev/null; then
+        cat >> "$GITIGNORE_FILE" << 'GITIGNORE_EOF'
+
+# Python (observability hooks)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Observability (environment-specific)
+.claude/.observability-state
+.claude/.observability-config
+.summary-prompt.txt
+GITIGNORE_EOF
+        echo "Updated .gitignore with observability entries"
+    else
+        echo ".gitignore already contains observability entries"
+    fi
+else
+    # Create new .gitignore
+    cat > "$GITIGNORE_FILE" << 'GITIGNORE_EOF'
+# Python (observability hooks)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Observability (environment-specific)
+.claude/.observability-state
+.claude/.observability-config
+.summary-prompt.txt
+GITIGNORE_EOF
+    echo "Created .gitignore with observability entries"
 fi
 
 # ===== SUCCESS MESSAGE =====

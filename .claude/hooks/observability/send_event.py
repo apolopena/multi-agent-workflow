@@ -32,6 +32,39 @@ if STATE_FILE.exists():
         sys.exit(0)
 # If state file doesn't exist, default to enabled (backwards compatible)
 
+# Cache for config to avoid repeated file reads
+_CONFIG_CACHE = None
+
+def load_observability_config():
+    """Load configuration from .observability-config file.
+
+    Returns dict with SERVER_URL or None if config doesn't exist.
+    Gracefully handles missing/invalid config by returning None.
+    Uses caching to avoid repeated file reads (called on every hook event).
+    """
+    global _CONFIG_CACHE
+
+    # Return cached config if already loaded
+    if _CONFIG_CACHE is not None:
+        return _CONFIG_CACHE
+
+    try:
+        config_file = Path.cwd() / '.claude' / '.observability-config'
+        if config_file.exists():
+            with open(config_file, 'r') as f:
+                config = json.load(f)
+                # Validate that required keys exist
+                if 'SERVER_URL' in config:
+                    _CONFIG_CACHE = config
+                    return config
+        _CONFIG_CACHE = {}  # Cache empty dict to indicate "no config"
+        return None
+    except Exception as e:
+        # Silently fail and use defaults
+        print(f"Warning: Could not load observability config: {e}", file=sys.stderr)
+        _CONFIG_CACHE = {}  # Cache empty dict to prevent repeated failures
+        return None
+
 def get_server_settings(base_url='http://localhost:4000'):
     """Get current settings from the server."""
     try:
@@ -77,14 +110,21 @@ def send_event_to_server(event_data, server_url='http://localhost:4000/events'):
         return False
 
 def main():
+    # Load configuration
+    config = load_observability_config()
+    default_server_url = 'http://localhost:4000/events'
+    if config and 'SERVER_URL' in config:
+        # Use SERVER_URL from config and append /events endpoint
+        default_server_url = f"{config['SERVER_URL']}/events"
+
     # Parse command line arguments
     parser = argparse.ArgumentParser(description='Send Claude Code hook events to observability server')
     parser.add_argument('--source-app', required=True, help='Source application name')
     parser.add_argument('--event-type', required=True, help='Hook event type (PreToolUse, PostToolUse, etc.)')
-    parser.add_argument('--server-url', default='http://localhost:4000/events', help='Server URL')
+    parser.add_argument('--server-url', default=default_server_url, help='Server URL')
     parser.add_argument('--add-chat', action='store_true', help='Include chat transcript if available')
     parser.add_argument('--summarize', action='store_true', help='Generate AI summary of the event')
-    
+
     args = parser.parse_args()
     
     try:
