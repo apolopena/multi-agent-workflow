@@ -294,8 +294,9 @@ __pycache__/
 .claude/.observability-state
 .claude/.observability-config
 .summary-prompt.txt
+.env
 GITIGNORE_EOF
-        echo "Updated .gitignore with observability entries"
+        echo "Updated .gitignore with observability entries (duplicates are harmless if already present)"
     else
         echo ".gitignore already contains observability entries"
     fi
@@ -311,6 +312,7 @@ __pycache__/
 .claude/.observability-state
 .claude/.observability-config
 .summary-prompt.txt
+.env
 GITIGNORE_EOF
     echo "Created .gitignore with observability entries"
 fi
