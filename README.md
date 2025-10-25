@@ -108,6 +108,47 @@ To integrate the observability hooks into your projects:
 
 Now your project will send events to the observability system whenever Claude Code performs actions.
 
+#### For Existing Projects (With Existing `.claude` Configuration)
+
+If your project already has a `.claude` directory with custom agents, slash commands, or settings:
+
+1. **Copy hooks directory:**
+   ```bash
+   # From the multi-agent-workflow directory
+   cp -R .claude/hooks /PATH/TO/YOUR/PROJECT/.claude/
+   ```
+
+   **Optional slash commands** (copy only what's relevant to your project):
+   ```bash
+   # Required for on-demand summaries
+   cp .claude/commands/process-summaries.md /PATH/TO/YOUR/PROJECT/.claude/commands/
+
+   # Useful utility: converts relative paths to absolute in settings.json
+   cp .claude/commands/convert_paths_absolute.md /PATH/TO/YOUR/PROJECT/.claude/commands/
+
+   # Convenience commands for multi-agent-workflow (skip if not relevant)
+   cp .claude/commands/bun-start.md /PATH/TO/YOUR/PROJECT/.claude/commands/
+   cp .claude/commands/bun-stop.md /PATH/TO/YOUR/PROJECT/.claude/commands/
+   ```
+
+2. **Run setup script:**
+   ```bash
+   cd /PATH/TO/YOUR/PROJECT
+   /PATH/TO/MULTI-AGENT-WORKFLOW/scripts/setup-observability.sh [PROJECT_NAME]
+   ```
+
+   Uses git repo name automatically if `PROJECT_NAME` not provided. **Warning:** Overwrites existing hooks in `settings.json` (backup created automatically).
+
+3. **Start observability server:**
+   ```bash
+   cd /PATH/TO/MULTI-AGENT-WORKFLOW
+   ./scripts/start-system.sh
+   ```
+
+4. **Verify:** Run any Claude Code command, watch events at `http://localhost:5173`
+
+**Dependencies:** Requires `jq` for JSON parsing (`sudo apt install jq`)
+
 ## 🚀 Quick Start
 
 You can quickly view how this works by running this repositories .claude setup.
@@ -255,7 +296,7 @@ Vue 3 application with real-time visualization:
 
 The system offers two modes for generating AI summaries of hook events:
 
-#### **Real-time Summaries** (Recommended)
+#### **Real-time Summaries**
 - Automatically generates concise summaries as events occur
 - Uses Anthropic API via Python hooks
 - Requires `ANTHROPIC_API_KEY` in `.env` file
@@ -263,7 +304,9 @@ The system offers two modes for generating AI summaries of hook events:
 - Summaries appear immediately when events are captured
 - Best for continuous monitoring and instant insights
 
-#### **On-Demand Summaries**
+**💰 Cost Warning:** Real-time summaries cost ~few cents per 10 summaries and add up quickly during active development. Only enable when actively monitoring the dashboard.
+
+#### **On-Demand Summaries** (Recommended for Cost Savings)
 - Manual summary generation via GUI button
 - Uses Jerry subagent (Haiku 4.5) for batch processing
 - No API key required (uses your Claude Code session)
@@ -272,7 +315,7 @@ The system offers two modes for generating AI summaries of hook events:
   2. Run `/process-summaries` command in Claude Code
   3. Jerry reads events from `.summary-prompt.txt`
   4. Summaries are batch-generated and updated in database
-- Best for occasional reviews or when API keys aren't available
+- Best for occasional reviews or when you don't need real-time summaries
 
 **Summary Format**:
 - One sentence only (no period at end)

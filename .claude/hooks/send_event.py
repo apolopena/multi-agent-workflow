@@ -19,8 +19,18 @@ import argparse
 import urllib.request
 import urllib.error
 from datetime import datetime
+from pathlib import Path
 from utils.summarizer import generate_event_summary
 from utils.model_extractor import get_model_from_transcript
+
+# Check if observability is enabled via state file
+STATE_FILE = Path.cwd() / '.claude' / '.observability-state'
+if STATE_FILE.exists():
+    state = STATE_FILE.read_text().strip().lower()
+    if state != 'enabled':
+        # Observability is disabled, exit silently
+        sys.exit(0)
+# If state file doesn't exist, default to enabled (backwards compatible)
 
 def get_server_settings(base_url='http://localhost:4000'):
     """Get current settings from the server."""
