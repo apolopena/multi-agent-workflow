@@ -43,6 +43,12 @@ Claude Agents → Hook Scripts → HTTP POST → Bun Server → SQLite → WebSo
 curl -fsSL https://bun.sh/install | bash && curl -LsSf https://astral.sh/uv/install.sh | sh && sudo apt install -y jq mpv
 ```
 
+**After Bun is installed, install the Node packages for the server and client:**
+
+```bash
+(cd apps/server && bun install) && (cd apps/client && bun install)
+```
+
 ## 🚨 Important: Shared System Architecture
 
 **This repository provides a centralized observability server and client that ALL integrated projects depend on.**
@@ -78,6 +84,11 @@ To run an independent server for a specific project:
 3. Run your own server instance with custom port
 
 ## ⚙️ Setup: Integrate Observability Into Your Projects
+
+> **Note:** Before proceeding, install the Node packages for the server and client:
+> ```bash
+> (cd apps/server && bun install) && (cd apps/client && bun install)
+> ```
 
 ### Option 1: New Project (No Existing .claude Configuration)
 
