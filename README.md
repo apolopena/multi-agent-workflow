@@ -27,6 +27,7 @@ Claude Agents → Hook Scripts → HTTP POST → Bun Server → SQLite → WebSo
 
 ## 📋 Prerequisites
 
+- **Node.js** - JavaScript runtime (install via your preferred method: nvm, apt, brew, etc.)
 - **[Claude Code](https://docs.anthropic.com/en/docs/claude-code)** - Anthropic's official CLI for Claude
 - **[Astral uv](https://docs.astral.sh/uv/)** - Fast Python package manager (required for hook scripts)
 - **[Bun](https://bun.sh/)**, **npm**, or **yarn** - For running the server and client
@@ -35,6 +36,12 @@ Claude Agents → Hook Scripts → HTTP POST → Bun Server → SQLite → WebSo
 - **Anthropic API Key** - Add to `.env` as `ANTHROPIC_API_KEY` (for real-time summaries)
 - **OpenAI API Key** (optional) - Add to `.env` for TTS and completion messages
 - **ElevenLabs API Key** (optional) - Add to `.env` for TTS notifications
+
+**Here's a one-liner to install all the items, assuming you have Node already installed:**
+
+```bash
+curl -fsSL https://bun.sh/install | bash && curl -LsSf https://astral.sh/uv/install.sh | sh && sudo apt install -y jq mpv
+```
 
 ## 🚨 Important: Shared System Architecture
 
