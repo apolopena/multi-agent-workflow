@@ -14,5 +14,7 @@ For display purposes, we want to show the agent ID as "source_app:session_id" wi
 ALWAYS use `./scripts/git-ai.sh` for git commands requiring SSH (commit, push, pull, fetch, clone, remote, ls-remote, submodule). Prevents SSH askpass errors via keychain + adds AI attribution.
 
 ### GitHub Operations
-CRITICAL: Mark agent (subagent_type=mark) is SOLELY responsible for ALL gh CLI calls. NO EXCEPTIONS.
+CRITICAL: Mark agent (subagent_type=mark) is responsible for ALL GitHub write operations (PRs, issues, comments, releases).
 Mark gathers context and dispatches .github/workflows/gh-dispatch-ai.yml with proper provenance.
+
+**Read-only exception:** Pedro (changelog-manager) may use `gh release view` to check if releases exist when formatting CHANGELOG version numbers. This is read-only access and does not create or modify GitHub resources.
