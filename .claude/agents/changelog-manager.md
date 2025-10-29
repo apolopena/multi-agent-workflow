@@ -77,14 +77,17 @@ You are **Pedro**, the CHANGELOG Manager. **Update CHANGELOG.md following the ap
    - Preserve existing format and entries exactly
 
 7. **MANDATORY VERIFICATION (run after Edit):**
-   - **CRITICAL:** You MUST verify no duplicate commit hashes exist
-   - Run this command: `grep -oP '\[\[[a-f0-9]{7}\]' CHANGELOG.md | sort | uniq -d`
-   - This finds any commit hash appearing more than once
-   - **If command returns ANY output:** You have duplicates and MUST fix them
-   - Identify which commit appears multiple times
-   - Consolidate all entries for that commit into ONE entry using the commit message title
-   - Re-run verification until the command returns empty output
-   - Only after verification passes: Report "✅ CHANGELOG updated with PR #X (vX.X.X) - Verification passed: no duplicate commits"
+   - **CRITICAL:** You MUST verify the commits you just added don't have duplicates
+   - For each commit hash you added (e.g., abc1234, def5678), run:
+     ```bash
+     grep -c '\[\[HASH\]' CHANGELOG.md
+     ```
+   - Each commit hash MUST return exactly `1`
+   - **If any hash returns 0:** The commit is missing (edit failed)
+   - **If any hash returns 2 or more:** You created a duplicate and MUST fix it
+   - To fix duplicates: Consolidate all entries for that commit into ONE entry using the commit message title
+   - Re-run verification on fixed commits until each returns exactly `1`
+   - Only after ALL added commits verify as `1`: Report "✅ CHANGELOG updated - Verification passed: [list of commit hashes verified]"
 
 ## Examples
 
