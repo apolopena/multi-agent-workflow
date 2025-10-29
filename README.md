@@ -43,10 +43,29 @@ Claude Agents → Hook Scripts → HTTP POST → Bun Server → SQLite → WebSo
 curl -fsSL https://bun.sh/install | bash && curl -LsSf https://astral.sh/uv/install.sh | sh && sudo apt install -y jq mpv
 ```
 
-**After Bun is installed, install the Node packages for the server and client:**
+**Make binaries accessible to coding assistants:**
+
+```bash
+# Create symlink for bun (if using default install location)
+ln -s ~/.bun/bin/bun ~/.local/bin/bun
+
+# If you used custom install locations:
+# For bun: ln -s $BUN_INSTALL/bin/bun ~/.local/bin/bun
+# For uv: verify it's in ~/.local/bin (default), or create symlink if needed
+```
+
+> **Why:** Coding assistants use non-interactive shells that don't load `.bashrc`/`.zshrc`. Binaries must be in `~/.local/bin` (already in system PATH).
+
+**Install the Node packages for the server and client:**
 
 ```bash
 (cd apps/server && bun install) && (cd apps/client && bun install)
+```
+
+**If you plan to develop in this repo itself, set up the observability config:**
+
+```bash
+cp templates/.observability-config.template .claude/.observability-config
 ```
 
 ## 🚨 Important: Shared System Architecture
@@ -622,9 +641,9 @@ The project uses a single `.env` file for configuration:
 
 **Setup**:
 ```bash
-# Copy example file to both locations
-cp .env.sample .env
-cp .env apps/server/.env
+# Copy template file to both locations
+cp templates/.env.template .env
+cp templates/.env.template apps/server/.env
 
 # Edit and add your API keys
 nano .env

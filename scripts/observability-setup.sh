@@ -236,7 +236,7 @@ if [ "$SETTINGS_EXISTS" = true ]; then
 
     # Extract observability settings from template
     TEMPLATE="$SOURCE_DIR/.claude/settings.json"
-    HOOKS_JSON=$(jq --arg name "$PROJECT_NAME" '.hooks | walk(if type == "string" then gsub("cc-hook-multi-agent-obvs"; $name) else . end)' "$TEMPLATE")
+    HOOKS_JSON=$(jq '.hooks' "$TEMPLATE")
     STATUS_LINE_JSON=$(jq '.statusLine' "$TEMPLATE")
     CO_AUTHORED=$(jq '.includeCoAuthoredBy' "$TEMPLATE")
 
@@ -251,11 +251,10 @@ if [ "$SETTINGS_EXISTS" = true ]; then
 else
     # Create new settings.json from template
     TEMPLATE="$SOURCE_DIR/.claude/settings.json"
-    jq --arg name "$PROJECT_NAME" \
-       '{
+    jq '{
          statusLine: .statusLine,
          includeCoAuthoredBy: .includeCoAuthoredBy,
-         hooks: (.hooks | walk(if type == "string" then gsub("cc-hook-multi-agent-obvs"; $name) else . end))
+         hooks: .hooks
        }' "$TEMPLATE" > "$SETTINGS_FILE"
     echo "  New settings.json created"
 fi
@@ -271,6 +270,7 @@ fi
 CONFIG_FILE="$CLAUDE_DIR/.observability-config"
 cat > "$CONFIG_FILE" << EOF
 {
+  "PROJECT_NAME": "$PROJECT_NAME",
   "MULTI_AGENT_WORKFLOW_PATH": "$SOURCE_DIR",
   "SERVER_URL": "http://localhost:4000",
   "CLIENT_URL": "http://localhost:5173"

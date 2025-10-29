@@ -12,6 +12,88 @@ Major infrastructure refactor to improve observability system integration, confi
 
 ---
 
+## 🔥 Critical Fixes (2025-10-28)
+
+**Date**: 2025-10-28 17:30 UTC
+**Status**: ⚠️ Pending Commit
+**Session**: Infrastructure bug fixes and refactoring
+
+### Issue 1: Hardcoded Project Names Breaking Portability
+**Problem**: `--source-app cc-hook-multi-agent-obvs` hardcoded in all hook commands, making setup non-portable.
+
+**Solution**:
+- Made `--source-app` optional in `send_event.py`
+- Added `PROJECT_NAME` to `.observability-config`
+- Removed all hardcoded project names from `settings.json` template
+- Removed obsolete string replacement logic from `observability-setup.sh`
+- Created `templates/.observability-config.template` for local development
+
+**Impact**: ✅ Project names now dynamically configured, fully portable setup
+
+### Issue 2: Bun Binary Not Accessible to Coding Assistants
+**Problem**: `start-system.sh` couldn't find bun because `~/.bun/bin` not in non-interactive shell PATH.
+
+**Solution**:
+- Documented symlink creation: `ln -s ~/.bun/bin/bun ~/.local/bin/bun`
+- Added "Make binaries accessible to coding assistants" section to README
+- Explained WHY needed (non-interactive shells don't load .bashrc/.zshrc)
+- Provided instructions for custom install locations
+
+**Impact**: ✅ Scripts now work for coding assistants and automated systems
+
+### Issue 3: Missing Directory Structure Causing SQLite Errors
+**Problem**: `apps/server/data/` directory missing from fresh clones, causing SQLite database creation failures.
+
+**Solution**:
+- Added `apps/server/data/.gitkeep` to track empty directory
+- Added `logs/.gitkeep` for log directory
+- Both files now committed to repository
+
+**Impact**: ✅ Server starts successfully on fresh clones
+
+### Issue 4: Template Files Disorganization
+**Problem**: Template files scattered in repo root with inconsistent `.sample` naming.
+
+**Solution**:
+- Created `templates/` directory for centralized template storage
+- Moved and renamed files with `.template` suffix:
+  - `.env.sample` → `templates/.env.template`
+  - `apps/client/.env.sample` → `templates/client.env.template`
+  - `.mcp.json.firecrawl_7k.sample` → `templates/mcp-firecrawl.json.template`
+- Created `templates/.observability-config.template`
+- Updated all documentation references
+
+**Impact**: ✅ Cleaner repo structure, consistent naming convention
+
+### Files Modified (Critical Fixes)
+- `.claude/hooks/observability/send_event.py` - Made --source-app optional
+- `.claude/settings.json` - Removed all hardcoded --source-app parameters
+- `scripts/observability-setup.sh` - Added PROJECT_NAME to config, removed replacements
+- `README.md` - Added bun symlink instructions, updated template paths
+- **New**: `templates/` directory with all template files
+- **New**: `apps/server/data/.gitkeep`
+- **New**: `logs/.gitkeep`
+
+### Testing Performed
+- ✅ Manual event send confirms PROJECT_NAME read from config
+- ✅ Setup script creates proper config with custom project names
+- ✅ Bun symlink allows scripts to find binary
+- ✅ Server starts without SQLite errors
+- ✅ System fully operational after fixes
+
+### Breaking Changes
+⚠️ **Existing Installations**: Projects using old setup need to:
+1. Pull latest changes
+2. Create bun symlink: `ln -s ~/.bun/bin/bun ~/.local/bin/bun`
+3. Re-run `observability-setup.sh` (backs up existing settings)
+4. Copy `.observability-config.template` if developing in multi-agent-workflow repo itself
+
+### Related Documentation
+- **Post-Mortem**: See `POST_MORTEM.md` for comprehensive analysis
+- **Commit**: `e8cee56` - Fix critical infrastructure issues and refactor project config
+
+---
+
 ## 📦 New Features
 
 ### Observability Configuration System
