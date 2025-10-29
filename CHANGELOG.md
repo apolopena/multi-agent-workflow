@@ -19,6 +19,12 @@ All notable changes to this project will be documented in this file.
   - Add comprehensive root cause analysis with solutions and testing
 - [[a9ffd3e](https://github.com/apolopena/multi-agent-workflow/commit/a9ffd3e)] **DOCS:** *changelog*
   - Update CHANGELOG with commit hash
+- [[10d8e24](https://github.com/apolopena/multi-agent-workflow/commit/10d8e24)] **DOCS:** *agent*
+  - Add anti-pattern examples to Pedro instructions
+- [[75e462b](https://github.com/apolopena/multi-agent-workflow/commit/75e462b)] **FEAT:** *agent*
+  - Add mandatory verification step to Pedro
+- [[fc60a00](https://github.com/apolopena/multi-agent-workflow/commit/fc60a00)] **REFACTOR:** *agent*
+  - Update verification to check only added commits
 
 ---
 
