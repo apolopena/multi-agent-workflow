@@ -48,7 +48,7 @@ tools: Bash(git log), Bash(git show), Read(CHANGELOG.md), Edit(CHANGELOG.md)
 tools: Bash, Read, Edit
 
 # Good - specific bash commands only
-tools: Bash(./scripts/start-system.sh), Bash(./scripts/stop-system.sh)
+tools: Bash(./scripts/observability-start.sh), Bash(./scripts/observability-stop.sh)
 ```
 
 ## Agent Prompt Structure

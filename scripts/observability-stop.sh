@@ -80,6 +80,6 @@ fi
 
 echo -e "\n${GREEN}🎉 System reset complete!${NC}"
 echo -e "\nTo start fresh:"
-echo "1. Run ./scripts/start-system.sh to start both server and client"
+echo "1. Run ./scripts/observability-start.sh to start both server and client"
 echo "2. Or manually: cd apps/server && bun run dev"
 echo "3. And: cd apps/client && bun run dev"

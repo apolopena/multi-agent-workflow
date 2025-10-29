@@ -60,7 +60,7 @@
                 <ol class="text-xs text-orange-700 dark:text-orange-300 space-y-1 list-decimal ml-4">
                   <li>Create <code class="bg-orange-100 dark:bg-orange-900/40 px-1 rounded">.env</code> file in project root</li>
                   <li>Add: <code class="bg-orange-100 dark:bg-orange-900/40 px-1 rounded">ANTHROPIC_API_KEY=sk-ant-...</code></li>
-                  <li>Restart system: <code class="bg-orange-100 dark:bg-orange-900/40 px-1 rounded">./scripts/start-system.sh</code></li>
+                  <li>Restart system: <code class="bg-orange-100 dark:bg-orange-900/40 px-1 rounded">./scripts/observability-start.sh</code></li>
                 </ol>
                 <p class="text-xs text-orange-600 dark:text-orange-400 mt-2">
                   Get your API key: <a href="https://console.anthropic.com/" target="_blank" class="underline">https://console.anthropic.com/</a>

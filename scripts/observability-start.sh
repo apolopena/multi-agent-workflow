@@ -26,12 +26,12 @@ check_port() {
 
 # Check if ports are already in use
 if check_port 4000; then
-    echo -e "${YELLOW}⚠️  Port 4000 is already in use. Run ./scripts/stop-system.sh first.${NC}"
+    echo -e "${YELLOW}⚠️  Port 4000 is already in use. Run ./scripts/observability-stop.sh first.${NC}"
     exit 1
 fi
 
 if check_port 5173; then
-    echo -e "${YELLOW}⚠️  Port 5173 is already in use. Run ./scripts/stop-system.sh first.${NC}"
+    echo -e "${YELLOW}⚠️  Port 5173 is already in use. Run ./scripts/observability-stop.sh first.${NC}"
     exit 1
 fi
 
@@ -80,8 +80,8 @@ echo -e "📝 Process IDs:"
 echo -e "   Server PID: ${YELLOW}$SERVER_PID${NC}"
 echo -e "   Client PID: ${YELLOW}$CLIENT_PID${NC}"
 echo
-echo -e "To stop the system, run: ${YELLOW}./scripts/stop-system.sh${NC}"
-echo -e "To test the system, run: ${YELLOW}./scripts/test-system.sh${NC}"
+echo -e "To stop the system, run: ${YELLOW}./scripts/observability-stop.sh${NC}"
+echo -e "To test the system, run: ${YELLOW}./scripts/observability-test.sh${NC}"
 echo
 echo -e "${BLUE}Press Ctrl+C to stop both processes${NC}"
 

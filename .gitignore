@@ -275,6 +275,7 @@ ai_docs/scratch/
 
 # Observability config (generated)
 .claude/.observability-config
+.claude/.observability-state
 
 # Backup files
 *.backup-*
