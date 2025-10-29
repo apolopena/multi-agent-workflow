@@ -29,7 +29,7 @@ if curl -s http://localhost:4000/events/recent?limit=1 > /dev/null 2>&1; then
     echo "Server Status: ✅ RUNNING (http://localhost:4000)"
 else
     echo "Server Status: ❌ NOT RUNNING"
-    echo "  Start with: cd /path/to/multi-agent-workflow && ./scripts/start-system.sh"
+    echo "  Start with: cd /path/to/multi-agent-workflow && ./scripts/observability-start.sh"
 fi
 
 echo ""

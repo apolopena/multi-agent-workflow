@@ -170,8 +170,7 @@ echo "The following will be installed:"
 echo "  - .claude/hooks/observability/"
 echo "  - .claude/status_lines/"
 echo "  - ./scripts/ (management script wrappers)"
-echo "  - .claude/agents/ (Jerry, observability-manager, Mark)"
-echo "  - .claude/commands/ (process-summaries, etc.)"
+echo "  - .claude/agents/ (Jerry, Mark)"
 echo ""
 
 if [ "$SETTINGS_EXISTS" = true ]; then
@@ -182,11 +181,16 @@ else
 fi
 
 echo ""
-read -p "Continue with installation? (y/N): " -n 1 -r
-echo
-if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-    echo "Installation aborted. No changes made."
-    exit 0
+if [ "$INSTALL_ALL" = "1" ]; then
+    echo "INSTALL_ALL=1 detected, skipping prompts..."
+    REPLY="y"
+else
+    read -p "Continue with installation? (y/N): " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        echo "Installation aborted. No changes made."
+        exit 0
+    fi
 fi
 
 # ===== EXECUTE INSTALLATION =====
@@ -210,21 +214,40 @@ echo "Copying status lines..."
 cp -R "$SOURCE_DIR/.claude/status_lines/"* "$CLAUDE_DIR/status_lines/"
 
 echo "Generating management script wrappers..."
-generate_wrapper "start-system.sh"
-generate_wrapper "stop-system.sh"
+generate_wrapper "observability-start.sh"
+generate_wrapper "observability-stop.sh"
 generate_wrapper "observability-enable.sh"
 generate_wrapper "observability-disable.sh"
 generate_wrapper "observability-status.sh"
 
 echo "Copying agents..."
 cp "$SOURCE_DIR/.claude/agents/summary-processor.md" "$CLAUDE_DIR/agents/" 2>/dev/null || true
-cp "$SOURCE_DIR/.claude/agents/observability-manager.md" "$CLAUDE_DIR/agents/" 2>/dev/null || true
-cp "$SOURCE_DIR/.claude/agents/mark.md" "$CLAUDE_DIR/agents/" 2>/dev/null || true
+cp "$SOURCE_DIR/.claude/agents/ghcli.md" "$CLAUDE_DIR/agents/" 2>/dev/null || true
 
-echo "Copying commands..."
-cp "$SOURCE_DIR/.claude/commands/process-summaries.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
-cp "$SOURCE_DIR/.claude/commands/bun-start.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
-cp "$SOURCE_DIR/.claude/commands/bun-stop.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
+# Ask user if they want to copy observability slash commands
+echo ""
+if [ "$INSTALL_ALL" = "1" ]; then
+    echo "INSTALL_ALL=1: Copying observability slash commands..."
+    COPY_COMMANDS="y"
+else
+    read -p "Copy observability slash commands (/o-start, /o-stop, /o-status, etc.)? (y/N): " -n 1 -r
+    echo
+    COPY_COMMANDS="$REPLY"
+fi
+
+if [[ $COPY_COMMANDS =~ ^[Yy]$ ]]; then
+    echo "Copying observability commands..."
+    cp "$SOURCE_DIR/.claude/commands/o-start.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
+    cp "$SOURCE_DIR/.claude/commands/o-stop.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
+    cp "$SOURCE_DIR/.claude/commands/o-status.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
+    cp "$SOURCE_DIR/.claude/commands/o-enable.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
+    cp "$SOURCE_DIR/.claude/commands/o-disable.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
+    cp "$SOURCE_DIR/.claude/commands/o-test.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
+    cp "$SOURCE_DIR/.claude/commands/process-summaries.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
+    echo "  Commands copied successfully"
+else
+    echo "  Skipping slash commands"
+fi
 
 # Handle settings.json
 echo "Configuring settings.json..."
@@ -236,7 +259,7 @@ if [ "$SETTINGS_EXISTS" = true ]; then
 
     # Extract observability settings from template
     TEMPLATE="$SOURCE_DIR/.claude/settings.json"
-    HOOKS_JSON=$(jq --arg name "$PROJECT_NAME" '.hooks | walk(if type == "string" then gsub("cc-hook-multi-agent-obvs"; $name) else . end)' "$TEMPLATE")
+    HOOKS_JSON=$(jq '.hooks' "$TEMPLATE")
     STATUS_LINE_JSON=$(jq '.statusLine' "$TEMPLATE")
     CO_AUTHORED=$(jq '.includeCoAuthoredBy' "$TEMPLATE")
 
@@ -251,11 +274,10 @@ if [ "$SETTINGS_EXISTS" = true ]; then
 else
     # Create new settings.json from template
     TEMPLATE="$SOURCE_DIR/.claude/settings.json"
-    jq --arg name "$PROJECT_NAME" \
-       '{
+    jq '{
          statusLine: .statusLine,
          includeCoAuthoredBy: .includeCoAuthoredBy,
-         hooks: (.hooks | walk(if type == "string" then gsub("cc-hook-multi-agent-obvs"; $name) else . end))
+         hooks: .hooks
        }' "$TEMPLATE" > "$SETTINGS_FILE"
     echo "  New settings.json created"
 fi
@@ -271,6 +293,7 @@ fi
 CONFIG_FILE="$CLAUDE_DIR/.observability-config"
 cat > "$CONFIG_FILE" << EOF
 {
+  "PROJECT_NAME": "$PROJECT_NAME",
   "MULTI_AGENT_WORKFLOW_PATH": "$SOURCE_DIR",
   "SERVER_URL": "http://localhost:4000",
   "CLIENT_URL": "http://localhost:5173"
@@ -294,7 +317,7 @@ __pycache__/
 .claude/.observability-state
 .claude/.observability-config
 .summary-prompt.txt
-.env
+.env*
 GITIGNORE_EOF
         echo "Updated .gitignore with observability entries (duplicates are harmless if already present)"
     else
@@ -312,7 +335,7 @@ __pycache__/
 .claude/.observability-state
 .claude/.observability-config
 .summary-prompt.txt
-.env
+.env*
 GITIGNORE_EOF
     echo "Created .gitignore with observability entries"
 fi
@@ -327,11 +350,11 @@ echo "Target directory: $TARGET_DIR"
 echo ""
 echo "Next steps:"
 echo "  1. Restart Claude Code to load new configuration"
-echo "  2. Start observability server: cd $SOURCE_DIR && ./scripts/start-system.sh"
+echo "  2. Start observability server: cd $SOURCE_DIR && ./scripts/observability-start.sh"
 echo "  3. Open dashboard: http://localhost:5173"
 echo "  4. Run any Claude Code command to test"
 echo ""
 echo "Manage observability:"
-echo "  Kim agent: 'Kim, check status' or 'Kim, disable observability'"
-echo "  Scripts: $SOURCE_DIR/scripts/observability-status.sh"
+echo "  Slash commands: /o-status, /o-start, /o-stop, /o-enable, /o-disable"
+echo "  Scripts: $TARGET_DIR/scripts/observability-status.sh"
 echo ""

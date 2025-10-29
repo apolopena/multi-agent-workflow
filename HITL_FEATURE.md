@@ -341,7 +341,7 @@ Run the included example script to test all HITL request types:
 
 ```bash
 # Make sure server and client are running
-./scripts/start-system.sh
+./scripts/observability-start.sh
 
 # Run the example
 uv run .claude/hooks/examples/hitl_example.py

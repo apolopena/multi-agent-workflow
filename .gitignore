@@ -269,3 +269,13 @@ ai_docs/haiku45/*
 
 # AI summary generation prompt
 .summary-prompt.txt
+
+# AI scratch notes
+ai_docs/scratch/
+
+# Observability config (generated)
+.claude/.observability-config
+.claude/.observability-state
+
+# Backup files
+*.backup-*

@@ -72,6 +72,7 @@
       "Bash(rsync:*)",
       "Bash(ssh:*)",
       "Bash(scp:*)",
+      "Bash(tree:*)",
       "Bash(systemctl:*)",
       "Bash(service:*)",
       "Bash(env)",
@@ -79,11 +80,14 @@
       "Bash(source:*)",
       "Bash(sleep:*)",
       "Bash(./scripts/git-ai.sh:*)",
-      "Bash(./scripts/start-system.sh:*)",
-      "Bash(./scripts/stop-system.sh:*)",
-      "Bash(./scripts/test-system.sh:*)",
+      "Bash(./scripts/observability-start.sh:*)",
+      "Bash(./scripts/observability-stop.sh:*)",
+      "Bash(./scripts/observability-test.sh:*)",
+      "Bash(./scripts/observability-disable.sh:*)",
+      "Bash(./scripts/observability-enable.sh:*)",
+      "Bash(./scripts/observability-status.sh:*)",
       "Read(//tmp/**)",
-      "Edit",
+      "Read",
       "Write",
       "Glob",
       "Grep",
@@ -141,7 +145,7 @@
           },
           {
             "type": "command",
-            "command": "uv run $CLAUDE_PROJECT_DIR/.claude/hooks/observability/send_event.py --source-app cc-hook-multi-agent-obvs --event-type PreToolUse --summarize"
+            "command": "uv run $CLAUDE_PROJECT_DIR/.claude/hooks/observability/send_event.py --event-type PreToolUse --summarize"
           }
         ]
       }
@@ -156,7 +160,7 @@
           },
           {
             "type": "command",
-            "command": "uv run $CLAUDE_PROJECT_DIR/.claude/hooks/observability/send_event.py --source-app cc-hook-multi-agent-obvs --event-type PostToolUse --summarize"
+            "command": "uv run $CLAUDE_PROJECT_DIR/.claude/hooks/observability/send_event.py --event-type PostToolUse --summarize"
           }
         ]
       }
@@ -170,7 +174,7 @@
           },
           {
             "type": "command",
-            "command": "uv run $CLAUDE_PROJECT_DIR/.claude/hooks/observability/send_event.py --source-app cc-hook-multi-agent-obvs --event-type Notification --summarize"
+            "command": "uv run $CLAUDE_PROJECT_DIR/.claude/hooks/observability/send_event.py --event-type Notification --summarize"
           }
         ]
       }
@@ -184,7 +188,7 @@
           },
           {
             "type": "command",
-            "command": "uv run $CLAUDE_PROJECT_DIR/.claude/hooks/observability/send_event.py --source-app cc-hook-multi-agent-obvs --event-type Stop --add-chat"
+            "command": "uv run $CLAUDE_PROJECT_DIR/.claude/hooks/observability/send_event.py --event-type Stop --add-chat"
           }
         ]
       }
@@ -198,7 +202,7 @@
           },
           {
             "type": "command",
-            "command": "uv run $CLAUDE_PROJECT_DIR/.claude/hooks/observability/send_event.py --source-app cc-hook-multi-agent-obvs --event-type SubagentStop"
+            "command": "uv run $CLAUDE_PROJECT_DIR/.claude/hooks/observability/send_event.py --event-type SubagentStop"
           }
         ]
       }
@@ -212,7 +216,7 @@
           },
           {
             "type": "command",
-            "command": "uv run $CLAUDE_PROJECT_DIR/.claude/hooks/observability/send_event.py --source-app cc-hook-multi-agent-obvs --event-type PreCompact"
+            "command": "uv run $CLAUDE_PROJECT_DIR/.claude/hooks/observability/send_event.py --event-type PreCompact"
           }
         ]
       }
@@ -226,7 +230,7 @@
           },
           {
             "type": "command",
-            "command": "uv run $CLAUDE_PROJECT_DIR/.claude/hooks/observability/send_event.py --source-app cc-hook-multi-agent-obvs --event-type UserPromptSubmit --summarize"
+            "command": "uv run $CLAUDE_PROJECT_DIR/.claude/hooks/observability/send_event.py --event-type UserPromptSubmit --summarize"
           }
         ]
       }
@@ -240,7 +244,7 @@
           },
           {
             "type": "command",
-            "command": "uv run $CLAUDE_PROJECT_DIR/.claude/hooks/observability/send_event.py --source-app cc-hook-multi-agent-obvs --event-type SessionStart"
+            "command": "uv run $CLAUDE_PROJECT_DIR/.claude/hooks/observability/send_event.py --event-type SessionStart"
           }
         ]
       }
@@ -254,7 +258,7 @@
           },
           {
             "type": "command",
-            "command": "uv run $CLAUDE_PROJECT_DIR/.claude/hooks/observability/send_event.py --source-app cc-hook-multi-agent-obvs --event-type SessionEnd"
+            "command": "uv run $CLAUDE_PROJECT_DIR/.claude/hooks/observability/send_event.py --event-type SessionEnd"
           }
         ]
       }

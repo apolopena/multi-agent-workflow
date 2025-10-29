@@ -119,13 +119,24 @@ def main():
 
     # Parse command line arguments
     parser = argparse.ArgumentParser(description='Send Claude Code hook events to observability server')
-    parser.add_argument('--source-app', required=True, help='Source application name')
+    parser.add_argument('--source-app', help='Source application name (optional, auto-detected from config if not provided)')
     parser.add_argument('--event-type', required=True, help='Hook event type (PreToolUse, PostToolUse, etc.)')
     parser.add_argument('--server-url', default=default_server_url, help='Server URL')
     parser.add_argument('--add-chat', action='store_true', help='Include chat transcript if available')
     parser.add_argument('--summarize', action='store_true', help='Generate AI summary of the event')
 
     args = parser.parse_args()
+
+    # Determine source_app: CLI arg > config file > directory name
+    source_app = args.source_app
+    if not source_app:
+        # Try to get from config
+        if config and 'PROJECT_NAME' in config:
+            source_app = config['PROJECT_NAME']
+        else:
+            # Fallback to current directory name
+            source_app = Path.cwd().name
+            print(f"Warning: PROJECT_NAME not in config, using directory name: {source_app}", file=sys.stderr)
     
     try:
         # Read hook data from stdin
@@ -143,7 +154,7 @@ def main():
 
     # Prepare event data for server
     event_data = {
-        'source_app': args.source_app,
+        'source_app': source_app,
         'session_id': session_id,
         'hook_event_type': args.event_type,
         'payload': input_data,
