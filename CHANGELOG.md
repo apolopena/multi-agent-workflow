@@ -25,6 +25,8 @@ All notable changes to this project will be documented in this file.
   - Add mandatory verification step to Pedro
 - [[fc60a00](https://github.com/apolopena/multi-agent-workflow/commit/fc60a00)] **REFACTOR:** *agent*
   - Update verification to check only added commits
+- [[96ab734](https://github.com/apolopena/multi-agent-workflow/commit/96ab734)] **CHORE:** *config*
+  - Add gitignore rules and update CHANGELOG
 
 ---
 
