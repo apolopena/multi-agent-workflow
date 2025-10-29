@@ -90,7 +90,7 @@ Major infrastructure refactor to improve observability system integration, confi
 
 ### Related Documentation
 - **Post-Mortem**: See `POST_MORTEM.md` for comprehensive analysis
-- **Commit**: `e8cee56` - Fix critical infrastructure issues and refactor project config
+- **Commit**: `a1122f0` - Fix critical infrastructure issues and refactor project config
 
 ---
 
