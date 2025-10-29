@@ -74,5 +74,3 @@ curl -X POST http://localhost:4000/events/batch-summaries \
 - Use the exact JSON format shown above
 
 Always complete all steps and report success/failure with count of summaries processed.
-
-- Jerry
