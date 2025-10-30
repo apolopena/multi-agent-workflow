@@ -137,6 +137,7 @@ fi
 SETTINGS_FILE="$CLAUDE_DIR/settings.json"
 SETTINGS_EXISTS=false
 WARNINGS=()
+OVERWRITE_FILES=()
 
 if [ -f "$SETTINGS_FILE" ]; then
     SETTINGS_EXISTS=true
@@ -160,24 +161,133 @@ else
     echo "✓ settings.json will be created from template"
 fi
 
+# Check for existing hook files
+if [ -d "$CLAUDE_DIR/hooks/observability" ]; then
+    # Find all hook files (.py files and directories)
+    while IFS= read -r -d '' hook_file; do
+        # Get relative path from target directory
+        rel_path="${hook_file#$TARGET_DIR/}"
+        OVERWRITE_FILES+=("$rel_path")
+    done < <(find "$CLAUDE_DIR/hooks/observability" -type f -print0 2>/dev/null)
+
+    # Also check for utils directory
+    if [ -d "$CLAUDE_DIR/hooks/observability/utils" ]; then
+        OVERWRITE_FILES+=(".claude/hooks/observability/utils/")
+    fi
+fi
+
+# Check for existing status_line files
+if [ -d "$CLAUDE_DIR/status_lines" ]; then
+    while IFS= read -r -d '' status_file; do
+        rel_path="${status_file#$TARGET_DIR/}"
+        OVERWRITE_FILES+=("$rel_path")
+    done < <(find "$CLAUDE_DIR/status_lines" -type f -print0 2>/dev/null)
+fi
+
+# Check for existing wrapper scripts
+WRAPPER_SCRIPTS=("observability-start.sh" "observability-stop.sh" "observability-enable.sh" "observability-disable.sh" "observability-status.sh")
+for script in "${WRAPPER_SCRIPTS[@]}"; do
+    if [ -f "$TARGET_DIR/scripts/$script" ]; then
+        OVERWRITE_FILES+=("scripts/$script")
+    fi
+done
+
+# Check for existing agents
+AGENT_FILES=("summary-processor.md" "changelog-manager.md" "ghcli.md" "primer-generator.md" "html-converter.md")
+for agent in "${AGENT_FILES[@]}"; do
+    if [ -f "$CLAUDE_DIR/agents/$agent" ]; then
+        OVERWRITE_FILES+=(".claude/agents/$agent")
+    fi
+done
+
+# Check for existing commands
+COMMAND_FILES=("o-start.md" "o-stop.md" "o-status.md" "o-enable.md" "o-disable.md" "process-summaries.md" "generate-context.md" "generate-arch.md" "prime-quick.md" "prime-full.md")
+for cmd in "${COMMAND_FILES[@]}"; do
+    if [ -f "$CLAUDE_DIR/commands/$cmd" ]; then
+        OVERWRITE_FILES+=(".claude/commands/$cmd")
+    fi
+done
+
+# Summarize agent/command/script/hook overwrites
+if [ ${#OVERWRITE_FILES[@]} -gt 0 ]; then
+    # Count by category
+    AGENT_COUNT=0
+    COMMAND_COUNT=0
+    SCRIPT_COUNT=0
+    HOOK_COUNT=0
+    STATUS_LINE_FILE_COUNT=0
+    for file in "${OVERWRITE_FILES[@]}"; do
+        if [[ $file == .claude/agents/* ]]; then
+            ((AGENT_COUNT++)) || true
+        elif [[ $file == .claude/commands/* ]]; then
+            ((COMMAND_COUNT++)) || true
+        elif [[ $file == scripts/* ]]; then
+            ((SCRIPT_COUNT++)) || true
+        elif [[ $file == .claude/hooks/observability/* ]]; then
+            ((HOOK_COUNT++)) || true
+        elif [[ $file == .claude/status_lines/* ]]; then
+            ((STATUS_LINE_FILE_COUNT++)) || true
+        fi
+    done
+
+    if [ $HOOK_COUNT -gt 0 ]; then
+        WARNINGS+=("$HOOK_COUNT hook file(s)")
+    fi
+    if [ $STATUS_LINE_FILE_COUNT -gt 0 ]; then
+        WARNINGS+=("$STATUS_LINE_FILE_COUNT status line file(s)")
+    fi
+    if [ $AGENT_COUNT -gt 0 ]; then
+        WARNINGS+=("$AGENT_COUNT agent file(s)")
+    fi
+    if [ $COMMAND_COUNT -gt 0 ]; then
+        WARNINGS+=("$COMMAND_COUNT command file(s)")
+    fi
+    if [ $SCRIPT_COUNT -gt 0 ]; then
+        WARNINGS+=("$SCRIPT_COUNT script file(s)")
+    fi
+fi
+
 # ===== SHOW WARNINGS AND PROMPT =====
 
 echo ""
-echo "=== Installation Plan ==="
-echo ""
-
-if [ ${#WARNINGS[@]} -gt 0 ]; then
-    echo -e "${YELLOW}⚠️  WARNING: The following settings will be overwritten:${NC}"
-    for warning in "${WARNINGS[@]}"; do
-        echo "  - $warning"
-    done
-    echo ""
-fi
-
 echo -e "${BOLD}${CYAN}╔═══════════════════════════════════════════════════════════════════════════╗${NC}"
 echo -e "${BOLD}${CYAN}║                      INSTALLATION PLAN                                    ║${NC}"
 echo -e "${BOLD}${CYAN}╚═══════════════════════════════════════════════════════════════════════════╝${NC}"
 echo ""
+
+# Show overwrite warnings first if any
+if [ ${#WARNINGS[@]} -gt 0 ]; then
+    echo -e "${BOLD}${YELLOW}⚠️  OVERWRITES DETECTED${NC}"
+    echo ""
+    echo -e "${YELLOW}The following existing items will be ${BOLD}overwritten${NC}${YELLOW}:${NC}"
+    echo ""
+
+    # Show summary warnings
+    for warning in "${WARNINGS[@]}"; do
+        echo -e "  ${YELLOW}▸${NC} $warning"
+    done
+    echo ""
+
+    # Show detailed file list
+    if [ ${#OVERWRITE_FILES[@]} -gt 0 ]; then
+        echo -e "${DIM}Specific files (${#OVERWRITE_FILES[@]} total):${NC}"
+        for file in "${OVERWRITE_FILES[@]}"; do
+            echo -e "    ${DIM}→${NC} ${BRIGHT_YELLOW}$file${NC}"
+        done
+        echo ""
+    fi
+
+    # Backup notice
+    if [ "$SETTINGS_EXISTS" = true ]; then
+        BACKUP_FILE="$SETTINGS_FILE.$(date +%s)"
+        echo -e "  ${GREEN}✓${NC} Backup will be created: ${DIM}$BACKUP_FILE${NC}"
+        echo ""
+    fi
+
+    echo -e "${DIM}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+    echo ""
+fi
+
 echo -e "${GREEN}The following components will be installed:${NC}"
 echo -e "  ${DIM}▸${NC} ${BRIGHT_YELLOW}.claude/hooks/observability/${NC}"
 echo -e "      ${DIM}PreToolUse, PostToolUse, UserPromptSubmit, Stop, SubagentStop, etc.${NC}"
@@ -195,14 +305,16 @@ echo -e "      ${GREEN}●${NC} ${BOLD}${GREEN}Atlas${NC} - Generates ${BRIGHT_Y
 echo -e "      ${PURPLE}●${NC} ${BOLD}${PURPLE}Bixby${NC} - Converts markdown/text to styled HTML"
 echo ""
 
-if [ "$SETTINGS_EXISTS" = true ]; then
-    BACKUP_FILE="$SETTINGS_FILE.$(date +%s)"
-    echo -e "${YELLOW}Backup will be created:${NC} ${DIM}$BACKUP_FILE${NC}"
-else
-    echo -e "${GREEN}New settings.json will be created${NC}"
+# Show settings.json status only if NO overwrites were shown above
+if [ ${#WARNINGS[@]} -eq 0 ]; then
+    if [ "$SETTINGS_EXISTS" = true ]; then
+        echo -e "${GREEN}✓${NC} Existing settings.json will be preserved"
+    else
+        echo -e "${GREEN}✓${NC} New settings.json will be created"
+    fi
+    echo ""
 fi
 
-echo ""
 if [ "$INSTALL_ALL" = "1" ]; then
     echo "INSTALL_ALL=1 detected, skipping prompts..."
     REPLY="y"

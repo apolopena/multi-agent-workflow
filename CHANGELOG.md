@@ -6,6 +6,16 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [v1.0.5] - 2025-10-30
+
+### [PR #8](https://github.com/apolopena/multi-agent-workflow/pull/8) - Enhance setup script with comprehensive overwrite warnings
+**Branch:** `feat/infrastructure-updates` → `main` · **Status:** ✅ Merged
+
+- [[8f0f790](https://github.com/apolopena/multi-agent-workflow/commit/8f0f790)] **FEAT:** *setup*
+  - Enhance setup script with comprehensive overwrite warnings listing all affected files and categorized summary
+
+---
+
 ## [v1.0.4] - 2025-10-30
 
 ### [PR #7](https://github.com/apolopena/multi-agent-workflow/pull/7) - Fix summary UX, .env loading, Atlas and Bixby agents
