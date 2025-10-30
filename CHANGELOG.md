@@ -6,6 +6,34 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [v1.0.4] - 2025-10-30
+
+### [PR #7](https://github.com/apolopena/multi-agent-workflow/pull/7) - Fix summary UX, .env loading, Atlas and Bixby agents
+**Branch:** `feat/infrastructure-updates` → `main` · **Status:** ✅ Merged
+
+- [[22006ad](https://github.com/apolopena/multi-agent-workflow/commit/22006ad)] **FEAT:** *ui*
+  - Simplified summary generation with one-button operation hardcoded to repo root
+- [[22006ad](https://github.com/apolopena/multi-agent-workflow/commit/22006ad)] **FIX:** *server*
+  - Fixed `.env` loading by running server from project root instead of `apps/server`
+- [[22006ad](https://github.com/apolopena/multi-agent-workflow/commit/22006ad)] **FEAT:** *agent*
+  - Add Atlas agent for generating `context.md` and `architecture.md` documentation
+- [[22006ad](https://github.com/apolopena/multi-agent-workflow/commit/22006ad)] **FEAT:** *agent*
+  - Add Bixby agent for HTML formatting operations
+- [[22006ad](https://github.com/apolopena/multi-agent-workflow/commit/22006ad)] **FEAT:** *database*
+  - Implement project registration with database persistence
+- [[22006ad](https://github.com/apolopena/multi-agent-workflow/commit/22006ad)] **REFACTOR:** *docs*
+  - Reorganize documentation by moving `ai_docs` to `.ai/docs`
+- [[22006ad](https://github.com/apolopena/multi-agent-workflow/commit/22006ad)] **CHORE:** *cleanup*
+  - Remove `demo-cc-agent` directory and obsolete test/benchmark files
+- [[22006ad](https://github.com/apolopena/multi-agent-workflow/commit/22006ad)] **FIX:** *changelog*
+  - Fix CHANGELOG version ordering to use proper semantic version sort
+- [[22006ad](https://github.com/apolopena/multi-agent-workflow/commit/22006ad)] **FEAT:** *commands*
+  - Update `generate-context` command with improved functionality
+- [[22006ad](https://github.com/apolopena/multi-agent-workflow/commit/22006ad)] **CHORE:** *config*
+  - Clean up `.claude` configuration by removing deprecated agents and commands
+
+---
+
 ## [v1.0.3] - 2025-10-29
 
 ### [PR #6](https://github.com/apolopena/multi-agent-workflow/pull/6) - Add Pedro changelog manager with verification
