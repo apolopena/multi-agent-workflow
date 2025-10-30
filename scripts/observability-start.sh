@@ -35,10 +35,10 @@ if check_port 5173; then
     exit 1
 fi
 
-# Start server
+# Start server (run from project root to pick up .env file)
 echo -e "\n${GREEN}Starting server on port 4000...${NC}"
-cd "$PROJECT_ROOT/apps/server"
-bun run dev &
+cd "$PROJECT_ROOT"
+bun --watch apps/server/src/index.ts &
 SERVER_PID=$!
 
 # Wait for server to be ready

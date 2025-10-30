@@ -1,10 +1,12 @@
 import { Database } from 'bun:sqlite';
+import { resolve } from 'path';
 import type { HookEvent, FilterOptions, Theme, ThemeSearchQuery } from './types';
 
 let db: Database;
 
 export function initDatabase(): void {
-  db = new Database('events.db');
+  const dbPath = resolve(import.meta.dir, '../events.db');
+  db = new Database(dbPath);
   
   // Enable WAL mode for better concurrent performance
   db.exec('PRAGMA journal_mode = WAL');
@@ -120,6 +122,18 @@ export function initDatabase(): void {
   db.exec('CREATE INDEX IF NOT EXISTS idx_themes_createdAt ON themes(createdAt)');
   db.exec('CREATE INDEX IF NOT EXISTS idx_theme_shares_token ON theme_shares(shareToken)');
   db.exec('CREATE INDEX IF NOT EXISTS idx_theme_ratings_theme ON theme_ratings(themeId)');
+
+  // Create projects table
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS projects (
+      source_app TEXT PRIMARY KEY,
+      project_path TEXT NOT NULL,
+      registered_at INTEGER NOT NULL,
+      last_seen INTEGER NOT NULL
+    )
+  `);
+
+  db.exec('CREATE INDEX IF NOT EXISTS idx_projects_last_seen ON projects(last_seen)');
 }
 
 export function insertEvent(event: HookEvent): HookEvent {
@@ -478,6 +492,32 @@ export function getEventsWithoutSummaries(limit: number = 100): HookEvent[] {
 
     return event;
   }).filter(event => !event.summary || !event.summary.startsWith('[Meta-event:')); // Exclude from "needs summary" list if it has a meta-event summary
+}
+
+// Project management functions
+export function upsertProject(sourceApp: string, projectPath: string): boolean {
+  const now = Date.now();
+  const stmt = db.prepare(`
+    INSERT INTO projects (source_app, project_path, registered_at, last_seen)
+    VALUES (?, ?, ?, ?)
+    ON CONFLICT(source_app) DO UPDATE SET
+      project_path = excluded.project_path,
+      last_seen = excluded.last_seen
+  `);
+  const result = stmt.run(sourceApp, projectPath, now, now);
+  return result.changes > 0;
+}
+
+export function getAllProjects(): Array<{ name: string; path: string }> {
+  const stmt = db.prepare('SELECT source_app, project_path FROM projects ORDER BY last_seen DESC');
+  const rows = stmt.all() as Array<{ source_app: string; project_path: string }>;
+  return rows.map(row => ({ name: row.source_app, path: row.project_path }));
+}
+
+export function getProjectBySourceApp(sourceApp: string): { name: string; path: string } | null {
+  const stmt = db.prepare('SELECT source_app, project_path FROM projects WHERE source_app = ?');
+  const row = stmt.get(sourceApp) as { source_app: string; project_path: string } | undefined;
+  return row ? { name: row.source_app, path: row.project_path } : null;
 }
 
 export { db };

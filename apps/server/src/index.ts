@@ -1,4 +1,4 @@
-import { initDatabase, insertEvent, getFilterOptions, getRecentEvents, updateEventHITLResponse, getEventById, updateEventSummary, getEventsWithoutSummaries } from './db';
+import { initDatabase, insertEvent, getFilterOptions, getRecentEvents, updateEventHITLResponse, getEventById, updateEventSummary, getEventsWithoutSummaries, upsertProject, getAllProjects } from './db';
 import type { HookEvent, HumanInTheLoopResponse } from './types';
 import {
   createTheme,
@@ -252,6 +252,50 @@ const server = Bun.serve({
       }
     }
 
+    // POST /projects/register - Register project path
+    if (url.pathname === '/projects/register' && req.method === 'POST') {
+      try {
+        const { source_app, project_path } = await req.json();
+
+        if (!source_app || !project_path) {
+          return new Response(JSON.stringify({ error: 'source_app and project_path are required' }), {
+            status: 400,
+            headers: { ...headers, 'Content-Type': 'application/json' }
+          });
+        }
+
+        // Upsert project into database
+        upsertProject(source_app, project_path);
+
+        return new Response(JSON.stringify({ success: true }), {
+          headers: { ...headers, 'Content-Type': 'application/json' }
+        });
+      } catch (error) {
+        console.error('Error registering project:', error);
+        return new Response(JSON.stringify({ error: 'Failed to register project' }), {
+          status: 500,
+          headers: { ...headers, 'Content-Type': 'application/json' }
+        });
+      }
+    }
+
+    // GET /projects - Get all registered projects
+    if (url.pathname === '/projects' && req.method === 'GET') {
+      try {
+        const projects = getAllProjects();
+
+        return new Response(JSON.stringify(projects), {
+          headers: { ...headers, 'Content-Type': 'application/json' }
+        });
+      } catch (error) {
+        console.error('Error getting projects:', error);
+        return new Response(JSON.stringify({ error: 'Failed to get projects' }), {
+          status: 500,
+          headers: { ...headers, 'Content-Type': 'application/json' }
+        });
+      }
+    }
+
     // POST /events/save-summary-prompt - Save summary generation prompt to file
     if (url.pathname === '/events/save-summary-prompt' && req.method === 'POST') {
       try {
@@ -264,13 +308,16 @@ const server = Bun.serve({
           });
         }
 
-        // Save to file in project root
-        const filePath = '/home/quadro/repos/forks/multi-agent-workflow/.summary-prompt.txt';
-        await Bun.write(filePath, prompt);
+        // Always save to repo root (server runs from project root)
+        const relativePath = '.summary-prompt.txt';
+        await Bun.write(relativePath, prompt);
+
+        // Return absolute path for clarity
+        const absolutePath = `${process.cwd()}/${relativePath}`;
 
         return new Response(JSON.stringify({
           success: true,
-          filePath,
+          filePath: absolutePath,
           message: 'Prompt saved successfully'
         }), {
           headers: { ...headers, 'Content-Type': 'application/json' }

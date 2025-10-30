@@ -141,8 +141,49 @@ def load_development_context(source):
     return "\n".join(context_parts)
 
 
+def register_project_path():
+    """Register project path with observability server."""
+    try:
+        # Load config
+        config_file = Path.cwd() / '.claude' / '.observability-config'
+        if not config_file.exists():
+            return
+
+        with open(config_file, 'r') as f:
+            config = json.load(f)
+
+        # Get project info
+        source_app = config.get('PROJECT_NAME', Path.cwd().name)
+        project_path = str(Path.cwd())
+        server_url = config.get('SERVER_URL', 'http://localhost:4000')
+
+        # Send registration request
+        import urllib.request
+        import urllib.error
+
+        data = json.dumps({
+            'source_app': source_app,
+            'project_path': project_path
+        }).encode('utf-8')
+
+        req = urllib.request.Request(
+            f'{server_url}/projects/register',
+            data=data,
+            headers={'Content-Type': 'application/json'}
+        )
+
+        with urllib.request.urlopen(req, timeout=2) as response:
+            response.read()
+    except Exception:
+        # Silently fail if server is not available
+        pass
+
+
 def main():
     try:
+        # Register project path with server
+        register_project_path()
+
         # Parse command line arguments
         parser = argparse.ArgumentParser()
         parser.add_argument('--load-context', action='store_true',
@@ -150,7 +191,7 @@ def main():
         parser.add_argument('--announce', action='store_true',
                           help='Announce session start via TTS')
         args = parser.parse_args()
-        
+
         # Read JSON input from stdin
         input_data = json.loads(sys.stdin.read())
         
