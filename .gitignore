@@ -245,33 +245,22 @@ CVS/
 claude-output.json
 .claude/commands/feature.md
 
-# Specs - ignore everything except specific plan files
+# Specs - ignore everything
 specs/*
-!specs/plan_new_feature_sonnet45.md
-!specs/plan_new_feature_haiku45.md
 
 # App docs - ignore everything
 app_docs/
 
 .mcp.json
 
-# AI docs - ignore everything except specific answer files
-ai_docs/*
-!ai_docs/sonnet45/
-!ai_docs/haiku45/
-ai_docs/sonnet45/*
-ai_docs/haiku45/*
-!ai_docs/sonnet45/answers.md
-!ai_docs/haiku45/answers.md
+# AI folder structure
+.ai/scratch/           # Temporary AI working files (primers, notes, experiments)
 
 # Claude Code session data
 .claude/data/
 
 # AI summary generation prompt
 .summary-prompt.txt
-
-# AI scratch notes
-ai_docs/scratch/
 
 # Observability config (generated)
 .claude/.observability-config

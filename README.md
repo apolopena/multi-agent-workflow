@@ -200,11 +200,30 @@ open http://localhost:5173
 
 ## 🚀 Quick Start (Try It in This Repo)
 
+### ⚠️ IMPORTANT: Environment Setup (Required for Full Functionality)
+
+**The system will work without `.env`, but you'll miss AI summaries, TTS notifications, and other features.**
+
+```bash
+# 1. Copy environment template to both locations
+cp templates/.env.template .env
+cp .env apps/server/.env
+
+# 2. Edit and add your API keys (at minimum, add ANTHROPIC_API_KEY)
+nano .env
+```
+
+**Why two locations?**
+- Project root (`.env`) - Used by Python hooks for summaries and TTS
+- Server directory (`apps/server/.env`) - Used by Bun server for real-time features
+
+### Start the System
+
 Test the observability system using this repo's built-in configuration:
 
 ```bash
 # 1. Start the server and client
-./scripts/start-system.sh
+./scripts/observability-start.sh
 
 # 2. Open the dashboard
 open http://localhost:5173
@@ -250,8 +269,6 @@ multi-agent-workflow/
 │   │   │   └── types.ts           # TypeScript interfaces
 │   │   ├── logs/                  # Client logs (gitignored)
 │   │   └── package.json
-│   │
-│   └── demo-cc-agent/              # Demo project with observability
 │
 ├── .claude/                        # Claude Code configuration (source templates)
 │   ├── hooks/
@@ -279,21 +296,21 @@ multi-agent-workflow/
 │   │       │       ├── elevenlabs_tts.py
 │   │       │       ├── openai_tts.py
 │   │       │       └── pyttsx3_tts.py
-│   │       └── examples/          # Hook usage examples
 │   │
 │   ├── agents/                    # Specialized AI agents
 │   │   ├── summary-processor.md  # Jerry - On-demand summaries
-│   │   ├── observability-manager.md # Kim - System management
-│   │   ├── ghcli.md              # Mark - GitHub operations (legacy)
-│   │   ├── fetch-docs-haiku45.md # Haiku doc fetcher
-│   │   └── fetch-docs-sonnet45.md # Sonnet doc fetcher
+│   │   ├── changelog-manager.md  # Pedro - CHANGELOG maintenance
+│   │   └── ghcli.md              # Mark - GitHub operations
 │   │
 │   ├── commands/                  # Custom slash commands
 │   │   ├── process-summaries.md  # On-demand summary generation
-│   │   ├── bun-start.md          # Start system convenience command
-│   │   ├── bun-stop.md           # Stop system convenience command
-│   │   ├── convert_paths_absolute.md # Path conversion utility
-│   │   └── bench/                # Benchmarking commands
+│   │   ├── o-start.md            # Start observability system
+│   │   ├── o-stop.md             # Stop observability system
+│   │   ├── o-status.md           # Check system status
+│   │   ├── o-enable.md           # Enable event streaming
+│   │   ├── o-disable.md          # Disable event streaming
+│   │   ├── quick-plan.md         # Create implementation plans
+│   │   └── convert_paths_absolute.md # Path conversion utility
 │   │
 │   ├── status_lines/             # Status line scripts
 │   │   └── git-status.sh        # Git branch/status display
@@ -306,9 +323,8 @@ multi-agent-workflow/
 │   └── .observability-config    # Environment-specific config (gitignored)
 │
 ├── scripts/                      # Management scripts
-│   ├── start-system.sh          # Launch server & client
-│   ├── stop-system.sh           # Stop all processes
-│   ├── test-system.sh           # System validation
+│   ├── observability-start.sh   # Launch server & client
+│   ├── observability-stop.sh    # Stop all processes
 │   ├── observability-setup.sh   # Install to other projects
 │   ├── observability-enable.sh  # Enable event streaming
 │   ├── observability-disable.sh # Disable event streaming
@@ -317,8 +333,9 @@ multi-agent-workflow/
 │   └── git-ai.sh                # Git with AI attribution
 │
 ├── ai_docs/                     # AI-fetched documentation
-│   ├── haiku45/                 # Haiku 4.5 benchmarks
-│   └── sonnet45/                # Sonnet 4.5 benchmarks
+│   ├── README.md                # Documentation URLs
+│   ├── claude_*.md              # Fetched Claude Code docs
+│   └── scratch/                 # Development notes
 │
 ├── app_docs/                    # Project documentation
 │   └── *.md                     # Design docs, specs, guides
@@ -550,6 +567,72 @@ The system includes purpose-built AI agents for specific workflow tasks:
 
 **CRITICAL**: Mark is SOLELY responsible for ALL `gh` CLI calls. NO EXCEPTIONS.
 
+### Atlas (Primer Generator)
+**Purpose**: Generates comprehensive context files for AI priming sessions
+**Model**: Haiku (fast, efficient)
+**Tools**: Bash (git commands), Read, Write, Glob, Grep, SlashCommand
+**Color**: Green
+
+**What it does:**
+Atlas is your codebase cartographer - it maps the terrain and creates navigation guides for AI agents.
+
+**Generated Files** (in `.ai/scratch/`, gitignored):
+- `context-primer.md` - Current branch state, recent changes, progress tracking
+- `arch-primer.md` - Codebase architecture, patterns, and conventions
+
+**Workflow:**
+1. Reads CHANGELOG.md for recent project history
+2. Runs git commands to understand current state
+3. Executes `/generate-context` to create context-primer.md
+4. Executes `/generate-arch` to create arch-primer.md
+
+**Commands:**
+- `/prime-full` - Generate fresh primers via Atlas (slower, ~10-30s)
+- `/prime-quick` - Read existing primers (fast, <5s)
+- `/generate-context` - Standalone context primer generation
+- `/generate-arch` - Standalone architecture primer generation
+
+**Why Primers Are Gitignored:**
+- Generated fresh per developer - always current
+- No git noise from frequent updates
+- No merge conflicts
+- Personal to each developer's workflow
+
+**When to Use:**
+- **First time in repo**: Run `/prime-full` to generate primers
+- **Start of work session**: Run `/prime-quick` for instant context
+- **After major changes**: Regenerate with `/prime-full`
+- **Switching branches**: Regenerate to reflect new context
+
+### Bixby (HTML Converter)
+**Purpose**: Converts markdown/text files to styled HTML documents
+**Model**: Haiku (fast formatting)
+**Tools**: Read, Write
+**Color**: Purple
+
+**CRITICAL**: Bixby is a formatter, NOT a content creator. Main agent must write the markdown/text file FIRST.
+
+**Trigger patterns:**
+- "Convert [file] to HTML"
+- "Format [file] as HTML"
+- "Make HTML version of [file]"
+
+**Do NOT invoke for:** "Create HTML", "Write HTML", "Generate HTML" (content creation)
+
+**Features:**
+- Dark mode by default (with light mode toggle)
+- Collapsible sidebar TOC
+- Responsive design
+- Professional LearnStreams styling
+- Theme persistence via localStorage
+
+**Workflow:**
+1. Read source file (.md, .txt, or .html)
+2. Convert/parse content
+3. Apply LearnStreams HTML template
+4. Generate TOC from headings
+5. Write styled HTML output
+
 ## 🔄 Data Flow
 
 1. **Event Generation**: Claude Code executes an action (tool use, notification, etc.)
@@ -587,10 +670,8 @@ The `UserPromptSubmit` hook captures every user prompt before Claude processes i
 
 ## 🧪 Testing
 
+### System Validation
 ```bash
-# System validation
-./scripts/test-system.sh
-
 # Manual event test
 curl -X POST http://localhost:4000/events \
   -H "Content-Type: application/json" \
@@ -601,6 +682,22 @@ curl -X POST http://localhost:4000/events \
     "payload": {"tool_name": "Bash", "tool_input": {"command": "ls"}}
   }'
 ```
+
+### Human-in-the-Loop (HITL) Testing
+The HITL system allows real-time interaction between the agent and the user through the dashboard. The core HITL functionality (`utils/hitl.py`) is integrated into the hook system and can be tested by creating a simple test script:
+
+```python
+#!/usr/bin/env python3
+import sys, os
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '.claude/hooks/observability'))
+from utils.hitl import ask_permission
+
+session_data = {"source_app": "test", "session_id": "test-001"}
+approved = ask_permission("Test permission request?", session_data, timeout=60)
+print("✅ Approved" if approved else "❌ Denied")
+```
+
+Save this to a file, run it while the observability server is active, and respond via the dashboard at `http://localhost:5173`.
 
 ## ⚙️ Configuration
 
@@ -622,8 +719,8 @@ The project uses a single `.env` file for configuration:
 
 **Setup**:
 ```bash
-# Copy example file to both locations
-cp .env.sample .env
+# Copy template file to both locations
+cp templates/.env.template .env
 cp .env apps/server/.env
 
 # Edit and add your API keys

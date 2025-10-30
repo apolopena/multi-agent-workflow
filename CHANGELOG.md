@@ -4,19 +4,25 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-### PR #3 - Infrastructure Updates
-**Branch:** `feat/infrastructure-updates` → `main` · **Status:** 🟡 Open
+---
 
-- [[a1122f0](https://github.com/apolopena/multi-agent-workflow/commit/a1122f0)] **FIX:** *config*
-  - Remove hardcoded project names, read from `.observability-config` dynamically
-- [[a1122f0](https://github.com/apolopena/multi-agent-workflow/commit/a1122f0)] **FIX:** *setup*
-  - Add missing directory structure with `.gitkeep` files in `apps/server/data/` and `logs/`
-- [[a1122f0](https://github.com/apolopena/multi-agent-workflow/commit/a1122f0)] **DOCS:** *setup*
-  - Document bun binary accessibility with symlink creation for non-interactive shells
-- [[a1122f0](https://github.com/apolopena/multi-agent-workflow/commit/a1122f0)] **CHORE:** *templates*
-  - Move all template files to `templates/` directory with `.template` extension
-- [[a1122f0](https://github.com/apolopena/multi-agent-workflow/commit/a1122f0)] **DOCS:** *postmortem*
-  - Add comprehensive root cause analysis with solutions and testing
+## [v1.0.3] - 2025-10-29
+
+### [PR #6](https://github.com/apolopena/multi-agent-workflow/pull/6) - Add Pedro changelog manager with verification
+**Branch:** `feat/infrastructure-updates` → `main` · **Status:** ✅ Merged
+
+- [[1e69a37](https://github.com/apolopena/multi-agent-workflow/commit/1e69a37)] **FEAT:** *agent*
+  - Add Pedro changelog manager with automated verification to prevent duplicate entries
+
+---
+
+## [v1.0.2] - 2025-10-28
+
+### [PR #3](https://github.com/apolopena/multi-agent-workflow/pull/3) - Infrastructure Updates
+**Branch:** `feat/infrastructure-updates` → `main` · **Status:** ✅ Merged
+
+- [[a1122f0](https://github.com/apolopena/multi-agent-workflow/commit/a1122f0)] **FIX:** *infrastructure*
+  - Fix critical infrastructure issues and refactor project config
 - [[a9ffd3e](https://github.com/apolopena/multi-agent-workflow/commit/a9ffd3e)] **DOCS:** *changelog*
   - Update CHANGELOG with commit hash
 - [[10d8e24](https://github.com/apolopena/multi-agent-workflow/commit/10d8e24)] **DOCS:** *agent*

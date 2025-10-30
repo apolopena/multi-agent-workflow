@@ -57,6 +57,17 @@
         Clear Filters
       </button>
 
+      <!-- Generate Summaries Button - Only show in on-demand mode -->
+      <button
+        v-if="summaryMode === 'on-demand'"
+        @click="generateSummaries"
+        :disabled="generatingSummaries || visibleEventsWithoutSummaries === 0"
+        class="px-4 py-2 mobile:px-2 mobile:py-1.5 mobile:w-full text-base mobile:text-sm font-bold text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-primary-dark)] hover:from-[var(--theme-primary-dark)] hover:to-[var(--theme-primary)]"
+        :title="`Generate summaries for ${visibleEventsWithoutSummaries} events`"
+      >
+        {{ generatingSummaries ? 'Preparing...' : `📝 Generate Summaries (${visibleEventsWithoutSummaries})` }}
+      </button>
+
       <!-- Settings Button -->
       <button
         @click="showSettings = true"
@@ -64,18 +75,6 @@
         title="Summary Settings"
       >
         ⚙️ Settings
-      </button>
-
-      <!-- Generate Summaries Button - Only show in on-demand mode -->
-      <button
-        v-if="summaryMode === 'on-demand'"
-        @click="generateSummaries"
-        :disabled="generatingSummaries || visibleEventsWithoutSummaries === 0"
-        class="px-4 py-2 mobile:px-2 mobile:py-1.5 mobile:w-full text-base mobile:text-sm font-bold text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
-        :class="generatingSummaries ? 'bg-gray-500' : 'bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-primary-dark)] hover:from-[var(--theme-primary-dark)] hover:to-[var(--theme-primary)]'"
-        :title="`Generate summaries for ${visibleEventsWithoutSummaries} visible events`"
-      >
-        {{ generatingSummaries ? 'Preparing...' : `Generate Summaries (${visibleEventsWithoutSummaries})` }}
       </button>
     </div>
 
@@ -228,7 +227,7 @@ const generateSummaries = async () => {
 
     const prompt = buildSummaryPrompt(eventsToSummarize);
 
-    // Save prompt to file on server
+    // Save prompt to file on server (always writes to repo root)
     const saveResponse = await fetch('http://localhost:4000/events/save-summary-prompt', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -239,10 +238,11 @@ const generateSummaries = async () => {
       throw new Error('Failed to save prompt to file');
     }
 
+    const result = await saveResponse.json();
+
     alert(
-      `✅ Summary prompt saved!\n\n` +
-      `Go to Claude Code and run:\n` +
-      `/process-summaries`
+      `✅ Summary prompt saved to:\n${result.filePath}\n\n` +
+      `Run /process-summaries to generate summaries`
     );
   } catch (error) {
     console.error('Error generating summaries:', error);

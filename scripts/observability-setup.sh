@@ -8,6 +8,14 @@ set -e  # Exit on error
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
+CYAN='\033[0;36m'
+ORANGE='\033[38;5;208m'
+LIME='\033[38;5;154m'      # Bright yellow-green for commands
+BRIGHT_YELLOW='\033[38;5;226m'  # Bright yellow for file paths
+BOLD='\033[1m'
+DIM='\033[2m'
 NC='\033[0m' # No Color
 
 # Get target directory
@@ -166,18 +174,32 @@ if [ ${#WARNINGS[@]} -gt 0 ]; then
     echo ""
 fi
 
-echo "The following will be installed:"
-echo "  - .claude/hooks/observability/"
-echo "  - .claude/status_lines/"
-echo "  - ./scripts/ (management script wrappers)"
-echo "  - .claude/agents/ (Jerry, Mark)"
+echo -e "${BOLD}${CYAN}╔═══════════════════════════════════════════════════════════════════════════╗${NC}"
+echo -e "${BOLD}${CYAN}║                      INSTALLATION PLAN                                    ║${NC}"
+echo -e "${BOLD}${CYAN}╚═══════════════════════════════════════════════════════════════════════════╝${NC}"
+echo ""
+echo -e "${GREEN}The following components will be installed:${NC}"
+echo -e "  ${DIM}▸${NC} ${BRIGHT_YELLOW}.claude/hooks/observability/${NC}"
+echo -e "      ${DIM}PreToolUse, PostToolUse, UserPromptSubmit, Stop, SubagentStop, etc.${NC}"
+echo -e "  ${DIM}▸${NC} ${BRIGHT_YELLOW}.claude/status_lines/${NC}"
+echo -e "      ${DIM}Real-time agent status display${NC}"
+echo -e "  ${DIM}▸${NC} ${BRIGHT_YELLOW}./scripts/${NC} ${DIM}(management script wrappers)${NC}"
+echo -e "      ${DIM}observability-start.sh, -stop.sh, -status.sh, -enable.sh, -disable.sh${NC}"
+echo -e "  ${DIM}▸${NC} ${BRIGHT_YELLOW}.claude/commands/${NC}"
+echo -e "      ${DIM}Slash commands for observability management and context generation${NC}"
+echo -e "  ${DIM}▸${NC} ${BRIGHT_YELLOW}.claude/agents/${NC}"
+echo -e "      ${ORANGE}●${NC} ${BOLD}${ORANGE}Jerry${NC} - Generates AI summaries for hook events"
+echo -e "      ${BLUE}●${NC} ${BOLD}${BLUE}Pedro${NC} - Maintains ${BRIGHT_YELLOW}CHANGELOG.md${NC} with proper formatting"
+echo -e "      ${CYAN}●${NC} ${BOLD}${CYAN}Mark${NC} - Handles GitHub PRs, issues, comments via ${BRIGHT_YELLOW}.github/workflows/gh-dispatch-ai.yml${NC}"
+echo -e "      ${GREEN}●${NC} ${BOLD}${GREEN}Atlas${NC} - Generates ${BRIGHT_YELLOW}context.md${NC} and ${BRIGHT_YELLOW}arch.md${NC} for AI priming"
+echo -e "      ${PURPLE}●${NC} ${BOLD}${PURPLE}Bixby${NC} - Converts markdown/text to styled HTML"
 echo ""
 
 if [ "$SETTINGS_EXISTS" = true ]; then
     BACKUP_FILE="$SETTINGS_FILE.$(date +%s)"
-    echo "Backup will be created: $BACKUP_FILE"
+    echo -e "${YELLOW}Backup will be created:${NC} ${DIM}$BACKUP_FILE${NC}"
 else
-    echo "New settings.json will be created"
+    echo -e "${GREEN}New settings.json will be created${NC}"
 fi
 
 echo ""
@@ -185,8 +207,65 @@ if [ "$INSTALL_ALL" = "1" ]; then
     echo "INSTALL_ALL=1 detected, skipping prompts..."
     REPLY="y"
 else
-    read -p "Continue with installation? (y/N): " -n 1 -r
+    echo -e "${DIM}Press ${YELLOW}D${NC}${DIM} for detailed component information${NC}"
+    echo -e -n "Continue with installation? (${GREEN}Y${NC}/${YELLOW}D${NC}/${RED}N${NC}): "
+    read -n 1 -r REPLY
     echo
+
+    # Show documentation if requested
+    if [[ $REPLY =~ ^[Dd]$ ]]; then
+        echo ""
+        echo -e "${BOLD}${CYAN}╔═══════════════════════════════════════════════════════════════════════════╗${NC}"
+        echo -e "${BOLD}${CYAN}║                        COMPONENT DETAILS                                  ║${NC}"
+        echo -e "${BOLD}${CYAN}╚═══════════════════════════════════════════════════════════════════════════╝${NC}"
+        echo ""
+
+        echo -e "${BOLD}${GREEN}▸ Agents${NC} ${BRIGHT_YELLOW}.claude/agents/${NC}"
+        echo ""
+        echo -e "  ${ORANGE}●${NC} ${BOLD}${ORANGE}Jerry${NC} - Generates AI summaries for hook events"
+        echo -e "  ${BLUE}●${NC} ${BOLD}${BLUE}Pedro${NC} - Maintains ${BRIGHT_YELLOW}CHANGELOG.md${NC} with proper formatting"
+        echo -e "  ${CYAN}●${NC} ${BOLD}${CYAN}Mark${NC} - Handles GitHub PRs, issues, comments via ${BRIGHT_YELLOW}.github/workflows/gh-dispatch-ai.yml${NC}"
+        echo -e "  ${GREEN}●${NC} ${BOLD}${GREEN}Atlas${NC} - Generates ${BRIGHT_YELLOW}context.md${NC} and ${BRIGHT_YELLOW}arch.md${NC} for AI priming"
+        echo -e "  ${PURPLE}●${NC} ${BOLD}${PURPLE}Bixby${NC} - Converts markdown/text to styled HTML"
+        echo ""
+
+        echo -e "${BOLD}${GREEN}▸ Config Files${NC}"
+        echo ""
+        echo -e "  ${BRIGHT_YELLOW}.claude/.observability-config${NC}  - System paths and project name"
+        echo -e "  ${BRIGHT_YELLOW}.claude/.observability-state${NC}   - Event streaming state"
+        echo -e "  ${BRIGHT_YELLOW}.claude/settings.json${NC}          - Hooks and status line config"
+        echo ""
+
+        echo -e "${BOLD}${GREEN}▸ Slash Commands${NC} ${BRIGHT_YELLOW}.claude/commands/${NC}"
+        echo ""
+        echo -e "  ${LIME}/o-start${NC}           - Start observability server + client dashboard"
+        echo -e "  ${LIME}/o-stop${NC}            - Stop observability system"
+        echo -e "  ${LIME}/o-status${NC}          - Check system status"
+        echo -e "  ${LIME}/o-enable${NC}          - Enable event streaming"
+        echo -e "  ${LIME}/o-disable${NC}         - Disable event streaming"
+        echo -e "  ${LIME}/process-summaries${NC} - Generate AI summaries on-demand"
+        echo -e "  ${LIME}/generate-context${NC}  - Create ${BRIGHT_YELLOW}context.md${NC} with git state + CHANGELOG"
+        echo -e "  ${LIME}/generate-arch${NC}     - Create ${BRIGHT_YELLOW}arch.md${NC} with codebase architecture"
+        echo -e "  ${LIME}/prime-quick${NC}       - Quick prime from existing context files"
+        echo -e "  ${LIME}/prime-full${NC}        - Full context generation via Atlas"
+        echo ""
+
+        echo -e "${BOLD}${GREEN}▸ Hooks${NC} ${BRIGHT_YELLOW}.claude/hooks/observability/${NC}"
+        echo ""
+        echo -e "  PreToolUse, PostToolUse, UserPromptSubmit, Stop, SubagentStop,"
+        echo -e "  SessionStart, SessionEnd, PreCompact"
+        echo ""
+
+        echo -e "${BOLD}${GREEN}▸ Status Lines${NC} ${BRIGHT_YELLOW}.claude/status_lines/${NC}"
+        echo ""
+        echo -e "  Real-time agent states, event counts, and system health"
+        echo ""
+
+        echo -e -n "Continue with installation? (${GREEN}Y${NC}/${RED}N${NC}): "
+        read -n 1 -r REPLY
+        echo
+    fi
+
     if [[ ! $REPLY =~ ^[Yy]$ ]]; then
         echo "Installation aborted. No changes made."
         exit 0
@@ -196,10 +275,13 @@ fi
 # ===== EXECUTE INSTALLATION =====
 
 echo ""
-echo "=== Installing Observability System ==="
+echo -e "${BOLD}${CYAN}╔═══════════════════════════════════════════════════════════════════════════╗${NC}"
+echo -e "${BOLD}${CYAN}║                  INSTALLING OBSERVABILITY SYSTEM                          ║${NC}"
+echo -e "${BOLD}${CYAN}╚═══════════════════════════════════════════════════════════════════════════╝${NC}"
+echo ""
 
 # Create directories
-echo "Creating directories..."
+echo -e "${GREEN}Creating directories...${NC}"
 mkdir -p "$CLAUDE_DIR/hooks"
 mkdir -p "$CLAUDE_DIR/agents"
 mkdir -p "$CLAUDE_DIR/commands"
@@ -222,32 +304,24 @@ generate_wrapper "observability-status.sh"
 
 echo "Copying agents..."
 cp "$SOURCE_DIR/.claude/agents/summary-processor.md" "$CLAUDE_DIR/agents/" 2>/dev/null || true
+cp "$SOURCE_DIR/.claude/agents/changelog-manager.md" "$CLAUDE_DIR/agents/" 2>/dev/null || true
 cp "$SOURCE_DIR/.claude/agents/ghcli.md" "$CLAUDE_DIR/agents/" 2>/dev/null || true
+cp "$SOURCE_DIR/.claude/agents/primer-generator.md" "$CLAUDE_DIR/agents/" 2>/dev/null || true
+cp "$SOURCE_DIR/.claude/agents/html-converter.md" "$CLAUDE_DIR/agents/" 2>/dev/null || true
 
-# Ask user if they want to copy observability slash commands
+# Copy observability slash commands
 echo ""
-if [ "$INSTALL_ALL" = "1" ]; then
-    echo "INSTALL_ALL=1: Copying observability slash commands..."
-    COPY_COMMANDS="y"
-else
-    read -p "Copy observability slash commands (/o-start, /o-stop, /o-status, etc.)? (y/N): " -n 1 -r
-    echo
-    COPY_COMMANDS="$REPLY"
-fi
-
-if [[ $COPY_COMMANDS =~ ^[Yy]$ ]]; then
-    echo "Copying observability commands..."
-    cp "$SOURCE_DIR/.claude/commands/o-start.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
-    cp "$SOURCE_DIR/.claude/commands/o-stop.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
-    cp "$SOURCE_DIR/.claude/commands/o-status.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
-    cp "$SOURCE_DIR/.claude/commands/o-enable.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
-    cp "$SOURCE_DIR/.claude/commands/o-disable.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
-    cp "$SOURCE_DIR/.claude/commands/o-test.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
-    cp "$SOURCE_DIR/.claude/commands/process-summaries.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
-    echo "  Commands copied successfully"
-else
-    echo "  Skipping slash commands"
-fi
+echo -e "${GREEN}Copying observability commands...${NC}"
+cp "$SOURCE_DIR/.claude/commands/o-start.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
+cp "$SOURCE_DIR/.claude/commands/o-stop.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
+cp "$SOURCE_DIR/.claude/commands/o-status.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
+cp "$SOURCE_DIR/.claude/commands/o-enable.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
+cp "$SOURCE_DIR/.claude/commands/o-disable.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
+cp "$SOURCE_DIR/.claude/commands/process-summaries.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
+cp "$SOURCE_DIR/.claude/commands/generate-context.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
+cp "$SOURCE_DIR/.claude/commands/generate-arch.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
+cp "$SOURCE_DIR/.claude/commands/prime-quick.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
+cp "$SOURCE_DIR/.claude/commands/prime-full.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
 
 # Handle settings.json
 echo "Configuring settings.json..."
@@ -272,14 +346,10 @@ if [ "$SETTINGS_EXISTS" = true ]; then
     mv "$SETTINGS_FILE.tmp" "$SETTINGS_FILE"
     echo "  Settings merged successfully"
 else
-    # Create new settings.json from template
+    # Copy entire settings.json template
     TEMPLATE="$SOURCE_DIR/.claude/settings.json"
-    jq '{
-         statusLine: .statusLine,
-         includeCoAuthoredBy: .includeCoAuthoredBy,
-         hooks: .hooks
-       }' "$TEMPLATE" > "$SETTINGS_FILE"
-    echo "  New settings.json created"
+    cp "$TEMPLATE" "$SETTINGS_FILE"
+    echo "  New settings.json created from template"
 fi
 
 # Create observability state file
@@ -343,18 +413,20 @@ fi
 # ===== SUCCESS MESSAGE =====
 
 echo ""
-echo -e "${GREEN}✅ Installation Complete!${NC}"
+echo -e "${BOLD}${CYAN}╔═══════════════════════════════════════════════════════════════════════════╗${NC}"
+echo -e "${BOLD}${CYAN}║                    INSTALLATION COMPLETE ✅                               ║${NC}"
+echo -e "${BOLD}${CYAN}╚═══════════════════════════════════════════════════════════════════════════╝${NC}"
 echo ""
-echo "Project name: $PROJECT_NAME"
-echo "Target directory: $TARGET_DIR"
+echo -e "${BOLD}Project:${NC} ${GREEN}$PROJECT_NAME${NC}"
+echo -e "${BOLD}Target:${NC} ${DIM}$TARGET_DIR${NC}"
 echo ""
-echo "Next steps:"
-echo "  1. Restart Claude Code to load new configuration"
-echo "  2. Start observability server: cd $SOURCE_DIR && ./scripts/observability-start.sh"
-echo "  3. Open dashboard: http://localhost:5173"
-echo "  4. Run any Claude Code command to test"
+echo -e "${BOLD}${GREEN}Next steps:${NC}"
+echo -e "  ${GREEN}1.${NC} Restart Claude Code to load new configuration"
+echo -e "  ${GREEN}2.${NC} Start observability server: ${LIME}cd $SOURCE_DIR && ./scripts/observability-start.sh${NC}"
+echo -e "  ${GREEN}3.${NC} Open dashboard: ${CYAN}http://localhost:5173${NC}"
+echo -e "  ${GREEN}4.${NC} Run any Claude Code command to test"
 echo ""
-echo "Manage observability:"
-echo "  Slash commands: /o-status, /o-start, /o-stop, /o-enable, /o-disable"
-echo "  Scripts: $TARGET_DIR/scripts/observability-status.sh"
+echo -e "${BOLD}${GREEN}Manage observability:${NC}"
+echo -e "  Slash commands: ${LIME}/o-status${NC}, ${LIME}/o-start${NC}, ${LIME}/o-stop${NC}, ${LIME}/o-enable${NC}, ${LIME}/o-disable${NC}"
+echo -e "  Scripts: ${BRIGHT_YELLOW}$TARGET_DIR/scripts/observability-status.sh${NC}"
 echo ""
