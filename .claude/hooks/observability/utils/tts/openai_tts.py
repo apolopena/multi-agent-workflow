@@ -3,19 +3,19 @@
 # requires-python = ">=3.8"
 # dependencies = [
 #     "openai",
-#     "openai[voice_helpers]",
 #     "python-dotenv",
 # ]
 # ///
 
 import os
 import sys
-import asyncio
+import subprocess
+import tempfile
 from pathlib import Path
 from dotenv import load_dotenv
 
 
-async def main():
+def main():
     """
     OpenAI TTS Script
 
@@ -29,8 +29,7 @@ async def main():
     Features:
     - OpenAI gpt-4o-mini-tts model (latest)
     - Nova voice (engaging and warm)
-    - Streaming audio with instructions support
-    - Live audio playback via LocalAudioPlayer
+    - File-based playback with mpv (configurable via FORCE_MPV_FOR_OPENAI)
     """
 
     # Load environment variables
@@ -44,12 +43,14 @@ async def main():
         print("OPENAI_API_KEY=your_api_key_here")
         sys.exit(1)
 
+    # Check if we should force mpv (for Void Linux compatibility)
+    force_mpv = os.getenv("FORCE_MPV_FOR_OPENAI", "").lower() == "true"
+
     try:
-        from openai import AsyncOpenAI
-        from openai.helpers import LocalAudioPlayer
+        from openai import OpenAI
 
         # Initialize OpenAI client
-        openai = AsyncOpenAI(api_key=api_key)
+        client = OpenAI(api_key=api_key)
 
         print("🎙️  OpenAI TTS")
         print("=" * 20)
@@ -61,18 +62,75 @@ async def main():
             text = "Today is a wonderful day to build something people love!"
 
         print(f"🎯 Text: {text}")
-        print("🔊 Generating and streaming...")
+        print("🔊 Generating audio...")
 
         try:
-            # Generate and stream audio using OpenAI TTS
-            async with openai.audio.speech.with_streaming_response.create(
-                model="gpt-4o-mini-tts",
-                voice="nova",
-                input=text,
-                instructions="Speak in a cheerful, positive yet professional tone.",
-                response_format="mp3",
-            ) as response:
-                await LocalAudioPlayer().play(response)
+            if force_mpv:
+                # Force mpv playback (for Void/Arch/Gentoo - uses temp file)
+                print("🔊 Generating audio...")
+                response = client.audio.speech.create(
+                    model="gpt-4o-mini-tts",
+                    voice="nova",
+                    input=text,
+                )
+
+                with tempfile.NamedTemporaryFile(suffix='.mp3', delete=False) as tmp_file:
+                    tmp_path = tmp_file.name
+                    response.stream_to_file(tmp_path)
+
+                print("🔊 Playing audio...")
+                subprocess.run(
+                    ['mpv', '--no-terminal', '--really-quiet', tmp_path],
+                    check=True,
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL
+                )
+                os.unlink(tmp_path)
+            else:
+                # Try LocalAudioPlayer first (Ubuntu/Debian - streaming, no temp file)
+                try:
+                    import asyncio
+                    from openai import AsyncOpenAI
+
+                    async def stream_audio():
+                        async_client = AsyncOpenAI(api_key=api_key)
+                        async with async_client.audio.speech.with_streaming_response.create(
+                            model="gpt-4o-mini-tts",
+                            voice="nova",
+                            input=text,
+                        ) as response:
+                            # Try importing LocalAudioPlayer
+                            try:
+                                from openai.helpers import LocalAudioPlayer
+                                print("🔊 Streaming audio...")
+                                await LocalAudioPlayer().play(response)
+                            except ImportError:
+                                # LocalAudioPlayer not available, fallback to mpv
+                                raise Exception("LocalAudioPlayer not available")
+
+                    asyncio.run(stream_audio())
+
+                except Exception:
+                    # Fallback to mpv if LocalAudioPlayer fails
+                    print("🔊 Generating audio (fallback to mpv)...")
+                    response = client.audio.speech.create(
+                        model="gpt-4o-mini-tts",
+                        voice="nova",
+                        input=text,
+                    )
+
+                    with tempfile.NamedTemporaryFile(suffix='.mp3', delete=False) as tmp_file:
+                        tmp_path = tmp_file.name
+                        response.stream_to_file(tmp_path)
+
+                    print("🔊 Playing audio...")
+                    subprocess.run(
+                        ['mpv', '--no-terminal', '--really-quiet', tmp_path],
+                        check=True,
+                        stdout=subprocess.DEVNULL,
+                        stderr=subprocess.DEVNULL
+                    )
+                    os.unlink(tmp_path)
 
             print("✅ Playback complete!")
 
@@ -90,4 +148,4 @@ async def main():
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()

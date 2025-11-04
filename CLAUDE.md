@@ -18,3 +18,6 @@ CRITICAL: Mark agent (subagent_type=mark) is responsible for ALL GitHub write op
 Mark gathers context and dispatches .github/workflows/gh-dispatch-ai.yml with proper provenance.
 
 **Read-only exception:** Pedro (changelog-manager) may use `gh release view` to check if releases exist when formatting CHANGELOG version numbers. This is read-only access and does not create or modify GitHub resources.
+
+### Planning System
+When using `/generate-prp` or `/execute-prp`, read `.ai/AGENTS.md` for complete planning workflow directives.
