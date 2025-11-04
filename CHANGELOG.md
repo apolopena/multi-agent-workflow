@@ -4,19 +4,19 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-### Context Engineering System
-**Branch:** `feat/context-engineering-system` → `main` · **Status:** 🟡 Open
+---
+
+## [v1.0.6] - 2025-11-04
+
+### [PR #9](https://github.com/apolopena/multi-agent-workflow/pull/9) - Context Engineering System
+**Branch:** `feat/context-engineering-system` → `main` · **Status:** ✅ Merged
 
 - [[e94f21f](https://github.com/apolopena/multi-agent-workflow/commit/e94f21f)] **FEAT:** *infrastructure*
-  - Add Context Engineering workflow system with comprehensive documentation in `.ai/context_engineering.md`
-- [[e94f21f](https://github.com/apolopena/multi-agent-workflow/commit/e94f21f)] **FEAT:** *templates*
-  - Add Product Requirements Planning (PRP) framework with bulk and standalone templates (`prp_bulk.md`, `prp_standalone.md`) and README documentation
-- [[e94f21f](https://github.com/apolopena/multi-agent-workflow/commit/e94f21f)] **FEAT:** *planning*
-  - Add comprehensive planning framework including `PLANNING.md`, `PLANNING_MIGRATE.md`, and supporting documentation for project management
-- [[e94f21f](https://github.com/apolopena/multi-agent-workflow/commit/e94f21f)] **FEAT:** *infrastructure*
-  - Add Context Engineering support tools and scratch documentation for architecture, deployment, email setup, and WebSocket implementation
-- [[e94f21f](https://github.com/apolopena/multi-agent-workflow/commit/e94f21f)] **FEAT:** *commands*
-  - Add `convert-to-planning` command for planning format conversion
+  - Add Context Engineering system and templates
+- [[093d600](https://github.com/apolopena/multi-agent-workflow/commit/093d600)] **FEAT:** *planning*
+  - Add hybrid Linear/Parallel planning system with mode selection in `/convert-planning` command
+- [[2b50c28](https://github.com/apolopena/multi-agent-workflow/commit/2b50c28)] **FEAT:** *setup*
+  - Add `CLAUDE.md` installation with backup to `observability-setup.sh`
 
 ---
 
