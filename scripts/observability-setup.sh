@@ -161,6 +161,17 @@ else
     echo "✓ settings.json will be created from template"
 fi
 
+# Check CLAUDE.md
+CLAUDE_FILE="$TARGET_DIR/CLAUDE.md"
+CLAUDE_EXISTS=false
+if [ -f "$CLAUDE_FILE" ]; then
+    CLAUDE_EXISTS=true
+    WARNINGS+=("CLAUDE.md")
+    echo "✓ CLAUDE.md exists (will be backed up and overwritten)"
+else
+    echo "✓ CLAUDE.md will be created"
+fi
+
 # Check for existing hook files
 if [ -d "$CLAUDE_DIR/hooks/observability" ]; then
     # Find all hook files (.py files and directories)
@@ -218,6 +229,7 @@ done
 
 # Check for existing planning system files
 PLANNING_FILES=(
+    "CLAUDE.md"
     ".ai/AGENTS.md"
     ".ai/context_engineering.md"
     ".ai/planning/README.md"
@@ -505,6 +517,24 @@ cp -R "$SOURCE_DIR/.ai/planning/prp/templates/"* "$TARGET_DIR/.ai/planning/prp/t
 echo "Copying agent directives..."
 cp "$SOURCE_DIR/.ai/AGENTS.md" "$TARGET_DIR/.ai/" 2>/dev/null || true
 cp "$SOURCE_DIR/.ai/context_engineering.md" "$TARGET_DIR/.ai/" 2>/dev/null || true
+
+# Handle CLAUDE.md
+echo "Configuring CLAUDE.md..."
+CLAUDE_FILE="$TARGET_DIR/CLAUDE.md"
+if [ -f "$CLAUDE_FILE" ]; then
+    # Backup existing CLAUDE.md
+    CLAUDE_BACKUP="$CLAUDE_FILE.$(date +%s)"
+    cp "$CLAUDE_FILE" "$CLAUDE_BACKUP"
+    echo "  Backup created: $CLAUDE_BACKUP"
+
+    # Copy new CLAUDE.md (will overwrite)
+    cp "$SOURCE_DIR/CLAUDE.md" "$CLAUDE_FILE"
+    echo "  CLAUDE.md updated with observability instructions"
+else
+    # Copy CLAUDE.md
+    cp "$SOURCE_DIR/CLAUDE.md" "$CLAUDE_FILE"
+    echo "  New CLAUDE.md created"
+fi
 
 # Handle settings.json
 echo "Configuring settings.json..."
