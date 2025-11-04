@@ -8,7 +8,15 @@ All notable changes to this project will be documented in this file.
 **Branch:** `feat/context-engineering-system` → `main` · **Status:** 🟡 Open
 
 - [[e94f21f](https://github.com/apolopena/multi-agent-workflow/commit/e94f21f)] **FEAT:** *infrastructure*
-  - Add Context Engineering system with comprehensive workflow documentation, PRP templates (`prp_bulk.md`, `prp_standalone.md`), and planning framework for managing projects from initial build through post-MVP incremental development
+  - Add Context Engineering workflow system with comprehensive documentation in `.ai/context_engineering.md`
+- [[e94f21f](https://github.com/apolopena/multi-agent-workflow/commit/e94f21f)] **FEAT:** *templates*
+  - Add Product Requirements Planning (PRP) framework with bulk and standalone templates (`prp_bulk.md`, `prp_standalone.md`) and README documentation
+- [[e94f21f](https://github.com/apolopena/multi-agent-workflow/commit/e94f21f)] **FEAT:** *planning*
+  - Add comprehensive planning framework including `PLANNING.md`, `PLANNING_MIGRATE.md`, and supporting documentation for project management
+- [[e94f21f](https://github.com/apolopena/multi-agent-workflow/commit/e94f21f)] **FEAT:** *infrastructure*
+  - Add Context Engineering support tools and scratch documentation for architecture, deployment, email setup, and WebSocket implementation
+- [[e94f21f](https://github.com/apolopena/multi-agent-workflow/commit/e94f21f)] **FEAT:** *commands*
+  - Add `convert-to-planning` command for planning format conversion
 
 ---
 
