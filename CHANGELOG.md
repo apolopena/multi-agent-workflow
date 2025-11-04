@@ -6,6 +6,20 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [v1.0.6] - 2025-11-04
+
+### [PR #9](https://github.com/apolopena/multi-agent-workflow/pull/9) - Context Engineering System
+**Branch:** `feat/context-engineering-system` → `main` · **Status:** ✅ Merged
+
+- [[e94f21f](https://github.com/apolopena/multi-agent-workflow/commit/e94f21f)] **FEAT:** *infrastructure*
+  - Add Context Engineering system and templates
+- [[093d600](https://github.com/apolopena/multi-agent-workflow/commit/093d600)] **FEAT:** *planning*
+  - Add hybrid Linear/Parallel planning system with mode selection in `/convert-planning` command
+- [[2b50c28](https://github.com/apolopena/multi-agent-workflow/commit/2b50c28)] **FEAT:** *setup*
+  - Add `CLAUDE.md` installation with backup to `observability-setup.sh`
+
+---
+
 ## [v1.0.5] - 2025-10-30
 
 ### [PR #8](https://github.com/apolopena/multi-agent-workflow/pull/8) - Enhance setup script with comprehensive overwrite warnings

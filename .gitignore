@@ -255,6 +255,11 @@ app_docs/
 
 # AI folder structure
 .ai/scratch/           # Temporary AI working files (primers, notes, experiments)
+.ai/logs/              # AI operation logs
+.ai/.claude/           # AI session data
+.ai/prp/proposals/     # Ephemeral input artifacts
+.ai/prp/instances/     # Ephemeral generated artifacts
+.ai/prp/archive/       # Historical PRPs
 
 # Claude Code session data
 .claude/data/

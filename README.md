@@ -49,6 +49,17 @@ curl -fsSL https://bun.sh/install | bash && curl -LsSf https://astral.sh/uv/inst
 (cd apps/server && bun install) && (cd apps/client && bun install)
 ```
 
+**Minimal Distros** (Void/Arch/Gentoo) - Additional audio packages required:
+```bash
+# Void Linux
+sudo xbps-install -S espeak-ng alsa-utils pulseaudio mpv
+
+# Arch Linux
+sudo pacman -S espeak-ng alsa-utils pulseaudio mpv
+```
+
+**TTS Priority**: ElevenLabs (if API key) → OpenAI (if API key) → pyttsx3 (offline fallback)
+
 ## 🚨 Important: Shared System Architecture
 
 **This repository provides a centralized observability server and client that ALL integrated projects depend on.**
@@ -712,9 +723,10 @@ The project uses a single `.env` file for configuration:
 **Environment Variables**:
 - `ANTHROPIC_API_KEY` – Anthropic Claude API key (required for real-time summaries)
 - `ENGINEER_NAME` – Your name (optional, used in TTS notifications)
-- `OPENAI_API_KEY` – OpenAI API key (optional, for TTS and completion messages)
-- `ELEVENLABS_API_KEY` – ElevenLabs API key (optional, for TTS notifications)
+- `OPENAI_API_KEY` – OpenAI API key (optional, for TTS and LLM fallback, $0.015/1K chars)
+- `ELEVENLABS_API_KEY` – ElevenLabs API key (optional, premium TTS, $5/month for 30K chars)
 - `ELEVENLABS_VOICE_ID` – ElevenLabs voice ID (optional, defaults to Adam voice)
+- `FORCE_MPV_FOR_OPENAI` – Skip LocalAudioPlayer attempt, use mpv directly (optional, minimal distros)
 - `GEMINI_API_KEY` – Google Gemini API key (optional)
 
 **Setup**:

@@ -161,6 +161,17 @@ else
     echo "✓ settings.json will be created from template"
 fi
 
+# Check CLAUDE.md
+CLAUDE_FILE="$TARGET_DIR/CLAUDE.md"
+CLAUDE_EXISTS=false
+if [ -f "$CLAUDE_FILE" ]; then
+    CLAUDE_EXISTS=true
+    WARNINGS+=("CLAUDE.md")
+    echo "✓ CLAUDE.md exists (will be backed up and overwritten)"
+else
+    echo "✓ CLAUDE.md will be created"
+fi
+
 # Check for existing hook files
 if [ -d "$CLAUDE_DIR/hooks/observability" ]; then
     # Find all hook files (.py files and directories)
@@ -207,6 +218,39 @@ for cmd in "${COMMAND_FILES[@]}"; do
         OVERWRITE_FILES+=(".claude/commands/$cmd")
     fi
 done
+
+# Check for existing planning commands
+PLANNING_COMMAND_FILES=("convert-planning.md" "generate-prp.md" "execute-prp.md")
+for cmd in "${PLANNING_COMMAND_FILES[@]}"; do
+    if [ -f "$CLAUDE_DIR/commands/$cmd" ]; then
+        OVERWRITE_FILES+=(".claude/commands/$cmd")
+    fi
+done
+
+# Check for existing planning system files
+PLANNING_FILES=(
+    "CLAUDE.md"
+    ".ai/AGENTS.md"
+    ".ai/context_engineering.md"
+    ".ai/planning/README.md"
+    ".ai/planning/templates/PLANNING_TEMPLATE.md"
+    ".ai/planning/templates/TASKS_TEMPLATE.md"
+    ".ai/planning/prd/PLANNING_MIGRATE.md"
+    ".ai/planning/prp/README.md"
+)
+for file in "${PLANNING_FILES[@]}"; do
+    if [ -f "$TARGET_DIR/$file" ]; then
+        OVERWRITE_FILES+=("$file")
+    fi
+done
+
+# Check for PRP templates directory
+if [ -d "$TARGET_DIR/.ai/planning/prp/templates" ]; then
+    while IFS= read -r -d '' prp_file; do
+        rel_path="${prp_file#$TARGET_DIR/}"
+        OVERWRITE_FILES+=("$rel_path")
+    done < <(find "$TARGET_DIR/.ai/planning/prp/templates" -type f -print0 2>/dev/null)
+fi
 
 # Summarize agent/command/script/hook overwrites
 if [ ${#OVERWRITE_FILES[@]} -gt 0 ]; then
@@ -289,6 +333,8 @@ if [ ${#WARNINGS[@]} -gt 0 ]; then
 fi
 
 echo -e "${GREEN}The following components will be installed:${NC}"
+echo -e "  ${DIM}▸${NC} ${BRIGHT_YELLOW}.ai/planning/${NC}"
+echo -e "      ${DIM}Context Engineering system with PRP framework and Work Table${NC}"
 echo -e "  ${DIM}▸${NC} ${BRIGHT_YELLOW}.claude/hooks/observability/${NC}"
 echo -e "      ${DIM}PreToolUse, PostToolUse, UserPromptSubmit, Stop, SubagentStop, etc.${NC}"
 echo -e "  ${DIM}▸${NC} ${BRIGHT_YELLOW}.claude/status_lines/${NC}"
@@ -360,6 +406,9 @@ else
         echo -e "  ${LIME}/generate-arch${NC}     - Create ${BRIGHT_YELLOW}arch.md${NC} with codebase architecture"
         echo -e "  ${LIME}/prime-quick${NC}       - Quick prime from existing context files"
         echo -e "  ${LIME}/prime-full${NC}        - Full context generation via Atlas"
+        echo -e "  ${LIME}/convert-planning${NC}  - Convert unstructured plans to PLANNING.md format"
+        echo -e "  ${LIME}/generate-prp${NC}     - Generate PRPs from PLANNING.md or proposals"
+        echo -e "  ${LIME}/execute-prp${NC}      - Implement features from PRP instances"
         echo ""
 
         echo -e "${BOLD}${GREEN}▸ Hooks${NC} ${BRIGHT_YELLOW}.claude/hooks/observability/${NC}"
@@ -371,6 +420,15 @@ else
         echo -e "${BOLD}${GREEN}▸ Status Lines${NC} ${BRIGHT_YELLOW}.claude/status_lines/${NC}"
         echo ""
         echo -e "  Real-time agent states, event counts, and system health"
+        echo ""
+
+        echo -e "${BOLD}${GREEN}▸ Planning System${NC} ${BRIGHT_YELLOW}.ai/planning/${NC}"
+        echo ""
+        echo -e "  ${BRIGHT_YELLOW}.ai/AGENTS.md${NC}                           - Planning directives for agents"
+        echo -e "  ${BRIGHT_YELLOW}.ai/planning/README.md${NC}                  - Complete workflow documentation"
+        echo -e "  ${BRIGHT_YELLOW}.ai/planning/templates/${NC}                 - PLANNING + TASKS templates"
+        echo -e "  ${BRIGHT_YELLOW}.ai/planning/prd/PLANNING.md${NC}           - Work Table (tracked)"
+        echo -e "  ${BRIGHT_YELLOW}.ai/planning/prp/templates/${NC}            - PRP generation templates"
         echo ""
 
         echo -e -n "Continue with installation? (${GREEN}Y${NC}/${RED}N${NC}): "
@@ -399,6 +457,10 @@ mkdir -p "$CLAUDE_DIR/agents"
 mkdir -p "$CLAUDE_DIR/commands"
 mkdir -p "$CLAUDE_DIR/status_lines"
 mkdir -p "$TARGET_DIR/scripts"
+mkdir -p "$TARGET_DIR/.ai/planning/templates"
+mkdir -p "$TARGET_DIR/.ai/planning/prd"
+mkdir -p "$TARGET_DIR/.ai/planning/prp/templates"
+mkdir -p "$TARGET_DIR/.ai/scratch"
 
 # Copy files
 echo "Copying observability hooks..."
@@ -434,6 +496,45 @@ cp "$SOURCE_DIR/.claude/commands/generate-context.md" "$CLAUDE_DIR/commands/" 2>
 cp "$SOURCE_DIR/.claude/commands/generate-arch.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
 cp "$SOURCE_DIR/.claude/commands/prime-quick.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
 cp "$SOURCE_DIR/.claude/commands/prime-full.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
+
+# Copy planning system commands
+echo ""
+echo -e "${GREEN}Copying planning system commands...${NC}"
+cp "$SOURCE_DIR/.claude/commands/convert-planning.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
+cp "$SOURCE_DIR/.claude/commands/generate-prp.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
+cp "$SOURCE_DIR/.claude/commands/execute-prp.md" "$CLAUDE_DIR/commands/" 2>/dev/null || true
+
+# Copy planning system templates and docs
+echo "Copying planning system templates..."
+cp "$SOURCE_DIR/.ai/planning/README.md" "$TARGET_DIR/.ai/planning/" 2>/dev/null || true
+cp "$SOURCE_DIR/.ai/planning/templates/PLANNING_TEMPLATE.md" "$TARGET_DIR/.ai/planning/templates/" 2>/dev/null || true
+cp "$SOURCE_DIR/.ai/planning/templates/TASKS_TEMPLATE.md" "$TARGET_DIR/.ai/planning/templates/" 2>/dev/null || true
+cp "$SOURCE_DIR/.ai/planning/prd/PLANNING_MIGRATE.md" "$TARGET_DIR/.ai/planning/prd/" 2>/dev/null || true
+cp "$SOURCE_DIR/.ai/planning/prp/README.md" "$TARGET_DIR/.ai/planning/prp/" 2>/dev/null || true
+cp -R "$SOURCE_DIR/.ai/planning/prp/templates/"* "$TARGET_DIR/.ai/planning/prp/templates/" 2>/dev/null || true
+
+# Copy agent directives
+echo "Copying agent directives..."
+cp "$SOURCE_DIR/.ai/AGENTS.md" "$TARGET_DIR/.ai/" 2>/dev/null || true
+cp "$SOURCE_DIR/.ai/context_engineering.md" "$TARGET_DIR/.ai/" 2>/dev/null || true
+
+# Handle CLAUDE.md
+echo "Configuring CLAUDE.md..."
+CLAUDE_FILE="$TARGET_DIR/CLAUDE.md"
+if [ -f "$CLAUDE_FILE" ]; then
+    # Backup existing CLAUDE.md
+    CLAUDE_BACKUP="$CLAUDE_FILE.$(date +%s)"
+    cp "$CLAUDE_FILE" "$CLAUDE_BACKUP"
+    echo "  Backup created: $CLAUDE_BACKUP"
+
+    # Copy new CLAUDE.md (will overwrite)
+    cp "$SOURCE_DIR/CLAUDE.md" "$CLAUDE_FILE"
+    echo "  CLAUDE.md updated with observability instructions"
+else
+    # Copy CLAUDE.md
+    cp "$SOURCE_DIR/CLAUDE.md" "$CLAUDE_FILE"
+    echo "  New CLAUDE.md created"
+fi
 
 # Handle settings.json
 echo "Configuring settings.json..."
@@ -500,6 +601,12 @@ __pycache__/
 .claude/.observability-config
 .summary-prompt.txt
 .env*
+
+# AI Planning System (instance files)
+.ai/planning/prp/instances/
+.ai/planning/prp/proposals/
+.ai/planning/prp/archive/
+.ai/scratch/
 GITIGNORE_EOF
         echo "Updated .gitignore with observability entries (duplicates are harmless if already present)"
     else
@@ -518,6 +625,12 @@ __pycache__/
 .claude/.observability-config
 .summary-prompt.txt
 .env*
+
+# AI Planning System (instance files)
+.ai/planning/prp/instances/
+.ai/planning/prp/proposals/
+.ai/planning/prp/archive/
+.ai/scratch/
 GITIGNORE_EOF
     echo "Created .gitignore with observability entries"
 fi
