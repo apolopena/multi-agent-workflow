@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Context Engineering System
+**Branch:** `feat/context-engineering-system` → `main` · **Status:** 🟡 Open
+
+- [[e94f21f](https://github.com/apolopena/multi-agent-workflow/commit/e94f21f)] **FEAT:** *infrastructure*
+  - Add Context Engineering system with comprehensive workflow documentation, PRP templates (`prp_bulk.md`, `prp_standalone.md`), and planning framework for managing projects from initial build through post-MVP incremental development
+
 ---
 
 ## [v1.0.5] - 2025-10-30
