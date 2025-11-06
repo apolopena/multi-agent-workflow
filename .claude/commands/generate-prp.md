@@ -18,13 +18,12 @@ When invoked with `PLANNING.md`, process all Work Table rows:
 **CRITICAL**: After Mode 1 completes, the initial Work Table rows (typically WP-1 through WP-N for MVP) become FROZEN. Never modify or delete these rows. New features are added via Mode 2 below the frozen section.
 
 For each row in the Work Table:
-1. **Skip** if execution result exists: `.ai/planning/meta/<ID>_execution_result.md` (work is complete)
-2. **Skip** if PRP instance exists: `.ai/planning/prp/instances/<ID>_*.md` (PRP already generated)
-3. **Generate standalone PRP** if proposal exists: `.ai/planning/prp/proposals/<ID>_*.md`
+1. **Skip** if PRP instance exists: `.ai/planning/prp/instances/<ID>_*.md` (PRP already generated)
+2. **Generate standalone PRP** if proposal exists: `.ai/planning/prp/proposals/<ID>_*.md`
    - Use `.ai/planning/prp/templates/prp_standalone.md` template
    - Extract What/Why/How from proposal
    - Save to `.ai/planning/prp/instances/<ID>_<kebab-title>.md`
-4. **Generate bulk PRP** if no proposal exists
+3. **Generate bulk PRP** if no proposal exists
    - Use `.ai/planning/prp/templates/prp_bulk.md` template
    - Infer details from Work Table row and PLANNING.md context
    - Save to `.ai/planning/prp/instances/<ID>_<kebab-title>.md`
