@@ -129,10 +129,10 @@
       "Bash(fish:*)"
     ],
     "deny": [
-      "Read(//home/quadro/.ssh/**)",
-      "Edit(//home/quadro/.ssh/**)",
-      "Write(//home/quadro/.ssh/**)",
-      "Bash(cat //home/quadro/.ssh:*)",
+      "Read(**/.ssh/**)",
+      "Edit(**/.ssh/**)",
+      "Write(**/.ssh/**)",
+      "Bash(cat */.ssh:*)",
       "Bash(cat ~/.ssh:*)"
     ]
   },
