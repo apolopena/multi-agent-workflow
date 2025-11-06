@@ -6,6 +6,16 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [v1.0.9] - 2025-11-06
+
+### [PR #14](https://github.com/apolopena/multi-agent-workflow/pull/14) - Optimize Mark and Pedro agent prompts for speed
+**Branch:** `refactor/optimize-agent-prompts` → `main` · **Status:** ✅ Merged
+
+- [[29365de](https://github.com/apolopena/multi-agent-workflow/commit/29365de)] **REFACTOR:** *agent*
+  - Optimize Mark and Pedro agent prompts to reduce token usage and execution time
+
+---
+
 ## [v1.0.8] - 2025-11-06
 
 ### [PR #12](https://github.com/apolopena/multi-agent-workflow/pull/12) - Remove hardcoded userinfo from .ssh deny paths
