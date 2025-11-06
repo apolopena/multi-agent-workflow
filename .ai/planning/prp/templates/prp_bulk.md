@@ -29,7 +29,7 @@ If the input is `PLANNING.md` and it contains a "Work Table", generate **one PRP
 File names: `.ai/prp/instances/<ID>_<kebab-title>.md`
 
 Skip rows where:
-- A file exists at `.ai/scratch/<ID>_execution_result.md` (work is complete)
+- A PRP instance already exists at `.ai/planning/prp/instances/<ID>_*.md` (already generated)
 
 Mapping:
 - Goal  ← row Title (+ brief expansion from row description)

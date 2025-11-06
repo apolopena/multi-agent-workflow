@@ -62,6 +62,6 @@ Check existing proposals and Work Table for next available ID in your block.
 - `/execute-prp <prp-instance-file>` - Implement feature
 
 ## Idempotency
-- Mode 1 skips rows with existing PRPs or execution results
+- Mode 1 skips rows with existing PRPs
 - Mode 2 skips adding row if ID already exists in Work Table
 - Safe to re-run commands
