@@ -6,6 +6,18 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [v1.0.7] - 2025-11-06
+
+### [PR #11](https://github.com/apolopena/multi-agent-workflow/pull/11) - Add GitHub provenance workflow to setup script and document requirements
+**Branch:** `feat/update-setup-script-provenance` → `main` · **Status:** ✅ Merged
+
+- [[8f317a0](https://github.com/apolopena/multi-agent-workflow/commit/8f317a0)] **FEAT:** *setup*
+  - Add GitHub provenance workflow to setup script with directory creation and pre-flight checks
+- [[d4ec1eb](https://github.com/apolopena/multi-agent-workflow/commit/d4ec1eb)] **DOCS:** *setup*
+  - Add GitHub provenance setup documentation with required secrets list
+
+---
+
 ## [v1.0.6] - 2025-11-04
 
 ### [PR #9](https://github.com/apolopena/multi-agent-workflow/pull/9) - Context Engineering System

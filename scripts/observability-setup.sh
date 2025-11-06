@@ -252,6 +252,11 @@ if [ -d "$TARGET_DIR/.ai/planning/prp/templates" ]; then
     done < <(find "$TARGET_DIR/.ai/planning/prp/templates" -type f -print0 2>/dev/null)
 fi
 
+# Check for GitHub workflow
+if [ -f "$TARGET_DIR/.github/workflows/gh-dispatch-ai.yml" ]; then
+    OVERWRITE_FILES+=(".github/workflows/gh-dispatch-ai.yml")
+fi
+
 # Summarize agent/command/script/hook overwrites
 if [ ${#OVERWRITE_FILES[@]} -gt 0 ]; then
     # Count by category
@@ -343,6 +348,8 @@ echo -e "  ${DIM}▸${NC} ${BRIGHT_YELLOW}./scripts/${NC} ${DIM}(management scri
 echo -e "      ${DIM}observability-start.sh, -stop.sh, -status.sh, -enable.sh, -disable.sh${NC}"
 echo -e "  ${DIM}▸${NC} ${BRIGHT_YELLOW}.claude/commands/${NC}"
 echo -e "      ${DIM}Slash commands for observability management and context generation${NC}"
+echo -e "  ${DIM}▸${NC} ${BRIGHT_YELLOW}.github/workflows/${NC}"
+echo -e "      ${DIM}GitHub provenance workflow (gh-dispatch-ai.yml) for AI-attributed operations${NC}"
 echo -e "  ${DIM}▸${NC} ${BRIGHT_YELLOW}.claude/agents/${NC}"
 echo -e "      ${ORANGE}●${NC} ${BOLD}${ORANGE}Jerry${NC} - Generates AI summaries for hook events"
 echo -e "      ${BLUE}●${NC} ${BOLD}${BLUE}Pedro${NC} - Maintains ${BRIGHT_YELLOW}CHANGELOG.md${NC} with proper formatting"
@@ -431,6 +438,12 @@ else
         echo -e "  ${BRIGHT_YELLOW}.ai/planning/prp/templates/${NC}            - PRP generation templates"
         echo ""
 
+        echo -e "${BOLD}${GREEN}▸ GitHub Provenance${NC} ${BRIGHT_YELLOW}.github/workflows/${NC}"
+        echo ""
+        echo -e "  ${BRIGHT_YELLOW}gh-dispatch-ai.yml${NC} - Workflow for AI-attributed GitHub operations"
+        echo -e "  Used by Mark agent to create PRs, issues, and comments with proper attribution"
+        echo ""
+
         echo -e -n "Continue with installation? (${GREEN}Y${NC}/${RED}N${NC}): "
         read -n 1 -r REPLY
         echo
@@ -461,6 +474,7 @@ mkdir -p "$TARGET_DIR/.ai/planning/templates"
 mkdir -p "$TARGET_DIR/.ai/planning/prd"
 mkdir -p "$TARGET_DIR/.ai/planning/prp/templates"
 mkdir -p "$TARGET_DIR/.ai/scratch"
+mkdir -p "$TARGET_DIR/.github/workflows"
 
 # Copy files
 echo "Copying observability hooks..."
@@ -517,6 +531,10 @@ cp -R "$SOURCE_DIR/.ai/planning/prp/templates/"* "$TARGET_DIR/.ai/planning/prp/t
 echo "Copying agent directives..."
 cp "$SOURCE_DIR/.ai/AGENTS.md" "$TARGET_DIR/.ai/" 2>/dev/null || true
 cp "$SOURCE_DIR/.ai/context_engineering.md" "$TARGET_DIR/.ai/" 2>/dev/null || true
+
+# Copy GitHub workflow
+echo "Copying GitHub workflow for provenance..."
+cp "$SOURCE_DIR/.github/workflows/gh-dispatch-ai.yml" "$TARGET_DIR/.github/workflows/" 2>/dev/null || true
 
 # Handle CLAUDE.md
 echo "Configuring CLAUDE.md..."

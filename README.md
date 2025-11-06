@@ -497,7 +497,7 @@ The Mark agent (`subagent_type=mark`) handles ALL GitHub CLI operations with ful
 **Capabilities**:
 - Create pull requests with AI attribution
 - Add comments to PRs and issues
-- Manage issue labels and assignments
+- Create issues with proper context
 - Full provenance tracking via `.github/workflows/gh-dispatch-ai.yml`
 
 **Provenance Tracking**:
@@ -507,6 +507,11 @@ All GitHub operations are tracked with:
 - `Timestamp`: When the operation was requested
 - `Context`: Full context about what was being worked on
 
+**Setup Required**:
+The Mark agent requires GitHub App authentication. Follow the complete setup guide at [apolopena/github-workflows](https://github.com/apolopena/github-workflows) to create a GitHub App and configure the three required repository secrets (`PROVENANCE_APP_ID`, `PROVENANCE_APP_PRIVATE_KEY`, `PROVENANCE_INSTALLATION_ID`).
+
+**Important**: The workflow file (`.github/workflows/gh-dispatch-ai.yml`) must exist in your repository's default branch (`main`) before it can be dispatched. If working on a feature branch, merge or push the workflow file to `main` first.
+
 **Example Workflow**:
 ```yaml
 # Dispatched by Mark agent
@@ -515,9 +520,9 @@ on:
   workflow_dispatch:
     inputs:
       action:
-        description: 'Action to perform (pr-create, pr-comment, issue-comment)'
+        description: 'Action to perform (open-pr, open-issue, pr-comment, issue-comment, pr-code)'
         required: true
-      provenance:
+      provenance_label:
         description: 'Who/what initiated this (always Claude_AI)'
         required: true
 ```
