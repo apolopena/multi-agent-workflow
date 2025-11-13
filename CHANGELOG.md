@@ -31,9 +31,16 @@ All notable changes to this project will be documented in this file.
 
 #### Bug Fixes
 - [[b8fbb81](https://github.com/apolopena/multi-agent-workflow/commit/b8fbb81)] **FIX:** *tts*
-  - Fix OpenAI TTS error handling to properly exit with error code on API failures (was silently succeeding)
+  - Fix OpenAI TTS to exit with error code 1 on API failures instead of 0 (was preventing fallback to pyttsx3)
+- [[b8fbb81](https://github.com/apolopena/multi-agent-workflow/commit/b8fbb81)] **FIX:** *tts*
+  - Fix TTS fallback in `stop.py` and `subagent_stop.py` to check subprocess returncode before considering success
+  - Now properly falls back to pyttsx3 robot voice when OpenAI/ElevenLabs TTS fails
+- [[b8fbb81](https://github.com/apolopena/multi-agent-workflow/commit/b8fbb81)] **FIX:** *tts*
+  - Fix `send_event.py::trigger_tts_warning()` to check returncode before returning (enables pyttsx3 fallback)
 - [[b8fbb81](https://github.com/apolopena/multi-agent-workflow/commit/b8fbb81)] **FIX:** *paths*
-  - Fix status line and hooks to find session data from any subdirectory using `get_project_root()`
+  - Fix status line to find session data from any subdirectory using `get_project_root()`
+- [[b8fbb81](https://github.com/apolopena/multi-agent-workflow/commit/b8fbb81)] **FIX:** *paths*
+  - Fix all hooks to work correctly when run from subdirectories (use `get_project_root()` instead of `Path.cwd()`)
 
 #### Refactoring
 - [[b8fbb81](https://github.com/apolopena/multi-agent-workflow/commit/b8fbb81)] **REFACTOR:** *paths*
