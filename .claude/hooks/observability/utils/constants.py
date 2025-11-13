@@ -20,6 +20,26 @@ except ImportError:
     load_dotenv = None  # dotenv is optional
 
 
+def get_project_root():
+    """
+    Get the project root directory (where .claude/ exists).
+
+    Searches upward from current directory to find .claude/ directory.
+
+    Returns:
+        Path object to project root, or current working directory if not found
+    """
+    current = Path.cwd()
+
+    # Search upward for .claude directory
+    for parent in [current] + list(current.parents):
+        if (parent / '.claude').exists():
+            return parent
+
+    # Fallback to current directory
+    return current
+
+
 def get_central_env_path():
     """
     Get the path to the central .env file in multi-agent-workflow repo.
@@ -31,10 +51,10 @@ def get_central_env_path():
     Returns:
         Path object to central .env file, or None if not found
     """
-    cwd = Path.cwd()
+    project_root = get_project_root()
 
     # Try loading .observability-config (for integrated projects)
-    config_file = cwd / '.claude' / '.observability-config'
+    config_file = project_root / '.claude' / '.observability-config'
 
     if config_file.exists():
         try:
@@ -49,9 +69,9 @@ def get_central_env_path():
             pass
 
     # Sentinel detection: Check if we're running in multi-agent-workflow itself
-    sentinel_file = cwd / 'scripts' / 'observability-setup.sh'
+    sentinel_file = project_root / 'scripts' / 'observability-setup.sh'
     if sentinel_file.exists():
-        local_env_path = cwd / '.env'
+        local_env_path = project_root / '.env'
         if local_env_path.exists():
             return local_env_path
 
@@ -74,9 +94,46 @@ def load_central_env():
             pass  # Fail silently
 
 
+def get_central_repo_path():
+    """
+    Get the path to the central multi-agent-workflow repository.
+
+    Strategy:
+    1. Find project root (where .claude/ exists)
+    2. Check if .observability-config exists (integrated project)
+    3. If not, use sentinel detection (running in multi-agent-workflow itself)
+
+    Returns:
+        Path object to central repo, or project root if not found
+    """
+    project_root = get_project_root()
+
+    # Try loading .observability-config (for integrated projects)
+    config_file = project_root / '.claude' / '.observability-config'
+
+    if config_file.exists():
+        try:
+            with open(config_file, 'r') as f:
+                config = json.load(f)
+                multi_agent_workflow_path = config.get('MULTI_AGENT_WORKFLOW_PATH')
+                if multi_agent_workflow_path:
+                    return Path(multi_agent_workflow_path)
+        except Exception:
+            pass
+
+    # Sentinel detection: Check if we're running in multi-agent-workflow itself
+    sentinel_file = project_root / 'scripts' / 'observability-setup.sh'
+    if sentinel_file.exists():
+        return project_root
+
+    # Fallback to project root
+    return project_root
+
+
 # Base directory for all logs
-# Default is 'logs' in the current working directory
-LOG_BASE_DIR = os.environ.get("CLAUDE_HOOKS_LOG_DIR", "logs")
+# Use environment variable override, or default to project root's .claude/data/observability/logs
+_project_root = get_project_root()
+LOG_BASE_DIR = os.environ.get("CLAUDE_HOOKS_LOG_DIR", str(_project_root / ".claude" / "data" / "observability" / "logs"))
 
 def get_session_log_dir(session_id: str) -> Path:
     """

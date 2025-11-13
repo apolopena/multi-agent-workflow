@@ -49,28 +49,59 @@ def get_tts_script_path():
 
 
 def announce_subagent_completion():
-    """Announce subagent completion using the best available TTS service."""
+    """Announce subagent completion using the best available TTS service with fallback."""
     try:
-        tts_script = get_tts_script_path()
-        if not tts_script:
-            return  # No TTS scripts available
-        
-        # Use fixed message for subagent completion
+        script_dir = Path(__file__).parent
+        tts_dir = script_dir / "utils" / "tts"
         completion_message = "Subagent Complete"
-        
-        # Call the TTS script with the completion message
-        subprocess.run([
-            "uv", "run", tts_script, completion_message
-        ], 
-        capture_output=True,  # Suppress output
-        timeout=10  # 10-second timeout
-        )
-        
-    except (subprocess.TimeoutExpired, subprocess.SubprocessError, FileNotFoundError):
-        # Fail silently if TTS encounters issues
-        pass
+
+        # Try TTS methods in priority order with fallback
+        tts_success = False
+
+        # Try ElevenLabs first
+        if os.getenv("ELEVENLABS_API_KEY"):
+            elevenlabs_script = tts_dir / "elevenlabs_tts.py"
+            if elevenlabs_script.exists():
+                try:
+                    result = subprocess.run(
+                        ["uv", "run", str(elevenlabs_script), completion_message],
+                        capture_output=True,
+                        timeout=10,
+                    )
+                    if result.returncode == 0:
+                        tts_success = True
+                except:
+                    pass
+
+        # Try OpenAI if ElevenLabs didn't work
+        if not tts_success and os.getenv("OPENAI_API_KEY"):
+            openai_script = tts_dir / "openai_tts.py"
+            if openai_script.exists():
+                try:
+                    result = subprocess.run(
+                        ["uv", "run", str(openai_script), completion_message],
+                        capture_output=True,
+                        timeout=10,
+                    )
+                    if result.returncode == 0:
+                        tts_success = True
+                except:
+                    pass
+
+        # Fallback to pyttsx3
+        if not tts_success:
+            pyttsx3_script = tts_dir / "pyttsx3_tts.py"
+            if pyttsx3_script.exists():
+                try:
+                    subprocess.run(
+                        ["uv", "run", str(pyttsx3_script), completion_message],
+                        capture_output=True,
+                        timeout=10,
+                    )
+                except:
+                    pass
+
     except Exception:
-        # Fail silently for any other errors
         pass
 
 

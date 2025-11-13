@@ -2,5 +2,6 @@
   "PROJECT_NAME": "multi-agent-workflow",
   "MULTI_AGENT_WORKFLOW_PATH": ".",
   "SERVER_URL": "http://localhost:4000",
-  "CLIENT_URL": "http://localhost:5173"
+  "CLIENT_URL": "http://localhost:5173",
+  "DISABLE_SESSION_TRACKING": false
 }

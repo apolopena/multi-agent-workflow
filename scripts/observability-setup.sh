@@ -203,6 +203,11 @@ for script in "${WRAPPER_SCRIPTS[@]}"; do
     fi
 done
 
+# Check for git-ai.sh
+if [ -f "$TARGET_DIR/scripts/git-ai.sh" ]; then
+    OVERWRITE_FILES+=("scripts/git-ai.sh")
+fi
+
 # Check for existing agents
 AGENT_FILES=("summary-processor.md" "changelog-manager.md" "ghcli.md" "primer-generator.md" "html-converter.md")
 for agent in "${AGENT_FILES[@]}"; do
@@ -344,8 +349,9 @@ echo -e "  ${DIM}▸${NC} ${BRIGHT_YELLOW}.claude/hooks/observability/${NC}"
 echo -e "      ${DIM}PreToolUse, PostToolUse, UserPromptSubmit, Stop, SubagentStop, etc.${NC}"
 echo -e "  ${DIM}▸${NC} ${BRIGHT_YELLOW}.claude/status_lines/${NC}"
 echo -e "      ${DIM}Real-time agent status display${NC}"
-echo -e "  ${DIM}▸${NC} ${BRIGHT_YELLOW}./scripts/${NC} ${DIM}(management script wrappers)${NC}"
+echo -e "  ${DIM}▸${NC} ${BRIGHT_YELLOW}./scripts/${NC}"
 echo -e "      ${DIM}observability-start.sh, -stop.sh, -status.sh, -enable.sh, -disable.sh${NC}"
+echo -e "      ${DIM}git-ai.sh (Git helper with AI attribution and SSH keychain)${NC}"
 echo -e "  ${DIM}▸${NC} ${BRIGHT_YELLOW}.claude/commands/${NC}"
 echo -e "      ${DIM}Slash commands for observability management and context generation${NC}"
 echo -e "  ${DIM}▸${NC} ${BRIGHT_YELLOW}.github/workflows/${NC}"
@@ -429,6 +435,16 @@ else
         echo -e "  Real-time agent states, event counts, and system health"
         echo ""
 
+        echo -e "${BOLD}${GREEN}▸ Scripts${NC} ${BRIGHT_YELLOW}./scripts/${NC}"
+        echo ""
+        echo -e "  ${BRIGHT_YELLOW}observability-start.sh${NC}   - Start observability server + client"
+        echo -e "  ${BRIGHT_YELLOW}observability-stop.sh${NC}    - Stop observability system"
+        echo -e "  ${BRIGHT_YELLOW}observability-status.sh${NC}  - Check system status"
+        echo -e "  ${BRIGHT_YELLOW}observability-enable.sh${NC}  - Enable event streaming"
+        echo -e "  ${BRIGHT_YELLOW}observability-disable.sh${NC} - Disable event streaming"
+        echo -e "  ${BRIGHT_YELLOW}git-ai.sh${NC}                - Git helper with AI attribution and SSH keychain"
+        echo ""
+
         echo -e "${BOLD}${GREEN}▸ Planning System${NC} ${BRIGHT_YELLOW}.ai/planning/${NC}"
         echo ""
         echo -e "  ${BRIGHT_YELLOW}.ai/AGENTS.md${NC}                           - Planning directives for agents"
@@ -489,6 +505,10 @@ generate_wrapper "observability-stop.sh"
 generate_wrapper "observability-enable.sh"
 generate_wrapper "observability-disable.sh"
 generate_wrapper "observability-status.sh"
+
+echo "Copying git helper script..."
+cp "$SOURCE_DIR/scripts/git-ai.sh" "$TARGET_DIR/scripts/"
+chmod +x "$TARGET_DIR/scripts/git-ai.sh"
 
 echo "Copying agents..."
 cp "$SOURCE_DIR/.claude/agents/summary-processor.md" "$CLAUDE_DIR/agents/" 2>/dev/null || true

@@ -4,8 +4,8 @@
 STATE_FILE=".claude/.observability-state"
 
 if [ ! -d ".claude" ]; then
-    echo "Error: .claude directory not found. Are you in your project root?"
-    exit 1
+    mkdir -p ".claude"
+    echo "Created .claude directory"
 fi
 
 echo "disabled" > "$STATE_FILE"

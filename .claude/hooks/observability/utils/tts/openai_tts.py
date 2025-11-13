@@ -139,6 +139,7 @@ def main():
 
         except Exception as e:
             print(f"❌ Error: {e}")
+            sys.exit(1)
 
     except ImportError as e:
         print("❌ Error: Required package not installed")

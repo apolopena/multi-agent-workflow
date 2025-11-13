@@ -12,43 +12,35 @@ import os
 import sys
 from pathlib import Path
 from datetime import datetime
-from utils.constants import load_central_env
+from utils.constants import load_central_env, get_project_root
 
 # Load central environment variables
 load_central_env()
 
 
-def log_user_prompt(session_id, input_data):
-    """Log user prompt to logs directory."""
-    # Ensure logs directory exists
-    log_dir = Path("logs")
-    log_dir.mkdir(parents=True, exist_ok=True)
-    log_file = log_dir / "user_prompt_submit.json"
-
-    # Read existing log data or initialize empty list
-    if log_file.exists():
-        with open(log_file, "r") as f:
-            try:
-                log_data = json.load(f)
-            except (json.JSONDecodeError, ValueError):
-                log_data = []
-    else:
-        log_data = []
-
-    # Append the entire input data
-    log_data.append(input_data)
-
-    # Write back to file with formatting
-    with open(log_file, "w") as f:
-        json.dump(log_data, f, indent=2)
+# Removed: Aggregate logging function (unused)
 
 
 def manage_session_data(session_id, prompt, name_agent=False):
     """Manage session data in the new JSON structure."""
     import subprocess
+    import json
+
+    # Check if session tracking is disabled
+    config_file = get_project_root() / ".claude" / ".observability-config"
+    if config_file.exists():
+        try:
+            with open(config_file, "r") as f:
+                config = json.load(f)
+                if config.get("DISABLE_SESSION_TRACKING", False):
+                    return  # Skip session tracking
+        except Exception:
+            pass  # Continue if config can't be read
+
+    # Use project root for session storage
+    sessions_dir = get_project_root() / ".claude" / "data" / "observability" / "sessions"
 
     # Ensure sessions directory exists
-    sessions_dir = Path(".claude/data/sessions")
     sessions_dir.mkdir(parents=True, exist_ok=True)
 
     # Load or create session file
@@ -163,8 +155,7 @@ def main():
         session_id = input_data.get("session_id", "unknown")
         prompt = input_data.get("prompt", "")
 
-        # Log the user prompt
-        log_user_prompt(session_id, input_data)
+        # Removed: Aggregate logging call (unused)
 
         # Manage session data with JSON structure
         if args.store_last_prompt or args.name_agent:

@@ -96,9 +96,18 @@ def get_git_status():
     return ""
 
 
+def get_project_root():
+    """Find project root by searching for .claude directory."""
+    current = Path.cwd()
+    for parent in [current] + list(current.parents):
+        if (parent / '.claude').exists():
+            return parent
+    return current
+
 def get_session_data(session_id):
     """Get session data including agent name and prompts."""
-    session_file = Path(f".claude/data/sessions/{session_id}.json")
+    project_root = get_project_root()
+    session_file = project_root / ".claude" / "data" / "observability" / "sessions" / f"{session_id}.json"
 
     if not session_file.exists():
         return None, f"Session file {session_file} does not exist"
