@@ -13,13 +13,10 @@ import sys
 import subprocess
 import random
 from pathlib import Path
-from utils.constants import ensure_session_log_dir
+from utils.constants import ensure_session_log_dir, load_central_env
 
-try:
-    from dotenv import load_dotenv
-    load_dotenv('.env')
-except ImportError:
-    pass  # dotenv is optional
+# Load central environment variables
+load_central_env()
 
 
 def get_tts_script_path():

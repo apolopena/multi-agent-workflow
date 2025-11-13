@@ -10,28 +10,32 @@
 import os
 import sys
 from pathlib import Path
-from dotenv import load_dotenv
+
+# Add parent directory to path to import from utils
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from constants import load_central_env
+
+# Load central environment variables
+load_central_env()
+
 
 def main():
     """
     ElevenLabs Turbo v2.5 TTS Script
-    
+
     Uses ElevenLabs' Turbo v2.5 model for fast, high-quality text-to-speech.
     Accepts optional text prompt as command-line argument.
-    
+
     Usage:
     - ./eleven_turbo_tts.py                    # Uses default text
     - ./eleven_turbo_tts.py "Your custom text" # Uses provided text
-    
+
     Features:
     - Fast generation (optimized for real-time use)
     - High-quality voice synthesis
     - Stable production model
     - Cost-effective for high-volume usage
     """
-    
-    # Load environment variables
-    load_dotenv('.env')
 
     # Get API key from environment
     api_key = os.getenv('ELEVENLABS_API_KEY')

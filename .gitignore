@@ -205,9 +205,6 @@ apps/server/observability.db
 apps/server/observability.db-shm
 apps/server/observability.db-wal
 
-# Logs (but preserve logs directory structure)
-logs/*
-!logs/.gitkeep
 *.log
 
 # Security
@@ -254,15 +251,16 @@ app_docs/
 .mcp.json
 
 # AI folder structure
-.ai/scratch/           # Temporary AI working files (primers, notes, experiments)
-.ai/logs/              # AI operation logs
-.ai/.claude/           # AI session data
-.ai/prp/proposals/     # Ephemeral input artifacts
-.ai/prp/instances/     # Ephemeral generated artifacts
-.ai/prp/archive/       # Historical PRPs
+.ai/scratch/
+.ai/logs/
+.ai/planning/prp/proposals/
+.ai/planning/prp/instances/
 
-# Claude Code session data
+# Claude Code session data (in root .claude directory)
 .claude/data/
+
+# Ignore .claude directories in subdirectories (but not root .claude/)
+**/.claude/
 
 # AI summary generation prompt
 .summary-prompt.txt

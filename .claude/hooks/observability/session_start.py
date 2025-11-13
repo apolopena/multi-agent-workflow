@@ -13,37 +13,13 @@ import sys
 import subprocess
 from pathlib import Path
 from datetime import datetime
+from utils.constants import load_central_env, get_project_root
 
-try:
-    from dotenv import load_dotenv
-    load_dotenv('.env')
-except ImportError:
-    pass  # dotenv is optional
+# Load central environment variables
+load_central_env()
 
 
-def log_session_start(input_data):
-    """Log session start event to logs directory."""
-    # Ensure logs directory exists
-    log_dir = Path("logs")
-    log_dir.mkdir(parents=True, exist_ok=True)
-    log_file = log_dir / 'session_start.json'
-    
-    # Read existing log data or initialize empty list
-    if log_file.exists():
-        with open(log_file, 'r') as f:
-            try:
-                log_data = json.load(f)
-            except (json.JSONDecodeError, ValueError):
-                log_data = []
-    else:
-        log_data = []
-    
-    # Append the entire input data
-    log_data.append(input_data)
-    
-    # Write back to file with formatting
-    with open(log_file, 'w') as f:
-        json.dump(log_data, f, indent=2)
+# Removed: Aggregate logging function (unused)
 
 
 def get_git_status():
@@ -145,7 +121,7 @@ def register_project_path():
     """Register project path with observability server."""
     try:
         # Load config
-        config_file = Path.cwd() / '.claude' / '.observability-config'
+        config_file = get_project_root() / '.claude' / '.observability-config'
         if not config_file.exists():
             return
 
@@ -153,8 +129,9 @@ def register_project_path():
             config = json.load(f)
 
         # Get project info
-        source_app = config.get('PROJECT_NAME', Path.cwd().name)
-        project_path = str(Path.cwd())
+        project_root = get_project_root()
+        source_app = config.get('PROJECT_NAME', project_root.name)
+        project_path = str(project_root)
         server_url = config.get('SERVER_URL', 'http://localhost:4000')
 
         # Send registration request
@@ -198,9 +175,8 @@ def main():
         # Extract fields
         session_id = input_data.get('session_id', 'unknown')
         source = input_data.get('source', 'unknown')  # "startup", "resume", or "clear"
-        
-        # Log the session start event
-        log_session_start(input_data)
+
+        # Removed: Aggregate logging call (unused)
         
         # Load development context if requested
         if args.load_context:

@@ -9,7 +9,14 @@
 
 import os
 import sys
-from dotenv import load_dotenv
+from pathlib import Path
+
+# Add parent directory to path to import from utils
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from constants import load_central_env
+
+# Load central environment variables
+load_central_env()
 
 
 def prompt_llm(prompt_text):
@@ -22,7 +29,6 @@ def prompt_llm(prompt_text):
     Returns:
         str: The model's response text, or None if error
     """
-    load_dotenv('.env')
 
     api_key = os.getenv("OPENAI_API_KEY")
     if not api_key:
@@ -34,7 +40,7 @@ def prompt_llm(prompt_text):
         client = OpenAI(api_key=api_key)
 
         response = client.chat.completions.create(
-            model="gpt-4.1-nano",  # Fastest OpenAI model
+            model="gpt-4o-mini",  # Cheapest OpenAI model ($0.15/1M tokens)
             messages=[{"role": "user", "content": prompt_text}],
             max_tokens=100,
             temperature=0.7,

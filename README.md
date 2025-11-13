@@ -129,6 +129,7 @@ cd ~/multi-agent-workflow
 **What this does:**
 - Creates `.claude/` directory with hooks, agents, commands, and status lines
 - Generates wrapper scripts in `./scripts/` that call back to multi-agent-workflow
+- Copies `git-ai.sh` to `./scripts/` for AI-attributed git operations
 - Creates `.claude/.observability-config` with path to multi-agent-workflow repo
 - Updates `.gitignore` with observability entries
 - Auto-detects project name from git (or uses provided name)

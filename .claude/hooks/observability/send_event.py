@@ -3,6 +3,7 @@
 # requires-python = ">=3.8"
 # dependencies = [
 #     "anthropic",
+#     "openai",
 #     "python-dotenv",
 # ]
 # ///
@@ -18,13 +19,15 @@ import os
 import argparse
 import urllib.request
 import urllib.error
+import subprocess
 from datetime import datetime
 from pathlib import Path
 from utils.summarizer import generate_event_summary
 from utils.model_extractor import get_model_from_transcript
+from utils.constants import get_project_root
 
 # Check if observability is enabled via state file
-STATE_FILE = Path.cwd() / '.claude' / '.observability-state'
+STATE_FILE = get_project_root() / '.claude' / '.observability-state'
 if STATE_FILE.exists():
     state = STATE_FILE.read_text().strip().lower()
     if state != 'enabled':
@@ -49,7 +52,7 @@ def load_observability_config():
         return _CONFIG_CACHE
 
     try:
-        config_file = Path.cwd() / '.claude' / '.observability-config'
+        config_file = get_project_root() / '.claude' / '.observability-config'
         if config_file.exists():
             with open(config_file, 'r') as f:
                 config = json.load(f)
@@ -80,6 +83,48 @@ def get_server_settings(base_url='http://localhost:4000'):
     except Exception:
         # If we can't get settings, assume default behavior
         return None
+
+def is_server_reachable(base_url='http://localhost:4000'):
+    """Check if server is reachable before wasting API quota."""
+    try:
+        req = urllib.request.Request(
+            f'{base_url}/settings',
+            headers={'User-Agent': 'Claude-Code-Hook/1.0'}
+        )
+        with urllib.request.urlopen(req, timeout=2) as response:
+            return response.status == 200
+    except Exception:
+        return False
+
+def trigger_tts_warning(message):
+    """Trigger TTS warning for API key failures."""
+    try:
+        script_dir = Path(__file__).parent
+        tts_dir = script_dir / "utils" / "tts"
+
+        # Try OpenAI TTS first (most likely to work)
+        if os.getenv('OPENAI_API_KEY'):
+            tts_script = tts_dir / "openai_tts.py"
+            if tts_script.exists():
+                result = subprocess.run(
+                    ["uv", "run", str(tts_script), message],
+                    capture_output=True,
+                    timeout=10
+                )
+                # Only return if TTS succeeded
+                if result.returncode == 0:
+                    return
+
+        # Fallback to pyttsx3 (local, no API needed)
+        pyttsx3_script = tts_dir / "pyttsx3_tts.py"
+        if pyttsx3_script.exists():
+            subprocess.run(
+                ["uv", "run", str(pyttsx3_script), message],
+                capture_output=True,
+                timeout=10
+            )
+    except:
+        pass  # Fail silently if TTS unavailable
 
 def send_event_to_server(event_data, server_url='http://localhost:4000/events'):
     """Send event data to the observability server."""
@@ -127,16 +172,16 @@ def main():
 
     args = parser.parse_args()
 
-    # Determine source_app: CLI arg > config file > directory name
+    # Determine source_app: CLI arg > config file > project root name
     source_app = args.source_app
     if not source_app:
         # Try to get from config
         if config and 'PROJECT_NAME' in config:
             source_app = config['PROJECT_NAME']
         else:
-            # Fallback to current directory name
-            source_app = Path.cwd().name
-            print(f"Warning: PROJECT_NAME not in config, using directory name: {source_app}", file=sys.stderr)
+            # Fallback to project root directory name
+            source_app = get_project_root().name
+            print(f"Warning: PROJECT_NAME not in config, using project root name: {source_app}", file=sys.stderr)
     
     try:
         # Read hook data from stdin
@@ -188,19 +233,26 @@ def main():
     if args.summarize:
         # Get settings from server
         base_url = args.server_url.rsplit('/', 1)[0]  # Remove /events endpoint
-        settings = get_server_settings(base_url)
 
-        if settings and settings.get('summaryMode') == 'realtime':
-            should_generate_summary = True
-        # If settings unavailable, respect the --summarize flag for backward compatibility
-        elif settings is None:
-            should_generate_summary = True
+        # Check if server is reachable before wasting API quota
+        if is_server_reachable(base_url):
+            settings = get_server_settings(base_url)
+
+            if settings and settings.get('summaryMode') == 'realtime':
+                should_generate_summary = True
+            # If settings unavailable, respect the --summarize flag for backward compatibility
+            elif settings is None:
+                should_generate_summary = True
+        # else: Server unreachable, don't waste API quota on summaries
 
     # Generate summary if enabled in settings
     if should_generate_summary:
-        summary = generate_event_summary(event_data)
+        summary, failure_message = generate_event_summary(event_data)
         if summary:
             event_data['summary'] = summary
+        # Trigger TTS warning if API key failed
+        if failure_message:
+            trigger_tts_warning(failure_message)
         # Continue even if summary generation fails
     
     # Send to server

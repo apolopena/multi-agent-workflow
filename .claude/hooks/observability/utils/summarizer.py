@@ -3,16 +3,18 @@
 # requires-python = ">=3.8"
 # dependencies = [
 #     "anthropic",
+#     "openai",
 #     "python-dotenv",
 # ]
 # ///
 
 import json
-from typing import Optional, Dict, Any
-from .llm.anth import prompt_llm
+from typing import Optional, Dict, Any, Tuple
+from .llm.anth import prompt_llm as prompt_llm_anthropic
+from .llm.oai import prompt_llm as prompt_llm_openai
 
 
-def generate_event_summary(event_data: Dict[str, Any]) -> Optional[str]:
+def generate_event_summary(event_data: Dict[str, Any]) -> Tuple[Optional[str], Optional[str]]:
     """
     Generate a concise one-sentence summary of a hook event for engineers.
 
@@ -20,7 +22,9 @@ def generate_event_summary(event_data: Dict[str, Any]) -> Optional[str]:
         event_data: The hook event data containing event_type, payload, etc.
 
     Returns:
-        str: A one-sentence summary, or None if generation fails
+        Tuple[Optional[str], Optional[str]]: (summary, failure_message)
+        - summary: The generated summary, or None if generation fails
+        - failure_message: Error message if key failed, or None if success/not-set
     """
     event_type = event_data.get("hook_event_type", "Unknown")
     payload = event_data.get("payload", {})
@@ -54,9 +58,38 @@ Examples:
 
 Generate the summary based on the payload:"""
 
-    summary = prompt_llm(prompt)
+    import os
 
-    # Clean up the response
+    # Try Anthropic first
+    anthropic_key = os.getenv("ANTHROPIC_API_KEY")
+    openai_key = os.getenv("OPENAI_API_KEY")
+
+    summary = None
+    failure_message = None
+
+    if anthropic_key:
+        summary = prompt_llm_anthropic(prompt)
+        if not summary:
+            # Anthropic key is set but failed
+            if openai_key:
+                # Try OpenAI fallback
+                summary = prompt_llm_openai(prompt)
+                if not summary:
+                    # Both failed
+                    failure_message = "ANTHROPIC_API_KEY and OPENAI_API_KEY both failed for summaries. Remove or replace these keys in your .env file."
+                # If OpenAI works, no failure message (silent fallback success)
+            else:
+                # Only Anthropic was set and it failed
+                failure_message = "ANTHROPIC_API_KEY failed for summaries. Remove or replace the key in your .env file to stop this warning."
+    elif openai_key:
+        # No Anthropic key, try OpenAI
+        summary = prompt_llm_openai(prompt)
+        if not summary:
+            # OpenAI key is set but failed
+            failure_message = "OPENAI_API_KEY failed for summaries. Remove or replace the key in your .env file to stop this warning."
+    # else: Neither key set, no summary, no failure message
+
+    # Clean up the response if we got one
     if summary:
         summary = summary.strip().strip('"').strip("'").strip(".")
         # Take only the first line if multiple
@@ -65,4 +98,4 @@ Generate the summary based on the payload:"""
         if len(summary) > 100:
             summary = summary[:97] + "..."
 
-    return summary
+    return summary, failure_message

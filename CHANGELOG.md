@@ -6,6 +6,72 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [v2.0.0] - 2025-11-12
+
+### [PR #16](https://github.com/apolopena/multi-agent-workflow/pull/16) - Major Refactor: Observability System Architecture
+**Branch:** `major-refactor` → `main` · **Status:** ✅ Merged
+
+#### Breaking Changes
+- **Directory Structure:** All observability data moved from `logs/` to `.claude/data/observability/`
+  - Sessions: `.claude/data/observability/sessions/SESSION_ID.json`
+  - Logs: `.claude/data/observability/logs/SESSION_ID/`
+  - Backups: `.claude/data/observability/transcript_backups/`
+- **Path Resolution:** Removed `Path.cwd()` usage; all hooks now use `get_project_root()` for consistent path resolution
+- **Aggregate Logging:** Removed redundant aggregate log files (`session_start.json`, `session_end.json`, etc.)
+
+#### Features
+- [[7b9a903](https://github.com/apolopena/multi-agent-workflow/commit/7b9a903)] **FEAT:** *infrastructure*
+  - Implement centralized `.env` loading system with `load_central_env()` for hooks and utilities (WP-REF-1)
+- [[b8fbb81](https://github.com/apolopena/multi-agent-workflow/commit/b8fbb81)] **FEAT:** *fallback*
+  - Add TTS fallback chain (ElevenLabs → OpenAI → pyttsx3) with server reachability checks (WP-REF-2)
+- [[b8fbb81](https://github.com/apolopena/multi-agent-workflow/commit/b8fbb81)] **FEAT:** *api-key*
+  - Implement API key fallback for summaries (Anthropic → OpenAI) with graceful error handling and voice warnings (WP-REF-2)
+- [[b8fbb81](https://github.com/apolopena/multi-agent-workflow/commit/b8fbb81)] **FEAT:** *performance*
+  - Add server reachability check in `send_event.py` to prevent wasted API quota before summary generation
+
+#### Bug Fixes
+- [[b8fbb81](https://github.com/apolopena/multi-agent-workflow/commit/b8fbb81)] **FIX:** *tts*
+  - Fix OpenAI TTS to exit with error code 1 on API failures instead of 0 (was preventing fallback to pyttsx3)
+- [[b8fbb81](https://github.com/apolopena/multi-agent-workflow/commit/b8fbb81)] **FIX:** *tts*
+  - Fix TTS fallback in `stop.py` and `subagent_stop.py` to check subprocess returncode before considering success
+  - Now properly falls back to pyttsx3 robot voice when OpenAI/ElevenLabs TTS fails
+- [[b8fbb81](https://github.com/apolopena/multi-agent-workflow/commit/b8fbb81)] **FIX:** *tts*
+  - Fix `send_event.py::trigger_tts_warning()` to check returncode before returning (enables pyttsx3 fallback)
+- [[b8fbb81](https://github.com/apolopena/multi-agent-workflow/commit/b8fbb81)] **FIX:** *paths*
+  - Fix status line to find session data from any subdirectory using `get_project_root()`
+- [[b8fbb81](https://github.com/apolopena/multi-agent-workflow/commit/b8fbb81)] **FIX:** *paths*
+  - Fix all hooks to work correctly when run from subdirectories (use `get_project_root()` instead of `Path.cwd()`)
+- [[b8fbb81](https://github.com/apolopena/multi-agent-workflow/commit/b8fbb81)] **FIX:** *session*
+  - Fix `session_start.py` to display configured PROJECT_NAME in observability badge instead of subdirectory folder name
+
+#### Refactoring
+- [[b8fbb81](https://github.com/apolopena/multi-agent-workflow/commit/b8fbb81)] **REFACTOR:** *paths*
+  - Consolidate observability data under `.claude/data/observability/` with `get_project_root()` utility (WP-REF-3)
+- [[b8fbb81](https://github.com/apolopena/multi-agent-workflow/commit/b8fbb81)] **REFACTOR:** *logging*
+  - Remove redundant aggregate logging functions from `session_end.py`, `session_start.py`, and `user_prompt_submit.py`
+- [[b8fbb81](https://github.com/apolopena/multi-agent-workflow/commit/b8fbb81)] **REFACTOR:** *cleanup*
+  - Remove debug logging from `utils/llm/oai.py` (/tmp/oai_debug.log)
+
+#### Configuration
+- [[466c937](https://github.com/apolopena/multi-agent-workflow/commit/466c937)] **CHORE:** *gitignore*
+  - Clean up `.gitignore` for new observability paths under `.claude/data/` and add `.ai/scratch/`
+- [[b8fbb81](https://github.com/apolopena/multi-agent-workflow/commit/b8fbb81)] **CHORE:** *config*
+  - Update `templates/.observability-config.template` to clarify multi-agent-workflow path usage
+- [[b8fbb81](https://github.com/apolopena/multi-agent-workflow/commit/b8fbb81)] **CHORE:** *scripts*
+  - Update enable/disable scripts to use central repo path for state file
+
+#### Documentation
+- [[b8fbb81](https://github.com/apolopena/multi-agent-workflow/commit/b8fbb81)] **DOCS:** *setup*
+  - Document `git-ai.sh` installation and copying during setup in `README.md`
+- [[b8fbb81](https://github.com/apolopena/multi-agent-workflow/commit/b8fbb81)] **DOCS:** *template*
+  - Add `templates/.env.template` for central configuration
+
+#### Performance
+- [[b8fbb81](https://github.com/apolopena/multi-agent-workflow/commit/b8fbb81)] **PERF:** *tts*
+  - Reduce pyttsx3 speech rate from 180 to 140 wpm for improved clarity
+
+---
+
 ## [v1.0.9] - 2025-11-06
 
 ### [PR #14](https://github.com/apolopena/multi-agent-workflow/pull/14) - Optimize Mark and Pedro agent prompts for speed

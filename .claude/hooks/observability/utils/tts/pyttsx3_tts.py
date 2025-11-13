@@ -34,8 +34,8 @@ def main():
         engine = pyttsx3.init()
         
         # Configure engine settings
-        engine.setProperty('rate', 180)    # Speech rate (words per minute)
-        engine.setProperty('volume', 0.8)  # Volume (0.0 to 1.0)
+        engine.setProperty('rate', 140)    # Speech rate (words per minute, slower for clarity)
+        engine.setProperty('volume', 0.9)  # Volume (0.0 to 1.0)
         
         print("🎙️  pyttsx3 TTS")
         print("=" * 15)

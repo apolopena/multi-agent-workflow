@@ -13,86 +13,16 @@ import sys
 import subprocess
 from pathlib import Path
 from datetime import datetime
+from utils.constants import load_central_env
 
-try:
-    from dotenv import load_dotenv
-    load_dotenv('.env')
-except ImportError:
-    pass  # dotenv is optional
+# Load central environment variables
+load_central_env()
 
 
-def log_session_end(input_data):
-    """Log session end event to logs directory."""
-    # Ensure logs directory exists
-    log_dir = Path("logs")
-    log_dir.mkdir(parents=True, exist_ok=True)
-    log_file = log_dir / 'session_end.json'
-
-    # Read existing log data or initialize empty list
-    if log_file.exists():
-        with open(log_file, 'r') as f:
-            try:
-                log_data = json.load(f)
-            except (json.JSONDecodeError, ValueError):
-                log_data = []
-    else:
-        log_data = []
-
-    # Append the entire input data with timestamp
-    entry = {
-        **input_data,
-        "logged_at": datetime.now().isoformat()
-    }
-    log_data.append(entry)
-
-    # Write back to file with formatting
-    with open(log_file, 'w') as f:
-        json.dump(log_data, f, indent=2)
+# Removed: Aggregate logging function (unused)
 
 
-def save_session_statistics(input_data):
-    """Save session statistics for analytics."""
-    try:
-        session_id = input_data.get('session_id', 'unknown')
-        reason = input_data.get('reason', 'other')
-        transcript_path = input_data.get('transcript_path', '')
-
-        # Count messages in transcript if available
-        message_count = 0
-        if transcript_path and Path(transcript_path).exists():
-            try:
-                with open(transcript_path, 'r') as f:
-                    # JSONL format - count lines
-                    message_count = sum(1 for _ in f)
-            except Exception:
-                pass
-
-        # Save statistics
-        stats_dir = Path("logs")
-        stats_dir.mkdir(parents=True, exist_ok=True)
-        stats_file = stats_dir / 'session_statistics.json'
-
-        if stats_file.exists():
-            with open(stats_file, 'r') as f:
-                try:
-                    stats = json.load(f)
-                except (json.JSONDecodeError, ValueError):
-                    stats = []
-        else:
-            stats = []
-
-        stats.append({
-            "session_id": session_id,
-            "ended_at": datetime.now().isoformat(),
-            "reason": reason,
-            "message_count": message_count
-        })
-
-        with open(stats_file, 'w') as f:
-            json.dump(stats, f, indent=2)
-
-    except Exception:
-        pass  # Don't fail the hook on stats errors
+# Removed: Aggregate session statistics function (unused)
 
 
 def main():
@@ -112,12 +42,7 @@ def main():
         session_id = input_data.get('session_id', 'unknown')
         reason = input_data.get('reason', 'other')
 
-        # Log the session end event
-        log_session_end(input_data)
-
-        # Save session statistics if requested
-        if args.save_stats:
-            save_session_statistics(input_data)
+        # Removed: Aggregate logging calls (unused)
 
         # Announce session end if requested
         if args.announce:
