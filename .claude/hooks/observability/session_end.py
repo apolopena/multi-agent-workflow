@@ -13,12 +13,10 @@ import sys
 import subprocess
 from pathlib import Path
 from datetime import datetime
+from utils.constants import load_central_env
 
-try:
-    from dotenv import load_dotenv
-    load_dotenv('.env')
-except ImportError:
-    pass  # dotenv is optional
+# Load central environment variables
+load_central_env()
 
 
 def log_session_end(input_data):

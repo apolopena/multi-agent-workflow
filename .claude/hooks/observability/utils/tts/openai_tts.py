@@ -12,7 +12,13 @@ import sys
 import subprocess
 import tempfile
 from pathlib import Path
-from dotenv import load_dotenv
+
+# Add parent directory to path to import from utils
+sys.path.insert(0, str(Path(__file__).parent.parent))
+from constants import load_central_env
+
+# Load central environment variables
+load_central_env()
 
 
 def main():
@@ -31,9 +37,6 @@ def main():
     - Nova voice (engaging and warm)
     - File-based playback with mpv (configurable via FORCE_MPV_FOR_OPENAI)
     """
-
-    # Load environment variables
-    load_dotenv('.env')
 
     # Get API key from environment
     api_key = os.getenv("OPENAI_API_KEY")
