@@ -41,6 +41,8 @@ All notable changes to this project will be documented in this file.
   - Fix status line to find session data from any subdirectory using `get_project_root()`
 - [[b8fbb81](https://github.com/apolopena/multi-agent-workflow/commit/b8fbb81)] **FIX:** *paths*
   - Fix all hooks to work correctly when run from subdirectories (use `get_project_root()` instead of `Path.cwd()`)
+- [[b8fbb81](https://github.com/apolopena/multi-agent-workflow/commit/b8fbb81)] **FIX:** *session*
+  - Fix `session_start.py` to display configured PROJECT_NAME in observability badge instead of subdirectory folder name
 
 #### Refactoring
 - [[b8fbb81](https://github.com/apolopena/multi-agent-workflow/commit/b8fbb81)] **REFACTOR:** *paths*
