@@ -6,6 +6,19 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [v2.0.2] - 2025-11-14
+
+### Hotfix - Status line clarity when observability disabled
+
+#### Bug Fixes
+- [[c24e71d](https://github.com/apolopena/multi-agent-workflow/commit/c24e71d)] **FIX:** *status-line*
+  - Show clear "⚠ Observability: disabled" message in status line when observability is disabled
+  - Previously showed confusing "💭 No session data" message even when observability was working correctly
+  - Status line now checks `.observability-state` before attempting to read session data
+  - Improves user experience by clearly indicating why session data is not available
+
+---
+
 ## [v2.0.1] - 2025-11-14
 
 ### [PR #17](https://github.com/apolopena/multi-agent-workflow/pull/17) - Consolidate observability data and fix disabled state handling
