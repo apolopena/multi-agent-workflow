@@ -160,6 +160,17 @@ def generate_status_line(input_data):
     model_info = input_data.get("model", {})
     model_name = model_info.get("display_name", "Claude")
 
+    # Check if observability is disabled
+    project_root = get_project_root()
+    state_file = project_root / ".claude" / ".observability-state"
+    if state_file.exists():
+        state = state_file.read_text().strip().lower()
+        if state != "enabled":
+            # Observability is disabled, show clear message
+            status_line = f"\033[34m[{model_name}]\033[0m \033[33m⚠ Observability: disabled\033[0m"
+            log_status_line(input_data, status_line)
+            return status_line
+
     # Get session data
     session_data, error = get_session_data(session_id)
 
