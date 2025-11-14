@@ -17,6 +17,15 @@ from utils.constants import load_central_env, get_project_root
 # Load central environment variables
 load_central_env()
 
+# Check if observability is enabled via state file
+STATE_FILE = get_project_root() / '.claude' / '.observability-state'
+if STATE_FILE.exists():
+    state = STATE_FILE.read_text().strip().lower()
+    if state != 'enabled':
+        # Observability is disabled, exit silently
+        sys.exit(0)
+# If state file doesn't exist, default to enabled (backwards compatible)
+
 
 # Removed: Aggregate logging function (unused)
 

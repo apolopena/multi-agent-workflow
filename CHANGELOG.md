@@ -6,6 +6,27 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [v2.0.1] - 2025-11-14
+
+### [PR #17](https://github.com/apolopena/multi-agent-workflow/pull/17) - Consolidate observability data and fix disabled state handling
+**Branch:** `dev/working` → `main` · **Status:** ✅ Merged
+
+#### Bug Fixes
+- [[5a21606](https://github.com/apolopena/multi-agent-workflow/commit/5a21606)] **FIX:** *hooks*
+  - All hooks now respect observability disabled state from `.observability-state` file
+  - Previously only `send_event.py` checked the state; all other hooks continued running when disabled
+  - Added state check to 9 hooks: stop.py, subagent_stop.py, session_start.py, session_end.py, user_prompt_submit.py, pre_tool_use.py, post_tool_use.py, pre_compact.py, notification.py
+  - Hooks exit silently when disabled, defaults to enabled if state file doesn't exist (backwards compatible)
+
+#### Refactoring
+- [[63bf597](https://github.com/apolopena/multi-agent-workflow/commit/63bf597)] **REFACTOR:** *data*
+  - Move status line data from `logs/status_line.json` to `.claude/data/observability/status_line.json`
+  - Consolidates all observability data in `.claude/data/observability/` directory
+  - Move `get_project_root()` earlier in status_line_main.py to fix forward reference
+  - Remove duplicate `get_project_root()` function definition
+
+---
+
 ## [v2.0.0] - 2025-11-12
 
 ### [PR #16](https://github.com/apolopena/multi-agent-workflow/pull/16) - Major Refactor: Observability System Architecture
