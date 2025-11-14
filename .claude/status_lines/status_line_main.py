@@ -25,10 +25,20 @@ MAX_PROMPT_LENGTH = 50  # Adjustable: Maximum characters to display for prompt
 SHOW_GIT_INFO = False  # Set to True to show git branch and status
 
 
+def get_project_root():
+    """Find project root by searching for .claude directory."""
+    current = Path.cwd()
+    for parent in [current] + list(current.parents):
+        if (parent / '.claude').exists():
+            return parent
+    return current
+
+
 def log_status_line(input_data, status_line_output, error_message=None):
-    """Log status line event to logs directory."""
-    # Ensure logs directory exists
-    log_dir = Path("logs")
+    """Log status line event to .claude/data/observability directory."""
+    # Get project root and ensure data directory exists
+    project_root = get_project_root()
+    log_dir = project_root / ".claude" / "data" / "observability"
     log_dir.mkdir(parents=True, exist_ok=True)
     log_file = log_dir / "status_line.json"
 
@@ -95,14 +105,6 @@ def get_git_status():
         pass
     return ""
 
-
-def get_project_root():
-    """Find project root by searching for .claude directory."""
-    current = Path.cwd()
-    for parent in [current] + list(current.parents):
-        if (parent / '.claude').exists():
-            return parent
-    return current
 
 def get_session_data(session_id):
     """Get session data including agent name and prompts."""
