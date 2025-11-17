@@ -1,0 +1,258 @@
+[
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Bash",
+    "notification_type": "permission_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Bash",
+    "notification_type": "permission_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project/trees/bugfix-beta",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Fetch",
+    "notification_type": "permission_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Fetch",
+    "notification_type": "permission_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude is waiting for your input",
+    "notification_type": "idle_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Bash",
+    "notification_type": "permission_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude is waiting for your input",
+    "notification_type": "idle_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude is waiting for your input",
+    "notification_type": "idle_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude is waiting for your input",
+    "notification_type": "idle_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude is waiting for your input",
+    "notification_type": "idle_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Bash",
+    "notification_type": "permission_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Bash",
+    "notification_type": "permission_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Update",
+    "notification_type": "permission_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Update",
+    "notification_type": "permission_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Update",
+    "notification_type": "permission_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Bash",
+    "notification_type": "permission_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude is waiting for your input",
+    "notification_type": "idle_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude is waiting for your input",
+    "notification_type": "idle_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Update",
+    "notification_type": "permission_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Update",
+    "notification_type": "permission_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Bash",
+    "notification_type": "permission_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Update",
+    "notification_type": "permission_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Update",
+    "notification_type": "permission_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Update",
+    "notification_type": "permission_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Update",
+    "notification_type": "permission_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Bash",
+    "notification_type": "permission_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Bash",
+    "notification_type": "permission_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Bash",
+    "notification_type": "permission_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Bash",
+    "notification_type": "permission_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Bash",
+    "notification_type": "permission_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude is waiting for your input",
+    "notification_type": "idle_prompt"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "hook_event_name": "Notification",
+    "message": "Claude needs your permission to use Bash",
+    "notification_type": "permission_prompt"
+  }
+]

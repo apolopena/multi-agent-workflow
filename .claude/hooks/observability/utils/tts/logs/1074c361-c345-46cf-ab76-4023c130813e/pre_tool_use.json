@@ -1,0 +1,26 @@
+[
+  {
+    "session_id": "1074c361-c345-46cf-ab76-4023c130813e",
+    "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1074c361-c345-46cf-ab76-4023c130813e.jsonl",
+    "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils/tts",
+    "permission_mode": "acceptEdits",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "tail -5 logs/user_prompt_submit.json | jq '.[-1].cwd' 2>/dev/null || tail -20 logs/user_prompt_submit.json | grep -o '\"cwd\":\"[^\"]*\"' | head -1",
+      "description": "Check what CWD hooks actually run with"
+    }
+  },
+  {
+    "session_id": "1074c361-c345-46cf-ab76-4023c130813e",
+    "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1074c361-c345-46cf-ab76-4023c130813e.jsonl",
+    "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils/tts",
+    "permission_mode": "acceptEdits",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "cd /home/ks73/repos/work/multi-agent-workflow && tail -50 logs/*/user_prompt_submit.json 2>/dev/null | grep -o '\"cwd\":\"[^\"]*\"' | head -3",
+      "description": "Check CWD from logs"
+    }
+  }
+]

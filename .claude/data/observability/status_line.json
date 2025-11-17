@@ -1,0 +1,1916 @@
+[
+  {
+    "timestamp": "2025-11-16T18:17:55.189037",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.285315,
+        "total_duration_ms": 199806,
+        "total_api_duration_ms": 90232,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mok do pahse 1\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:17:59.002403",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.2973858,
+        "total_duration_ms": 203622,
+        "total_api_duration_ms": 93735,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mok do pahse 1\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:18:03.601591",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.31178285,
+        "total_duration_ms": 208220,
+        "total_api_duration_ms": 99392,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mok do pahse 1\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:18:03.610273",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.31178285,
+        "total_duration_ms": 208228,
+        "total_api_duration_ms": 99392,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mok do pahse 1\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:18:10.149754",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.32526695,
+        "total_duration_ms": 214763,
+        "total_api_duration_ms": 105619,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mok do pahse 1\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:18:54.215154",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.32526695,
+        "total_duration_ms": 258722,
+        "total_api_duration_ms": 105619,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mok do pahse 1\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:18:54.399711",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.32526695,
+        "total_duration_ms": 259023,
+        "total_api_duration_ms": 105619,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mok do pahse 1\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:19:17.207294",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.39755635,
+        "total_duration_ms": 281827,
+        "total_api_duration_ms": 110975,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI already restarted you. Just run the test comm...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:19:36.983729",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.40118634999999997,
+        "total_duration_ms": 301594,
+        "total_api_duration_ms": 114103,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI already restarted you. Just run the test comm...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:19:37.280383",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.40118634999999997,
+        "total_duration_ms": 301895,
+        "total_api_duration_ms": 114103,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI already restarted you. Just run the test comm...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:19:41.815328",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.4130966,
+        "total_duration_ms": 306438,
+        "total_api_duration_ms": 118306,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI already restarted you. Just run the test comm...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:19:47.943168",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.42649145,
+        "total_duration_ms": 312564,
+        "total_api_duration_ms": 122058,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI already restarted you. Just run the test comm...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:19:56.342243",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.43911385000000003,
+        "total_duration_ms": 320960,
+        "total_api_duration_ms": 127705,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI already restarted you. Just run the test comm...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:20:11.811357",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.43911385000000003,
+        "total_duration_ms": 336432,
+        "total_api_duration_ms": 127705,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI already restarted you. Just run the test comm...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:20:12.108735",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.43911385000000003,
+        "total_duration_ms": 336733,
+        "total_api_duration_ms": 127705,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI already restarted you. Just run the test comm...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:20:20.912341",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.5153650000000001,
+        "total_duration_ms": 345523,
+        "total_api_duration_ms": 134729,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \u2753 \u001b[97mTo clarify, I should only hear one TTS announce...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:20:43.691545",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.5153650000000001,
+        "total_duration_ms": 368312,
+        "total_api_duration_ms": 134729,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \u2753 \u001b[97mTo clarify, I should only hear one TTS announce...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:20:43.991941",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.5153650000000001,
+        "total_duration_ms": 368613,
+        "total_api_duration_ms": 134729,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \u2753 \u001b[97mTo clarify, I should only hear one TTS announce...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:20:47.981143",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.5156430000000001,
+        "total_duration_ms": 372602,
+        "total_api_duration_ms": 135582,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \u2753 \u001b[97mYes. Now let me run the slash command to change...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:20:48.277909",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.5156430000000001,
+        "total_duration_ms": 372902,
+        "total_api_duration_ms": 135582,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \u2753 \u001b[97mYes. Now let me run the slash command to change...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:20:49.935523",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.5156430000000001,
+        "total_duration_ms": 374555,
+        "total_api_duration_ms": 135582,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \u2753 \u001b[97mYes. Now let me run the slash command to change...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:20:50.231058",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.5156430000000001,
+        "total_duration_ms": 374856,
+        "total_api_duration_ms": 135582,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \u2753 \u001b[97mYes. Now let me run the slash command to change...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:20:52.197410",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.52910025,
+        "total_duration_ms": 376815,
+        "total_api_duration_ms": 141442,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \u2753 \u001b[97mYes. Now let me run the slash command to change...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:21:21.680238",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.52910025,
+        "total_duration_ms": 406187,
+        "total_api_duration_ms": 141442,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \u2753 \u001b[97mYes. Now let me run the slash command to change...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:21:21.864669",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.52910025,
+        "total_duration_ms": 406487,
+        "total_api_duration_ms": 141442,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \u2753 \u001b[97mYes. Now let me run the slash command to change...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:25:34.482591",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.5293292500000001,
+        "total_duration_ms": 659105,
+        "total_api_duration_ms": 142420,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \u2753 \u001b[97mYes. Now let me run the slash command to change...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:25:34.787122",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.5293292500000001,
+        "total_duration_ms": 659406,
+        "total_api_duration_ms": 142420,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \u2753 \u001b[97mYes. Now let me run the slash command to change...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:25:43.065811",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.6129069000000001,
+        "total_duration_ms": 667683,
+        "total_api_duration_ms": 148187,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \u2753 \u001b[97mWhat makes you say that I'm going to get verbos...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:25:54.422209",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.6420429000000002,
+        "total_duration_ms": 679032,
+        "total_api_duration_ms": 156109,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \u2753 \u001b[97mWhat makes you say that I'm going to get verbos...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:26:47.400322",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.6420429000000002,
+        "total_duration_ms": 732022,
+        "total_api_duration_ms": 156109,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \u2753 \u001b[97mWhat makes you say that I'm going to get verbos...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:26:47.700589",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.6420429000000002,
+        "total_duration_ms": 732322,
+        "total_api_duration_ms": 156109,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \u2753 \u001b[97mWhat makes you say that I'm going to get verbos...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:26:56.882899",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.6575557500000002,
+        "total_duration_ms": 741495,
+        "total_api_duration_ms": 164040,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udca1 \u001b[97mWell, I don't work that way. I don't add suppor...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:27:27.070210",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.6575557500000002,
+        "total_duration_ms": 771690,
+        "total_api_duration_ms": 164040,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udca1 \u001b[97mWell, I don't work that way. I don't add suppor...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:27:27.368679",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.6575557500000002,
+        "total_duration_ms": 771991,
+        "total_api_duration_ms": 164040,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udca1 \u001b[97mWell, I don't work that way. I don't add suppor...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:27:37.267240",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.6728851500000003,
+        "total_duration_ms": 781879,
+        "total_api_duration_ms": 171853,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \u2753 \u001b[97mOh my God, why are you saying remove it all or ...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:29:01.625881",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.6728851500000003,
+        "total_duration_ms": 866246,
+        "total_api_duration_ms": 171853,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \u2753 \u001b[97mOh my God, why are you saying remove it all or ...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:29:01.926223",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.6728851500000003,
+        "total_duration_ms": 866546,
+        "total_api_duration_ms": 171853,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \u2753 \u001b[97mOh my God, why are you saying remove it all or ...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:29:09.811578",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.6879300500000003,
+        "total_duration_ms": 874430,
+        "total_api_duration_ms": 177635,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \u2753 \u001b[97mI see the issue here. It's that Worktree is imp...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:29:29.138136",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.6879300500000003,
+        "total_duration_ms": 893760,
+        "total_api_duration_ms": 177635,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \u2753 \u001b[97mI see the issue here. It's that Worktree is imp...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:29:29.445374",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.6879300500000003,
+        "total_duration_ms": 894061,
+        "total_api_duration_ms": 177635,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \u2753 \u001b[97mI see the issue here. It's that Worktree is imp...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:29:37.556420",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.7017912500000003,
+        "total_duration_ms": 902175,
+        "total_api_duration_ms": 181979,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97m~/repos/temp/claude-code-hooks-multi-agent-obse...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:29:43.652842",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.7017912500000003,
+        "total_duration_ms": 908272,
+        "total_api_duration_ms": 181979,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97m~/repos/temp/claude-code-hooks-multi-agent-obse...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:29:43.957738",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.7017912500000003,
+        "total_duration_ms": 908572,
+        "total_api_duration_ms": 181979,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97m~/repos/temp/claude-code-hooks-multi-agent-obse...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:29:49.276328",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.7180493000000003,
+        "total_duration_ms": 913897,
+        "total_api_duration_ms": 185577,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97m~/repos/temp/claude-code-hooks-multi-agent-obse...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:30:00.124118",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.7424604500000004,
+        "total_duration_ms": 924743,
+        "total_api_duration_ms": 201298,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97m~/repos/temp/claude-code-hooks-multi-agent-obse...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:30:06.983109",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.7612856500000004,
+        "total_duration_ms": 931604,
+        "total_api_duration_ms": 205810,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97m~/repos/temp/claude-code-hooks-multi-agent-obse...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:30:19.507345",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.7789406500000003,
+        "total_duration_ms": 944126,
+        "total_api_duration_ms": 213306,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97m~/repos/temp/claude-code-hooks-multi-agent-obse...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:30:46.277911",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.7789406500000003,
+        "total_duration_ms": 970892,
+        "total_api_duration_ms": 213306,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97m~/repos/temp/claude-code-hooks-multi-agent-obse...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:30:46.571629",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.7789406500000003,
+        "total_duration_ms": 971193,
+        "total_api_duration_ms": 213306,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97m~/repos/temp/claude-code-hooks-multi-agent-obse...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:30:53.244800",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.7956844000000004,
+        "total_duration_ms": 977859,
+        "total_api_duration_ms": 219382,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97m~/repos/temp/claude-code-hooks-multi-agent-obse...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:33:26.382922",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.7959474000000004,
+        "total_duration_ms": 1130996,
+        "total_api_duration_ms": 220307,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \u2753 \u001b[97mis it possible this file would include worktree...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:33:26.679891",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.7959474000000004,
+        "total_duration_ms": 1131297,
+        "total_api_duration_ms": 220307,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \u2753 \u001b[97mis it possible this file would include worktree...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:33:31.277643",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.8106065500000004,
+        "total_duration_ms": 1135896,
+        "total_api_duration_ms": 223494,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mobservable-tools-diffs-tts.md\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:33:41.794658",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.8316853000000004,
+        "total_duration_ms": 1146416,
+        "total_api_duration_ms": 230632,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mobservable-tools-diffs-tts.md\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:35:24.868642",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.8316853000000004,
+        "total_duration_ms": 1249364,
+        "total_api_duration_ms": 230632,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mobservable-tools-diffs-tts.md\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:35:25.039649",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.8316853000000004,
+        "total_duration_ms": 1249665,
+        "total_api_duration_ms": 230632,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mobservable-tools-diffs-tts.md\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:35:38.969105",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.8316853000000004,
+        "total_duration_ms": 1263592,
+        "total_api_duration_ms": 230632,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mobservable-tools-diffs-tts.md\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:35:39.268543",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.8316853000000004,
+        "total_duration_ms": 1263893,
+        "total_api_duration_ms": 230632,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mobservable-tools-diffs-tts.md\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:35:48.237800",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.8473519000000004,
+        "total_duration_ms": 1272856,
+        "total_api_duration_ms": 234577,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mNow let's just rename this branch TTS and Workt...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:35:54.183545",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.8632016500000004,
+        "total_duration_ms": 1278800,
+        "total_api_duration_ms": 238300,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mNow let's just rename this branch TTS and Workt...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:36:00.502702",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.8782940000000004,
+        "total_duration_ms": 1285123,
+        "total_api_duration_ms": 242380,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mNow let's just rename this branch TTS and Workt...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:36:54.362686",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.8782940000000004,
+        "total_duration_ms": 1338866,
+        "total_api_duration_ms": 242380,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mNow let's just rename this branch TTS and Workt...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:36:54.543202",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.8782940000000004,
+        "total_duration_ms": 1339166,
+        "total_api_duration_ms": 242380,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mNow let's just rename this branch TTS and Workt...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:37:00.916538",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.8954485500000003,
+        "total_duration_ms": 1345532,
+        "total_api_duration_ms": 248072,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udca1 \u001b[97mOkay, but now everything needs to be added, com...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:37:11.769930",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.9150547000000002,
+        "total_duration_ms": 1356388,
+        "total_api_duration_ms": 256791,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udca1 \u001b[97mOkay, but now everything needs to be added, com...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-16T18:37:17.887150",
+    "input_data": {
+      "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+      "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+      "cwd": "/tmp/test-worktree-project",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/tmp/test-worktree-project",
+        "project_dir": "/tmp/test-worktree-project"
+      },
+      "version": "2.0.42",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 0.9331417000000002,
+        "total_duration_ms": 1362508,
+        "total_api_duration_ms": 260884,
+        "total_lines_added": 0,
+        "total_lines_removed": 0
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udca1 \u001b[97mOkay, but now everything needs to be added, com...\u001b[0m"
+  }
+]

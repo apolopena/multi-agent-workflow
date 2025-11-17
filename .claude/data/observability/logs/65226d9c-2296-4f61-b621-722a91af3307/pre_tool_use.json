@@ -1,0 +1,26 @@
+[
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "permission_mode": "default",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git add . && git commit -m \"$(cat <<'EOF'\nFreeze: TTS mode refactor incomplete\n\nRefactored observability state to JSON with TTS mode infrastructure (standard/worktree/all), but TTS mode behavior was never implemented in hooks\u2014only reads mode without using it. Frozen until actual TTS mode differentiation and worktree skill integration can be properly designed.\nEOF\n)\" && git push -u origin tts-and-worktree-skills",
+      "description": "Add, commit, and push frozen branch"
+    }
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "permission_mode": "default",
+    "hook_event_name": "PreToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "git add . && ./scripts/git-ai.sh commit -m \"$(cat <<'EOF'\nFreeze: TTS mode refactor incomplete\n\nRefactored observability state to JSON with TTS mode infrastructure (standard/worktree/all), but TTS mode behavior was never implemented in hooks\u2014only reads mode without using it. Frozen until actual TTS mode differentiation and worktree skill integration can be properly designed.\nEOF\n)\" && ./scripts/git-ai.sh push -u origin tts-and-worktree-skills",
+      "description": "Add, commit with git-ai, and push"
+    }
+  }
+]

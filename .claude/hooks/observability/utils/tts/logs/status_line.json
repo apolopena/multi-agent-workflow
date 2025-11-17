@@ -1,0 +1,297 @@
+[
+  {
+    "timestamp": "2025-11-12T19:40:28.126781",
+    "input_data": {
+      "session_id": "1074c361-c345-46cf-ab76-4023c130813e",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1074c361-c345-46cf-ab76-4023c130813e.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils/tts",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils/tts",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 4.893933499999999,
+        "total_duration_ms": 1777967,
+        "total_api_duration_ms": 1219465,
+        "total_lines_added": 1406,
+        "total_lines_removed": 110
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "[Sonnet 4.5] \ud83d\udcad No session data",
+    "error": "Session file .claude/data/sessions/1074c361-c345-46cf-ab76-4023c130813e.json does not exist"
+  },
+  {
+    "timestamp": "2025-11-12T19:40:28.127012",
+    "input_data": {
+      "session_id": "1074c361-c345-46cf-ab76-4023c130813e",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1074c361-c345-46cf-ab76-4023c130813e.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils/tts",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils/tts",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 4.893933499999999,
+        "total_duration_ms": 1777967,
+        "total_api_duration_ms": 1219465,
+        "total_lines_added": 1406,
+        "total_lines_removed": 110
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[36m[Sonnet 4.5]\u001b[0m \u001b[90m\ud83d\udcad No session data\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T19:40:36.627871",
+    "input_data": {
+      "session_id": "1074c361-c345-46cf-ab76-4023c130813e",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1074c361-c345-46cf-ab76-4023c130813e.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils/tts",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils/tts",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 4.9331134,
+        "total_duration_ms": 1786465,
+        "total_api_duration_ms": 1228773,
+        "total_lines_added": 1406,
+        "total_lines_removed": 110
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "[Sonnet 4.5] \ud83d\udcad No session data",
+    "error": "Session file .claude/data/sessions/1074c361-c345-46cf-ab76-4023c130813e.json does not exist"
+  },
+  {
+    "timestamp": "2025-11-12T19:40:36.628174",
+    "input_data": {
+      "session_id": "1074c361-c345-46cf-ab76-4023c130813e",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1074c361-c345-46cf-ab76-4023c130813e.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils/tts",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils/tts",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 4.9331134,
+        "total_duration_ms": 1786465,
+        "total_api_duration_ms": 1228773,
+        "total_lines_added": 1406,
+        "total_lines_removed": 110
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[36m[Sonnet 4.5]\u001b[0m \u001b[90m\ud83d\udcad No session data\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T19:40:36.640126",
+    "input_data": {
+      "session_id": "1074c361-c345-46cf-ab76-4023c130813e",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1074c361-c345-46cf-ab76-4023c130813e.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils/tts",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils/tts",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 4.9331134,
+        "total_duration_ms": 1786478,
+        "total_api_duration_ms": 1228773,
+        "total_lines_added": 1406,
+        "total_lines_removed": 110
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "[Sonnet 4.5] \ud83d\udcad No session data",
+    "error": "Session file .claude/data/sessions/1074c361-c345-46cf-ab76-4023c130813e.json does not exist"
+  },
+  {
+    "timestamp": "2025-11-12T19:40:36.640495",
+    "input_data": {
+      "session_id": "1074c361-c345-46cf-ab76-4023c130813e",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1074c361-c345-46cf-ab76-4023c130813e.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils/tts",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils/tts",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 4.9331134,
+        "total_duration_ms": 1786478,
+        "total_api_duration_ms": 1228773,
+        "total_lines_added": 1406,
+        "total_lines_removed": 110
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[36m[Sonnet 4.5]\u001b[0m \u001b[90m\ud83d\udcad No session data\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T19:40:42.667511",
+    "input_data": {
+      "session_id": "1074c361-c345-46cf-ab76-4023c130813e",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1074c361-c345-46cf-ab76-4023c130813e.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils/tts",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils/tts",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 4.970903249999999,
+        "total_duration_ms": 1792507,
+        "total_api_duration_ms": 1234907,
+        "total_lines_added": 1406,
+        "total_lines_removed": 110
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "[Sonnet 4.5] \ud83d\udcad No session data",
+    "error": "Session file .claude/data/sessions/1074c361-c345-46cf-ab76-4023c130813e.json does not exist"
+  },
+  {
+    "timestamp": "2025-11-12T19:40:42.667900",
+    "input_data": {
+      "session_id": "1074c361-c345-46cf-ab76-4023c130813e",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1074c361-c345-46cf-ab76-4023c130813e.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils/tts",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils/tts",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 4.970903249999999,
+        "total_duration_ms": 1792507,
+        "total_api_duration_ms": 1234907,
+        "total_lines_added": 1406,
+        "total_lines_removed": 110
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[36m[Sonnet 4.5]\u001b[0m \u001b[90m\ud83d\udcad No session data\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T19:40:42.672153",
+    "input_data": {
+      "session_id": "1074c361-c345-46cf-ab76-4023c130813e",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1074c361-c345-46cf-ab76-4023c130813e.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils/tts",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils/tts",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 4.970903249999999,
+        "total_duration_ms": 1792514,
+        "total_api_duration_ms": 1234907,
+        "total_lines_added": 1406,
+        "total_lines_removed": 110
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "[Sonnet 4.5] \ud83d\udcad No session data",
+    "error": "Session file .claude/data/sessions/1074c361-c345-46cf-ab76-4023c130813e.json does not exist"
+  },
+  {
+    "timestamp": "2025-11-12T19:40:42.672559",
+    "input_data": {
+      "session_id": "1074c361-c345-46cf-ab76-4023c130813e",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1074c361-c345-46cf-ab76-4023c130813e.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils/tts",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils/tts",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 4.970903249999999,
+        "total_duration_ms": 1792514,
+        "total_api_duration_ms": 1234907,
+        "total_lines_added": 1406,
+        "total_lines_removed": 110
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[36m[Sonnet 4.5]\u001b[0m \u001b[90m\ud83d\udcad No session data\u001b[0m"
+  }
+]

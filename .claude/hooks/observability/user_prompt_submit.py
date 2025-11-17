@@ -1,0 +1,197 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.11"
+# dependencies = [
+#     "python-dotenv",
+# ]
+# ///
+
+import argparse
+import json
+import os
+import sys
+from pathlib import Path
+from datetime import datetime
+from utils.constants import load_central_env, get_project_root
+
+# Load central environment variables
+load_central_env()
+
+# Check if observability is enabled via state file
+STATE_FILE = get_project_root() / '.claude' / '.observability-state'
+if STATE_FILE.exists():
+    state = STATE_FILE.read_text().strip().lower()
+    if state != 'enabled':
+        # Observability is disabled, exit silently
+        sys.exit(0)
+# If state file doesn't exist, default to enabled (backwards compatible)
+
+
+# Removed: Aggregate logging function (unused)
+
+
+def manage_session_data(session_id, prompt, name_agent=False):
+    """Manage session data in the new JSON structure."""
+    import subprocess
+    import json
+
+    # Check if session tracking is disabled
+    config_file = get_project_root() / ".claude" / ".observability-config"
+    if config_file.exists():
+        try:
+            with open(config_file, "r") as f:
+                config = json.load(f)
+                if config.get("DISABLE_SESSION_TRACKING", False):
+                    return  # Skip session tracking
+        except Exception:
+            pass  # Continue if config can't be read
+
+    # Use project root for session storage
+    sessions_dir = get_project_root() / ".claude" / "data" / "observability" / "sessions"
+
+    # Ensure sessions directory exists
+    sessions_dir.mkdir(parents=True, exist_ok=True)
+
+    # Load or create session file
+    session_file = sessions_dir / f"{session_id}.json"
+
+    if session_file.exists():
+        try:
+            with open(session_file, "r") as f:
+                session_data = json.load(f)
+        except (json.JSONDecodeError, ValueError):
+            session_data = {"session_id": session_id, "prompts": []}
+    else:
+        session_data = {"session_id": session_id, "prompts": []}
+
+    # Add the new prompt
+    session_data["prompts"].append(prompt)
+
+    # Generate agent name if requested and not already present
+    if name_agent and "agent_name" not in session_data:
+        # Try Anthropic first (preferred)
+        try:
+            result = subprocess.run(
+                ["uv", "run", ".claude/hooks/observability/utils/llm/anth.py", "--agent-name"],
+                capture_output=True,
+                text=True,
+                timeout=10,
+            )
+
+            if result.returncode == 0 and result.stdout.strip():
+                agent_name = result.stdout.strip()
+                # Validate the name
+                if len(agent_name.split()) == 1 and agent_name.isalnum():
+                    session_data["agent_name"] = agent_name
+                else:
+                    raise Exception("Invalid name from Anthropic")
+        except Exception:
+            # Fall back to Ollama if Anthropic fails
+            try:
+                result = subprocess.run(
+                    ["uv", "run", ".claude/hooks/observability/utils/llm/ollama.py", "--agent-name"],
+                    capture_output=True,
+                    text=True,
+                    timeout=10,  # Shorter timeout for local Ollama
+                )
+
+                if result.returncode == 0 and result.stdout.strip():
+                    agent_name = result.stdout.strip()
+                    # Check if it's a valid name (not an error message)
+                    if len(agent_name.split()) == 1 and agent_name.isalnum():
+                        session_data["agent_name"] = agent_name
+            except Exception:
+                # If both fail, don't block the prompt
+                pass
+
+    # Save the updated session data
+    try:
+        with open(session_file, "w") as f:
+            json.dump(session_data, f, indent=2)
+    except Exception:
+        # Silently fail if we can't write the file
+        pass
+
+
+def validate_prompt(prompt):
+    """
+    Validate the user prompt for security or policy violations.
+    Returns tuple (is_valid, reason).
+    """
+    # Example validation rules (customize as needed)
+    blocked_patterns = [
+        # Add any patterns you want to block
+        # Example: ('rm -rf /', 'Dangerous command detected'),
+    ]
+
+    prompt_lower = prompt.lower()
+
+    for pattern, reason in blocked_patterns:
+        if pattern.lower() in prompt_lower:
+            return False, reason
+
+    return True, None
+
+
+def main():
+    try:
+        # Parse command line arguments
+        parser = argparse.ArgumentParser()
+        parser.add_argument(
+            "--validate", action="store_true", help="Enable prompt validation"
+        )
+        parser.add_argument(
+            "--log-only",
+            action="store_true",
+            help="Only log prompts, no validation or blocking",
+        )
+        parser.add_argument(
+            "--store-last-prompt",
+            action="store_true",
+            help="Store the last prompt for status line display",
+        )
+        parser.add_argument(
+            "--name-agent",
+            action="store_true",
+            help="Generate an agent name for the session",
+        )
+        args = parser.parse_args()
+
+        # Read JSON input from stdin
+        input_data = json.loads(sys.stdin.read())
+
+        # Extract session_id and prompt
+        session_id = input_data.get("session_id", "unknown")
+        prompt = input_data.get("prompt", "")
+
+        # Removed: Aggregate logging call (unused)
+
+        # Manage session data with JSON structure
+        if args.store_last_prompt or args.name_agent:
+            manage_session_data(session_id, prompt, name_agent=args.name_agent)
+
+        # Validate prompt if requested and not in log-only mode
+        if args.validate and not args.log_only:
+            is_valid, reason = validate_prompt(prompt)
+            if not is_valid:
+                # Exit code 2 blocks the prompt with error message
+                print(f"Prompt blocked: {reason}", file=sys.stderr)
+                sys.exit(2)
+
+        # Add context information (optional)
+        # You can print additional context that will be added to the prompt
+        # Example: print(f"Current time: {datetime.now()}")
+
+        # Success - prompt will be processed
+        sys.exit(0)
+
+    except json.JSONDecodeError:
+        # Handle JSON decode errors gracefully
+        sys.exit(0)
+    except Exception:
+        # Handle any other errors gracefully
+        sys.exit(0)
+
+
+if __name__ == "__main__":
+    main()

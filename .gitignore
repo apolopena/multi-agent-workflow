@@ -1,0 +1,17 @@
+# Python (observability hooks)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Observability (environment-specific)
+.claude/.observability-state
+.claude/.observability-config
+.summary-prompt.txt
+.env*
+
+# AI Planning System (instance files)
+.ai/planning/prp/instances/
+.ai/planning/prp/proposals/
+.ai/planning/prp/archive/
+.ai/scratch/
+trees/

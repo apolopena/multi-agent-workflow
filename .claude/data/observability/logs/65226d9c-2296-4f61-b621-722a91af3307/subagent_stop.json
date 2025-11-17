@@ -1,0 +1,32 @@
+[
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "permission_mode": "default",
+    "hook_event_name": "SubagentStop",
+    "stop_hook_active": false,
+    "agent_id": "4e9e901b",
+    "agent_transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/agent-4e9e901b.jsonl"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "permission_mode": "default",
+    "hook_event_name": "SubagentStop",
+    "stop_hook_active": false,
+    "agent_id": "119953b3",
+    "agent_transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/agent-119953b3.jsonl"
+  },
+  {
+    "session_id": "65226d9c-2296-4f61-b621-722a91af3307",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/65226d9c-2296-4f61-b621-722a91af3307.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "permission_mode": "default",
+    "hook_event_name": "SubagentStop",
+    "stop_hook_active": false,
+    "agent_id": "6fc3c418",
+    "agent_transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/agent-6fc3c418.jsonl"
+  }
+]

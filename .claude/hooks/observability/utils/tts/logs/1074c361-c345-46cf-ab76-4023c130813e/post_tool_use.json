@@ -1,0 +1,38 @@
+[
+  {
+    "session_id": "1074c361-c345-46cf-ab76-4023c130813e",
+    "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1074c361-c345-46cf-ab76-4023c130813e.jsonl",
+    "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils/tts",
+    "permission_mode": "acceptEdits",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "cd .claude/hooks/observability/utils/tts && uv run --script - <<'TESTEOF'\n# /// script\n# requires-python = \">=3.8\"\n# dependencies = [\"python-dotenv\"]\n# ///\nimport os\nprint(f\"CWD when running from tts/: {os.getcwd()}\")\nprint(f\"OPENAI_API_KEY before anything: {bool(os.getenv('OPENAI_API_KEY'))}\")\nTESTEOF\n",
+      "description": "Check what CWD is when running from subdirectory"
+    },
+    "tool_response": {
+      "stdout": "CWD when running from tts/: /home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils/tts\nOPENAI_API_KEY before anything: False",
+      "stderr": "",
+      "interrupted": false,
+      "isImage": false
+    }
+  },
+  {
+    "session_id": "1074c361-c345-46cf-ab76-4023c130813e",
+    "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1074c361-c345-46cf-ab76-4023c130813e.jsonl",
+    "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils/tts",
+    "permission_mode": "acceptEdits",
+    "hook_event_name": "PostToolUse",
+    "tool_name": "Bash",
+    "tool_input": {
+      "command": "tail -5 logs/user_prompt_submit.json | jq '.[-1].cwd' 2>/dev/null || tail -20 logs/user_prompt_submit.json | grep -o '\"cwd\":\"[^\"]*\"' | head -1",
+      "description": "Check what CWD hooks actually run with"
+    },
+    "tool_response": {
+      "stdout": "tail: cannot open 'logs/user_prompt_submit.json' for reading: No such file or directory",
+      "stderr": "",
+      "interrupted": false,
+      "isImage": false
+    }
+  }
+]

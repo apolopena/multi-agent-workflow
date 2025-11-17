@@ -1,0 +1,2182 @@
+[
+  {
+    "timestamp": "2025-11-12T22:46:11.477693",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.45193625,
+        "total_duration_ms": 12799021,
+        "total_api_duration_ms": 3413169,
+        "total_lines_added": 550,
+        "total_lines_removed": 286
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "[Sonnet 4.5] \ud83d\udcad No session data",
+    "error": "Session file .claude/data/sessions/1f246fe9-6478-45d0-a71f-eeb7b53415c5.json does not exist"
+  },
+  {
+    "timestamp": "2025-11-12T22:46:11.478078",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.45193625,
+        "total_duration_ms": 12799021,
+        "total_api_duration_ms": 3413169,
+        "total_lines_added": 550,
+        "total_lines_removed": 286
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[36m[Sonnet 4.5]\u001b[0m \u001b[90m\ud83d\udcad No session data\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T22:46:35.340649",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.4782215,
+        "total_duration_ms": 12822881,
+        "total_api_duration_ms": 3417443,
+        "total_lines_added": 551,
+        "total_lines_removed": 287
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "[Sonnet 4.5] \ud83d\udcad No session data",
+    "error": "Session file .claude/data/observability/sessions/1f246fe9-6478-45d0-a71f-eeb7b53415c5.json does not exist"
+  },
+  {
+    "timestamp": "2025-11-12T22:46:35.340984",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.4782215,
+        "total_duration_ms": 12822881,
+        "total_api_duration_ms": 3417443,
+        "total_lines_added": 551,
+        "total_lines_removed": 287
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[36m[Sonnet 4.5]\u001b[0m \u001b[90m\ud83d\udcad No session data\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T22:47:15.063647",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.50427535,
+        "total_duration_ms": 12862605,
+        "total_api_duration_ms": 3423910,
+        "total_lines_added": 551,
+        "total_lines_removed": 287
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "[Sonnet 4.5] \ud83d\udcad No session data",
+    "error": "Session file .claude/data/observability/sessions/1f246fe9-6478-45d0-a71f-eeb7b53415c5.json does not exist"
+  },
+  {
+    "timestamp": "2025-11-12T22:47:15.064187",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.50427535,
+        "total_duration_ms": 12862605,
+        "total_api_duration_ms": 3423910,
+        "total_lines_added": 551,
+        "total_lines_removed": 287
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[36m[Sonnet 4.5]\u001b[0m \u001b[90m\ud83d\udcad No session data\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T22:47:27.354008",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.532651949999998,
+        "total_duration_ms": 12874901,
+        "total_api_duration_ms": 3430922,
+        "total_lines_added": 551,
+        "total_lines_removed": 287
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "[Sonnet 4.5] \ud83d\udcad No session data",
+    "error": "Session file .claude/data/observability/sessions/1f246fe9-6478-45d0-a71f-eeb7b53415c5.json does not exist"
+  },
+  {
+    "timestamp": "2025-11-12T22:47:27.354457",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.532651949999998,
+        "total_duration_ms": 12874901,
+        "total_api_duration_ms": 3430922,
+        "total_lines_added": 551,
+        "total_lines_removed": 287
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[36m[Sonnet 4.5]\u001b[0m \u001b[90m\ud83d\udcad No session data\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T22:47:42.785494",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.56541625,
+        "total_duration_ms": 12890328,
+        "total_api_duration_ms": 3441038,
+        "total_lines_added": 551,
+        "total_lines_removed": 287
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "[Sonnet 4.5] \ud83d\udcad No session data",
+    "error": "Session file .claude/data/observability/sessions/1f246fe9-6478-45d0-a71f-eeb7b53415c5.json does not exist"
+  },
+  {
+    "timestamp": "2025-11-12T22:47:42.785905",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.56541625,
+        "total_duration_ms": 12890328,
+        "total_api_duration_ms": 3441038,
+        "total_lines_added": 551,
+        "total_lines_removed": 287
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[36m[Sonnet 4.5]\u001b[0m \u001b[90m\ud83d\udcad No session data\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T22:47:52.824298",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.593746,
+        "total_duration_ms": 12900370,
+        "total_api_duration_ms": 3445736,
+        "total_lines_added": 561,
+        "total_lines_removed": 288
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mwell I amnot seeing it\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T22:48:48.185169",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.62243985,
+        "total_duration_ms": 12955727,
+        "total_api_duration_ms": 3456466,
+        "total_lines_added": 561,
+        "total_lines_removed": 288
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mok I see it now but I have the openai api key b...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T22:49:11.353558",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.62243985,
+        "total_duration_ms": 12978900,
+        "total_api_duration_ms": 3456466,
+        "total_lines_added": 561,
+        "total_lines_removed": 288
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mok I see it now but I have the openai api key b...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T22:49:11.649797",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.62243985,
+        "total_duration_ms": 12979201,
+        "total_api_duration_ms": 3456466,
+        "total_lines_added": 561,
+        "total_lines_removed": 288
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mok I see it now but I have the openai api key b...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T22:49:21.837251",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.650440749999998,
+        "total_duration_ms": 12989378,
+        "total_api_duration_ms": 3464523,
+        "total_lines_added": 561,
+        "total_lines_removed": 288
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udc1b \u001b[97mI absolutely should hear a robot voice, not as ...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T22:49:34.083024",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.685397599999998,
+        "total_duration_ms": 13001627,
+        "total_api_duration_ms": 3475946,
+        "total_lines_added": 561,
+        "total_lines_removed": 288
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udc1b \u001b[97mI absolutely should hear a robot voice, not as ...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T22:49:48.621712",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.717592149999998,
+        "total_duration_ms": 13016162,
+        "total_api_duration_ms": 3486232,
+        "total_lines_added": 561,
+        "total_lines_removed": 288
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udc1b \u001b[97mI absolutely should hear a robot voice, not as ...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T22:50:12.272964",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.765117049999997,
+        "total_duration_ms": 13039815,
+        "total_api_duration_ms": 3505732,
+        "total_lines_added": 561,
+        "total_lines_removed": 288
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udc1b \u001b[97mI absolutely should hear a robot voice, not as ...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T22:50:12.282630",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.765117049999997,
+        "total_duration_ms": 13039823,
+        "total_api_duration_ms": 3505732,
+        "total_lines_added": 561,
+        "total_lines_removed": 288
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udc1b \u001b[97mI absolutely should hear a robot voice, not as ...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T22:50:12.299783",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.765117049999997,
+        "total_duration_ms": 13039837,
+        "total_api_duration_ms": 3505732,
+        "total_lines_added": 561,
+        "total_lines_removed": 288
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udc1b \u001b[97mI absolutely should hear a robot voice, not as ...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T22:50:12.586874",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.765117049999997,
+        "total_duration_ms": 13040138,
+        "total_api_duration_ms": 3505732,
+        "total_lines_added": 561,
+        "total_lines_removed": 288
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udc1b \u001b[97mI absolutely should hear a robot voice, not as ...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T22:50:25.504210",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.801833149999997,
+        "total_duration_ms": 13053046,
+        "total_api_duration_ms": 3512744,
+        "total_lines_added": 633,
+        "total_lines_removed": 308
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udc1b \u001b[97mI absolutely should hear a robot voice, not as ...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T22:50:43.434444",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.846149099999998,
+        "total_duration_ms": 13070979,
+        "total_api_duration_ms": 3525990,
+        "total_lines_added": 633,
+        "total_lines_removed": 308
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udc1b \u001b[97mI absolutely should hear a robot voice, not as ...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T22:50:55.258117",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.880952399999998,
+        "total_duration_ms": 13082806,
+        "total_api_duration_ms": 3532464,
+        "total_lines_added": 683,
+        "total_lines_removed": 327
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udc1b \u001b[97mI absolutely should hear a robot voice, not as ...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T22:51:20.624366",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.880952399999998,
+        "total_duration_ms": 13108173,
+        "total_api_duration_ms": 3532464,
+        "total_lines_added": 683,
+        "total_lines_removed": 327
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udc1b \u001b[97mI absolutely should hear a robot voice, not as ...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T22:51:20.921011",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.880952399999998,
+        "total_duration_ms": 13108473,
+        "total_api_duration_ms": 3532464,
+        "total_lines_added": 683,
+        "total_lines_removed": 327
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udc1b \u001b[97mI absolutely should hear a robot voice, not as ...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T22:51:32.829511",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.91099885,
+        "total_duration_ms": 13120377,
+        "total_api_duration_ms": 3540039,
+        "total_lines_added": 683,
+        "total_lines_removed": 327
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mFire off those hooks manually. Let me tell you ...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T22:51:49.987871",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.942883,
+        "total_duration_ms": 13137534,
+        "total_api_duration_ms": 3550693,
+        "total_lines_added": 683,
+        "total_lines_removed": 327
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mFire off those hooks manually. Let me tell you ...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T22:52:04.232188",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 16.97412205,
+        "total_duration_ms": 13151780,
+        "total_api_duration_ms": 3560941,
+        "total_lines_added": 683,
+        "total_lines_removed": 327
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mFire off those hooks manually. Let me tell you ...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T22:52:18.023559",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 17.003641,
+        "total_duration_ms": 13165570,
+        "total_api_duration_ms": 3568321,
+        "total_lines_added": 683,
+        "total_lines_removed": 327
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mFire off those hooks manually. Let me tell you ...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-12T22:52:32.101636",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 17.034431899999998,
+        "total_duration_ms": 13179646,
+        "total_api_duration_ms": 3575820,
+        "total_lines_added": 683,
+        "total_lines_removed": 327
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mand yes\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:44:37.464475",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 11.616985249999995,
+        "total_duration_ms": 34623670,
+        "total_api_duration_ms": 2322382,
+        "total_lines_added": 173,
+        "total_lines_removed": 59
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:44:46.583772",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 11.800481499999995,
+        "total_duration_ms": 34632782,
+        "total_api_duration_ms": 2332634,
+        "total_lines_added": 173,
+        "total_lines_removed": 59
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:44:46.610633",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 11.800481499999995,
+        "total_duration_ms": 34632811,
+        "total_api_duration_ms": 2332634,
+        "total_lines_added": 173,
+        "total_lines_removed": 59
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:44:46.638440",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 11.800481499999995,
+        "total_duration_ms": 34632841,
+        "total_api_duration_ms": 2332634,
+        "total_lines_added": 173,
+        "total_lines_removed": 59
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:44:53.683609",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 11.823100649999995,
+        "total_duration_ms": 34639880,
+        "total_api_duration_ms": 2340461,
+        "total_lines_added": 173,
+        "total_lines_removed": 59
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:45:01.382176",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 11.847977299999995,
+        "total_duration_ms": 34647583,
+        "total_api_duration_ms": 2348922,
+        "total_lines_added": 173,
+        "total_lines_removed": 59
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:45:01.415651",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 11.847977299999995,
+        "total_duration_ms": 34647612,
+        "total_api_duration_ms": 2348922,
+        "total_lines_added": 173,
+        "total_lines_removed": 59
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:45:56.996940",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 11.847977299999995,
+        "total_duration_ms": 34703062,
+        "total_api_duration_ms": 2348922,
+        "total_lines_added": 173,
+        "total_lines_removed": 59
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:45:57.410294",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 11.847977299999995,
+        "total_duration_ms": 34703616,
+        "total_api_duration_ms": 2348922,
+        "total_lines_added": 183,
+        "total_lines_removed": 60
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:45:57.423658",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 11.847977299999995,
+        "total_duration_ms": 34703625,
+        "total_api_duration_ms": 2348922,
+        "total_lines_added": 183,
+        "total_lines_removed": 60
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:46:02.002455",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 11.867363299999996,
+        "total_duration_ms": 34708205,
+        "total_api_duration_ms": 2353195,
+        "total_lines_added": 183,
+        "total_lines_removed": 60
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:46:07.764799",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 11.889911899999996,
+        "total_duration_ms": 34713962,
+        "total_api_duration_ms": 2359294,
+        "total_lines_added": 193,
+        "total_lines_removed": 61
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:46:12.763029",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 11.909922199999995,
+        "total_duration_ms": 34718960,
+        "total_api_duration_ms": 2363631,
+        "total_lines_added": 193,
+        "total_lines_removed": 61
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:46:18.902231",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 11.932978849999994,
+        "total_duration_ms": 34725105,
+        "total_api_duration_ms": 2370885,
+        "total_lines_added": 202,
+        "total_lines_removed": 61
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:46:23.195530",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 11.952768649999994,
+        "total_duration_ms": 34729391,
+        "total_api_duration_ms": 2374506,
+        "total_lines_added": 202,
+        "total_lines_removed": 61
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:46:29.878365",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 11.975950549999995,
+        "total_duration_ms": 34736076,
+        "total_api_duration_ms": 2381773,
+        "total_lines_added": 212,
+        "total_lines_removed": 62
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:46:34.495730",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 11.996008249999996,
+        "total_duration_ms": 34740690,
+        "total_api_duration_ms": 2385695,
+        "total_lines_added": 212,
+        "total_lines_removed": 62
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:46:41.474615",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 12.019235499999995,
+        "total_duration_ms": 34747665,
+        "total_api_duration_ms": 2393553,
+        "total_lines_added": 221,
+        "total_lines_removed": 62
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:46:47.628285",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 12.040254099999995,
+        "total_duration_ms": 34753832,
+        "total_api_duration_ms": 2398940,
+        "total_lines_added": 221,
+        "total_lines_removed": 62
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:46:54.191358",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 12.065323399999995,
+        "total_duration_ms": 34760390,
+        "total_api_duration_ms": 2406074,
+        "total_lines_added": 231,
+        "total_lines_removed": 63
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:47:00.296282",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 12.086473999999995,
+        "total_duration_ms": 34766478,
+        "total_api_duration_ms": 2411559,
+        "total_lines_added": 231,
+        "total_lines_removed": 63
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:47:00.491236",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 12.086473999999995,
+        "total_duration_ms": 34766678,
+        "total_api_duration_ms": 2411559,
+        "total_lines_added": 231,
+        "total_lines_removed": 63
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:47:00.953371",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 12.086473999999995,
+        "total_duration_ms": 34767150,
+        "total_api_duration_ms": 2411559,
+        "total_lines_added": 231,
+        "total_lines_removed": 63
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:47:09.836323",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 12.110709499999995,
+        "total_duration_ms": 34776033,
+        "total_api_duration_ms": 2422982,
+        "total_lines_added": 241,
+        "total_lines_removed": 64
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:47:14.229510",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 12.132048799999994,
+        "total_duration_ms": 34780406,
+        "total_api_duration_ms": 2426502,
+        "total_lines_added": 241,
+        "total_lines_removed": 64
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:47:20.037525",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 12.156272949999995,
+        "total_duration_ms": 34786233,
+        "total_api_duration_ms": 2432750,
+        "total_lines_added": 241,
+        "total_lines_removed": 64
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:47:20.138166",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 12.156272949999995,
+        "total_duration_ms": 34786339,
+        "total_api_duration_ms": 2432750,
+        "total_lines_added": 250,
+        "total_lines_removed": 64
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:47:20.537289",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 12.156272949999995,
+        "total_duration_ms": 34786741,
+        "total_api_duration_ms": 2432750,
+        "total_lines_added": 250,
+        "total_lines_removed": 64
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:47:25.341635",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 12.178153449999995,
+        "total_duration_ms": 34791532,
+        "total_api_duration_ms": 2437159,
+        "total_lines_added": 250,
+        "total_lines_removed": 64
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:47:31.774173",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 12.203258799999993,
+        "total_duration_ms": 34797973,
+        "total_api_duration_ms": 2443941,
+        "total_lines_added": 250,
+        "total_lines_removed": 64
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:47:31.863679",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 12.203258799999993,
+        "total_duration_ms": 34798062,
+        "total_api_duration_ms": 2443941,
+        "total_lines_added": 260,
+        "total_lines_removed": 65
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:47:32.326125",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 12.203258799999993,
+        "total_duration_ms": 34798530,
+        "total_api_duration_ms": 2443941,
+        "total_lines_added": 260,
+        "total_lines_removed": 65
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:47:41.514290",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 12.228702249999992,
+        "total_duration_ms": 34807719,
+        "total_api_duration_ms": 2452800,
+        "total_lines_added": 260,
+        "total_lines_removed": 65
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:47:41.528988",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 12.228702249999992,
+        "total_duration_ms": 34807733,
+        "total_api_duration_ms": 2452800,
+        "total_lines_added": 260,
+        "total_lines_removed": 65
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:48:01.632645",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 12.228702249999992,
+        "total_duration_ms": 34827837,
+        "total_api_duration_ms": 2452800,
+        "total_lines_added": 260,
+        "total_lines_removed": 65
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:48:02.249832",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 12.228702249999992,
+        "total_duration_ms": 34828457,
+        "total_api_duration_ms": 2452800,
+        "total_lines_added": 260,
+        "total_lines_removed": 65
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:48:10.830732",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 12.253440699999993,
+        "total_duration_ms": 34837028,
+        "total_api_duration_ms": 2463044,
+        "total_lines_added": 260,
+        "total_lines_removed": 65
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:48:10.860262",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 12.253440699999993,
+        "total_duration_ms": 34837051,
+        "total_api_duration_ms": 2463044,
+        "total_lines_added": 260,
+        "total_lines_removed": 65
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:48:15.678634",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 12.274596399999993,
+        "total_duration_ms": 34841886,
+        "total_api_duration_ms": 2467357,
+        "total_lines_added": 260,
+        "total_lines_removed": 65
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:48:15.714109",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 12.274596399999993,
+        "total_duration_ms": 34841919,
+        "total_api_duration_ms": 2467357,
+        "total_lines_added": 260,
+        "total_lines_removed": 65
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:48:21.875194",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 12.296547399999993,
+        "total_duration_ms": 34848083,
+        "total_api_duration_ms": 2472999,
+        "total_lines_added": 260,
+        "total_lines_removed": 65
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:48:21.941592",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 12.296547399999993,
+        "total_duration_ms": 34848147,
+        "total_api_duration_ms": 2472999,
+        "total_lines_added": 260,
+        "total_lines_removed": 65
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:48:22.340565",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 12.296547399999993,
+        "total_duration_ms": 34848550,
+        "total_api_duration_ms": 2472999,
+        "total_lines_added": 260,
+        "total_lines_removed": 65
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  },
+  {
+    "timestamp": "2025-11-13T08:48:27.156812",
+    "input_data": {
+      "session_id": "1f246fe9-6478-45d0-a71f-eeb7b53415c5",
+      "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1f246fe9-6478-45d0-a71f-eeb7b53415c5.jsonl",
+      "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+      "model": {
+        "id": "claude-sonnet-4-5-20250929",
+        "display_name": "Sonnet 4.5"
+      },
+      "workspace": {
+        "current_dir": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability",
+        "project_dir": "/home/ks73/repos/work/multi-agent-workflow"
+      },
+      "version": "2.0.37",
+      "output_style": {
+        "name": "default"
+      },
+      "cost": {
+        "total_cost_usd": 12.317814549999992,
+        "total_duration_ms": 34853362,
+        "total_api_duration_ms": 2477477,
+        "total_lines_added": 260,
+        "total_lines_removed": 65
+      },
+      "exceeds_200k_tokens": false
+    },
+    "status_line_output": "\u001b[91m[CodeWeaver]\u001b[0m | \u001b[34m[Sonnet 4.5]\u001b[0m | \ud83d\udcac \u001b[97mI have this set to diabled and I hear TTs still...\u001b[0m"
+  }
+]

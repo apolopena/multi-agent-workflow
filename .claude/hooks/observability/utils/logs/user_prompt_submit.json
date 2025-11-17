@@ -1,0 +1,26 @@
+[
+  {
+    "session_id": "1074c361-c345-46cf-ab76-4023c130813e",
+    "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1074c361-c345-46cf-ab76-4023c130813e.jsonl",
+    "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils",
+    "permission_mode": "acceptEdits",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "I heard the robot voice. So what did you do? "
+  },
+  {
+    "session_id": "1074c361-c345-46cf-ab76-4023c130813e",
+    "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1074c361-c345-46cf-ab76-4023c130813e.jsonl",
+    "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils",
+    "permission_mode": "acceptEdits",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "I saw this in the upstream repo. I don't know if it helps. https://github.com/disler/claude-code-hooks-multi-agent-observability/issues/13\nI heard the robot voice. So what did you do? "
+  },
+  {
+    "session_id": "1074c361-c345-46cf-ab76-4023c130813e",
+    "transcript_path": "/home/ks73/.claude/projects/-home-ks73-repos-work-multi-agent-workflow/1074c361-c345-46cf-ab76-4023c130813e.jsonl",
+    "cwd": "/home/ks73/repos/work/multi-agent-workflow/.claude/hooks/observability/utils",
+    "permission_mode": "acceptEdits",
+    "hook_event_name": "UserPromptSubmit",
+    "prompt": "How are the summaries working then? "
+  }
+]

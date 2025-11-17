@@ -1,0 +1,12 @@
+[
+  {
+    "session_id": "3a8f1be9-ae7b-443f-88a2-b23f00804e95",
+    "transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/3a8f1be9-ae7b-443f-88a2-b23f00804e95.jsonl",
+    "cwd": "/tmp/test-worktree-project",
+    "permission_mode": "default",
+    "hook_event_name": "SubagentStop",
+    "stop_hook_active": false,
+    "agent_id": "80c988b0",
+    "agent_transcript_path": "/home/ks73/.claude/projects/-tmp-test-worktree-project/agent-80c988b0.jsonl"
+  }
+]
